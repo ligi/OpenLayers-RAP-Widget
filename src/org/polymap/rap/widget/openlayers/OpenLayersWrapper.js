@@ -45,6 +45,21 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
         WMS: {
         	init : [],
         	apply: "wms_change"
+        	},
+        zoom:
+        	{
+        	init: 0,
+        	apply: "zoom_change"
+        	},
+       	longitude:
+        	{
+        	init: 5.0,
+        	apply: "center_change"
+        	},
+        latitude:
+        	{
+        	init: 40.0,
+        	apply: "center_change"
         	}
     }, // EOProperties
     
@@ -62,8 +77,18 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
                 shell.setActiveChild( this );
             }
         },
-        wms_change: function()
-        	{
+        center_change: function()	{
+        	this.create_map();
+        	try {
+        		this._map.setCenter(new OpenLayers.LonLat(this.getLongitude(), this.getLatitude()));
+          	}
+          	catch ( e) {  }
+        },
+        zoom_change: function()	{
+        	this.create_map();
+        	this._map.zoomTo(	this.getZoom());
+        },
+        wms_change: function()  	{
         	this.create_map();
         	var tmp_wms_arr= this.getWMS();
         	
@@ -91,12 +116,11 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
             	{
            			this._map = new OpenLayers.Map({div:  document.getElementById( this._id )
            			, controls: [] });
-           	
-            		//this._map.setCenter(new OpenLayers.LonLat(5.0, 40.0), 5.0);
-          
+            		
           			// add some controls - TODO: make adjustable by widget
          			this._map.addControl(new OpenLayers.Control.LayerSwitcher());
          			this._map.addControl(new OpenLayers.Control.MouseDefaults());
+         			this._map.addControl(new OpenLayers.Control.MousePosition());
          			this._map.addControl(new OpenLayers.Control.KeyboardDefaults());
          	
          			this._map.addControl(new OpenLayers.Control.PanZoomBar());

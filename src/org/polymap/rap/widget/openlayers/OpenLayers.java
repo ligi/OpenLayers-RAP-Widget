@@ -52,6 +52,11 @@ public class OpenLayers extends Composite {
 	  
   private String centerLocation;
   
+  private int zoom=0;
+  private double latitude=40.0;
+  private double longitude=5.0;
+  
+  
   public OpenLayers( final Composite parent, final int style ) {
     super( parent, style );
     wms_hash=new HashMap();
@@ -95,5 +100,29 @@ public class OpenLayers extends Composite {
    * Intentionally commented out as a map cannot have a layout
    */
   public void setLayout( final Layout layout ) {  }
+
+  public void setZoom(int zoom) {
+	  this.zoom = zoom;
+  }
+
+  public int getZoom() {
+	  return zoom;
+  }
+
+  public void setLatitude(double latitude) {
+	  this.latitude = latitude;
+  }
+
+  public double getLatitude() {
+	  return latitude;
+  }
+
+  public void setLongitude(double longitude) {
+	  this.longitude = longitude;
+  }
+
+  public double getLongitude() {
+	  return longitude;
+  }
   
 }

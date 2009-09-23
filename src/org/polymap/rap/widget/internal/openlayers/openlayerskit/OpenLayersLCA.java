@@ -49,14 +49,26 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
   private static final String JS_PROP_WMS = "WMS";
   private static final String PROP_WMS = "WMS";
 
+  private static final String JS_PROP_ZOOM = "zoom";
+  private static final String PROP_ZOOM = "zoom";
 
+  private static final String JS_PROP_LATITUDE = "latitude";
+  private static final String PROP_LATITUDE = "latitude";
+
+  private static final String JS_PROP_LONGITUDE = "longitude";
+  private static final String PROP_LONGITUDE = "longitude";
+
+  
   private static final String PARAM_CENTER = "centerLocation";
 
   public void preserveValues( final Widget widget ) {
     ControlLCAUtil.preserveValues( ( Control )widget );
     IWidgetAdapter adapter = WidgetUtil.getAdapter( widget );
     adapter.preserve( PROP_WMS, ( ( OpenLayers )widget ).getWMS() );
-    
+    adapter.preserve( PROP_ZOOM, ( ( OpenLayers )widget ).getZoom());
+    adapter.preserve( PROP_LATITUDE, ( ( OpenLayers )widget ).getLatitude());
+    adapter.preserve( PROP_LONGITUDE, ( ( OpenLayers )widget ).getLongitude());
+         
     // only needed for custom variants (theming)
     WidgetLCAUtil.preserveCustomVariant( widget );
   }
@@ -77,7 +89,6 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
     JSWriter writer = JSWriter.getWriterFor( widget );
     String id = WidgetUtil.getId( widget );
     writer.newWidget( "org.polymap.rap.widget.openlayers.OpenLayers", new Object[]{
-    	
       id
     } );
     writer.set( "appearance", "composite" );
@@ -90,6 +101,9 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
     ControlLCAUtil.writeChanges(  open_layers );
     JSWriter writer = JSWriter.getWriterFor( widget );
     writer.set( PROP_WMS, JS_PROP_WMS,  open_layers.getWMS() );
+    writer.set( PROP_ZOOM, JS_PROP_ZOOM,  open_layers.getZoom() );
+    writer.set( PROP_LATITUDE, JS_PROP_LATITUDE,  open_layers.getLatitude() );
+    writer.set( PROP_LONGITUDE, JS_PROP_LONGITUDE,  open_layers.getLongitude() );
     
     // only needed for custom variants (theming)
     WidgetLCAUtil.writeCustomVariant( widget );
