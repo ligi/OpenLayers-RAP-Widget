@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="org.polymap.rap.OpenLayers_Widget"
+         point="org.eclipse.rap.ui.resources">
+      <resource
+            class="org.polymap.rap.widget.openlayers.OpenLayersAPIResource">
+      </resource>
+      <resource
+            class="org.polymap.rap.widget.openlayers.OpenLayersResource">
+      </resource>
+   </extension>
+
+</plugin>
