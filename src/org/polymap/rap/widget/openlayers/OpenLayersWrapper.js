@@ -82,6 +82,7 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
         	try {
         		this._map.setCenter(new OpenLayers.LonLat(this.getLongitude(), this.getLatitude()));
           	}
+          	// if there is no map layer yet setting the center could lead to problems
           	catch ( e) {  }
         },
         zoom_change: function()	{
