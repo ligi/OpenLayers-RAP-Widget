@@ -69,55 +69,14 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
 		zoomTo: function(zoom_level)	{
         		this._map.zoomTo(	zoom_level);
         },
-    		
-        /*
-        center_change: function()	{
-        	this.create_map();
-        	try {
-        		this._map.setCenter(new OpenLayers.LonLat(this.getLongitude(), this.getLatitude()));
+    	setCenter: function(center_lon,center_lat) {
+    		qx.ui.core.Widget.flushGlobalQueues();
+    		try {
+        		this._map.setCenter(new OpenLayers.LonLat(center_lon,center_lat));
           	}
           	// if there is no map layer yet setting the center could lead to problems
           	catch ( e) {  }
-        },
-        wms_change: function()  	{
-        	this.create_map();
-        	var tmp_wms_arr= this.getWMS();
-        	
-        	for ( i=0;i<tmp_wms_arr.length/4;i++)
-        		{
-        			var wms_id=tmp_wms_arr[i*4];
-        			if(! (this._active_wms[wms_id] ))
-        				{
-             	
-        					var wms_label=tmp_wms_arr[i*4+1];
-        					var wms_url=tmp_wms_arr[i*4+2];
-        					var wms_layers=tmp_wms_arr[i*4+3];
-     
-        					this._active_wms[wms_id]=new   OpenLayers.Layer.WMS(wms_label,wms_url,{layers:wms_layers});
-        					this._map.addLayer(this._active_wms[wms_id]);
-        				}
-        		}
-        	            
-        	},
-
-        create_map : function()
-        	{
-        	qx.ui.core.Widget.flushGlobalQueues();
-            if( this._map == null )
-            	{
-           			this._map = new OpenLayers.Map({div:  document.getElementById( this._id )
-           			, controls: [] });
-            		
-          			// add some controls - TODO: make adjustable by widget
-         			this._map.addControl(new OpenLayers.Control.LayerSwitcher());
-         			this._map.addControl(new OpenLayers.Control.MouseDefaults());
-         			this._map.addControl(new OpenLayers.Control.MousePosition());
-         			this._map.addControl(new OpenLayers.Control.KeyboardDefaults());
-         	
-         			this._map.addControl(new OpenLayers.Control.PanZoomBar());
-         		}
-            }
-        */
+    	},	
     }
     
 } );

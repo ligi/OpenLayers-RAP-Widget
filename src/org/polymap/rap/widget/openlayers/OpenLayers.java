@@ -96,5 +96,11 @@ public class OpenLayers extends Composite {
 	  addCommand("zoomTo",param_arr);
   }
 
+  public void setCenter(double center_lon,double center_lat)
+  {
+	  Object[] param_arr={center_lon,center_lat};
+	  addCommand("setCenter",param_arr);
+  }
+ 
   
 }
