@@ -38,7 +38,7 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
         this.setHtmlAttribute( "id", id );
         this._id = id;
         this._map = null;
-        this._active_wms = {};
+        this._objs = {};
     },
     
     properties : {}, 
@@ -47,24 +47,14 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     	map_init : function()
     		{
     			qx.ui.core.Widget.flushGlobalQueues(); 
-		
 				if( this._map == null )
-            		{       
 	            		this._map = new OpenLayers.Map({div:  document.getElementById( this._id ), controls: [] });
-            		
-          				// add some controls - TODO: make adjustable by widget
-         				this._map.addControl(new OpenLayers.Control.LayerSwitcher());
-         				this._map.addControl(new OpenLayers.Control.MouseDefaults());
-         				this._map.addControl(new OpenLayers.Control.MousePosition());
-         				this._map.addControl(new OpenLayers.Control.KeyboardDefaults());
-         				this._map.addControl(new OpenLayers.Control.PanZoomBar());
-         			}
     		},
 		
-		addWMS : function (wms_id, wms_label , wms_url,wms_layers)
+		addWMS : function (wms_ref, wms_label , wms_url,wms_layers)
 			{
-				this._active_wms[wms_id]=new   OpenLayers.Layer.WMS(wms_label,wms_url,{layers:wms_layers});
-        		this._map.addLayer(this._active_wms[wms_id]);
+				this._objs[wms_ref]=new   OpenLayers.Layer.WMS(wms_label,wms_url,{layers:wms_layers});
+        		this._map.addLayer(this._objs[wms_ref]);
 			},
 		zoomTo: function(zoom_level)	{
         		this._map.zoomTo(	zoom_level);
@@ -77,6 +67,11 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
           	// if there is no map layer yet setting the center could lead to problems
           	catch ( e) {  }
     	},	
+    	addControl : function(control_ref,control_def)
+    	{
+    		eval("this._objs['"+control_ref+"']= new "+control_def);
+    		this._map.addControl(this._objs[control_ref]);
+    	}
     }
     
 } );

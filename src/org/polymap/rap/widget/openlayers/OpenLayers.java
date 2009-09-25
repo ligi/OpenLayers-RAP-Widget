@@ -91,6 +91,13 @@ public class OpenLayers extends Composite {
 	  return param_arr[0];
   }
 
+  public String addControl(String control_def)
+  {
+	  String[] param_arr={generateObjectReference("ctrl"),control_def};
+	  addCommand("addControl",param_arr);
+	  return param_arr[0];
+  }
+
   public void zoomTo(int zoom) {
 	  Object[] param_arr={zoom};
 	  addCommand("zoomTo",param_arr);
