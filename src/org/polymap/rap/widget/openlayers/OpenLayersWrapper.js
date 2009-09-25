@@ -41,42 +41,36 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
         this._active_wms = {};
     },
     
-    properties : {
-        WMS: {
-        	init : [],
-        	apply: "wms_change"
-        	},
-        zoom:
-        	{
-        	init: 0,
-        	apply: "zoom_change"
-        	},
-       	longitude:
-        	{
-        	init: 5.0,
-        	apply: "center_change"
-        	},
-        latitude:
-        	{
-        	init: 40.0,
-        	apply: "center_change"
-        	}
-    }, // EOProperties
+    properties : {}, 
     
     members : {
-        _doActivate : function() {
-            var shell = null;
-            var parent = this.getParent();
-            while( shell == null && parent != null ) {
-                if( parent.classname == "org.eclipse.swt.widgets.Shell" ) {
-                    shell = parent;
-                }
-                parent = parent.getParent();
-            }
-            if( shell != null ) {
-                shell.setActiveChild( this );
-            }
+    	map_init : function()
+    		{
+    			qx.ui.core.Widget.flushGlobalQueues(); 
+		
+				if( this._map == null )
+            		{       
+	            		this._map = new OpenLayers.Map({div:  document.getElementById( this._id ), controls: [] });
+            		
+          				// add some controls - TODO: make adjustable by widget
+         				this._map.addControl(new OpenLayers.Control.LayerSwitcher());
+         				this._map.addControl(new OpenLayers.Control.MouseDefaults());
+         				this._map.addControl(new OpenLayers.Control.MousePosition());
+         				this._map.addControl(new OpenLayers.Control.KeyboardDefaults());
+         				this._map.addControl(new OpenLayers.Control.PanZoomBar());
+         			}
+    		},
+		
+		addWMS : function (wms_id, wms_label , wms_url,wms_layers)
+			{
+				this._active_wms[wms_id]=new   OpenLayers.Layer.WMS(wms_label,wms_url,{layers:wms_layers});
+        		this._map.addLayer(this._active_wms[wms_id]);
+			},
+		zoomTo: function(zoom_level)	{
+        		this._map.zoomTo(	zoom_level);
         },
+    		
+        /*
         center_change: function()	{
         	this.create_map();
         	try {
@@ -84,10 +78,6 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
           	}
           	// if there is no map layer yet setting the center could lead to problems
           	catch ( e) {  }
-        },
-        zoom_change: function()	{
-        	this.create_map();
-        	this._map.zoomTo(	this.getZoom());
         },
         wms_change: function()  	{
         	this.create_map();
@@ -127,7 +117,7 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
          			this._map.addControl(new OpenLayers.Control.PanZoomBar());
          		}
             }
-        
+        */
     }
     
 } );

@@ -39,90 +39,62 @@ package org.polymap.rap.widget.openlayers;
  * @Licence LGPL V3 ( see lgpl-3.0.txt in the root of this Project ) 
  * 
  *  ******************************************************************************/
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+
+import java.util.Vector;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
 public class OpenLayers extends Composite {
+  
+  
+  Vector<Object[]> cmd_stack;
+  int obj_ref=0;
 
-  private HashMap wms_hash;
-	  
-  private String centerLocation;
-  
-  private int zoom=0;
-  private double latitude=40.0;
-  private double longitude=5.0;
-  
-  
   public OpenLayers( final Composite parent, final int style ) {
-    super( parent, style );
-    wms_hash=new HashMap();
-  }
-
-  public void addWMS(String id,String label,String url,String layers)
-  {
-	  String[] tmp_str_arr={label,url,layers};
-	  wms_hash.put(id,tmp_str_arr);
-  }
-
-  public String[] getWMS()
-  {
-	  // ugly style here but RAP cant pass HashMaps or multidimensional Arrays to JS side
-	  String[] res=new String[wms_hash.size()*4];
-	  Iterator i = wms_hash.entrySet().iterator();
-	  int arr_pos=0;
-	  while (i.hasNext())
-	  {
-		  Map.Entry me=(Map.Entry)i.next();
-		  res[arr_pos]=(String)me.getKey();
-		  res[arr_pos+1]=((String[])me.getValue())[0];
-		  res[arr_pos+2]=((String[])me.getValue())[1];
-		  res[arr_pos+3]=((String[])me.getValue())[2];
-		  arr_pos+=4;
+	    super( parent, style );
+	    cmd_stack=new Vector<Object[]>();
 	  }
-	  
-	  return res;	
-	  
-  }
   
-  public void setCenterLocation( String location ) {
-    this.centerLocation = location;
-  }
-
-  public String getCenterLocation() {
-    return this.centerLocation;
-  }
-
-  /*
-   * Intentionally commented out as a map cannot have a layout
-   */
+  // no layout
   public void setLayout( final Layout layout ) {  }
 
-  public void setZoom(int zoom) {
-	  this.zoom = zoom;
+  public String generateObjectReference(String prefix)
+  {
+	  obj_ref++;
+	  return prefix+obj_ref;
   }
 
-  public int getZoom() {
-	  return zoom;
+  public void addCommand(String cmd,Object[] params)
+  {
+	  Object[] cmd_arr={cmd,params};
+	  cmd_stack.add(cmd_arr);
+  }
+  
+  public boolean hasCommand()
+  {
+	  return (!cmd_stack.isEmpty());  
+  }
+  
+  public Object[] getCommand()
+  {
+	  Object[] res=cmd_stack.elementAt(0);
+	  cmd_stack.removeElementAt(0);
+	  return res;
+  }
+  
+  
+  public String addWMS(String id,String label,String url,String layers)
+  {
+	  String[] param_arr={generateObjectReference("wms"),label,url,layers};
+	  addCommand("addWMS",param_arr);
+	  return param_arr[0];
   }
 
-  public void setLatitude(double latitude) {
-	  this.latitude = latitude;
+  public void zoomTo(int zoom) {
+	  Object[] param_arr={zoom};
+	  addCommand("zoomTo",param_arr);
   }
 
-  public double getLatitude() {
-	  return latitude;
-  }
-
-  public void setLongitude(double longitude) {
-	  this.longitude = longitude;
-  }
-
-  public double getLongitude() {
-	  return longitude;
-  }
   
 }
