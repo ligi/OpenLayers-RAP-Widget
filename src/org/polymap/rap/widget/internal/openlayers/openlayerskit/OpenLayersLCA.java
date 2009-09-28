@@ -37,7 +37,6 @@ import java.io.IOException;
 import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.eclipse.rwt.lifecycle.AbstractWidgetLCA;
 import org.eclipse.rwt.lifecycle.ControlLCAUtil;
-import org.eclipse.rwt.lifecycle.IWidgetAdapter;
 import org.eclipse.rwt.lifecycle.JSWriter;
 import org.eclipse.rwt.lifecycle.WidgetLCAUtil;
 import org.eclipse.rwt.lifecycle.WidgetUtil;
@@ -46,32 +45,9 @@ import org.eclipse.swt.widgets.Widget;
 
 public class OpenLayersLCA extends AbstractWidgetLCA {
 
-	/*
-  private static final String JS_PROP_WMS = "WMS";
-  private static final String PROP_WMS = "WMS";
-
-  private static final String JS_PROP_ZOOM = "zoom";
-  private static final String PROP_ZOOM = "zoom";
-
-  private static final String JS_PROP_LATITUDE = "latitude";
-  private static final String PROP_LATITUDE = "latitude";
-
-  private static final String JS_PROP_LONGITUDE = "longitude";
-  private static final String PROP_LONGITUDE = "longitude";
-*/
-  
-  private static final String PARAM_CENTER = "centerLocation";
-
   public void preserveValues( final Widget widget ) {
     ControlLCAUtil.preserveValues( ( Control )widget );
-    IWidgetAdapter adapter = WidgetUtil.getAdapter( widget );
-    
-    /*
-    adapter.preserve( PROP_WMS, ( ( OpenLayers )widget ).getWMS() );
-    adapter.preserve( PROP_ZOOM, ( ( OpenLayers )widget ).getZoom());
-    adapter.preserve( PROP_LATITUDE, ( ( OpenLayers )widget ).getLatitude());
-    adapter.preserve( PROP_LONGITUDE, ( ( OpenLayers )widget ).getLongitude());
-      */   
+
     // only needed for custom variants (theming)
     WidgetLCAUtil.preserveCustomVariant( widget );
   }
@@ -80,9 +56,7 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
    * Read the parameters transfered from the client
    */
   public void readData( final Widget widget ) {
-    OpenLayers map = ( OpenLayers )widget;
-    String location = WidgetLCAUtil.readPropertyValue( map, PARAM_CENTER );
-    //map.setCenterLocation( location );
+    
   }
 
   /*
@@ -97,29 +71,20 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
     writer.set( "appearance", "composite" );
     writer.set( "overflow", "hidden" );
     ControlLCAUtil.writeStyleFlags( ( OpenLayers )widget );
-    
     writer.call( ( OpenLayers )widget , "map_init", null );
-
   }
 
   public void renderChanges( final Widget widget ) throws IOException {
     OpenLayers open_layers = ( OpenLayers )widget;
     ControlLCAUtil.writeChanges(  open_layers );
     JSWriter writer = JSWriter.getWriterFor( widget );
-    
-    /*
-    writer.set( PROP_WMS, JS_PROP_WMS,  open_layers.getWMS() );
-    writer.set( PROP_ZOOM, JS_PROP_ZOOM,  open_layers.getZoom() );
-    writer.set( PROP_LATITUDE, JS_PROP_LATITUDE,  open_layers.getLatitude() );
-    writer.set( PROP_LONGITUDE, JS_PROP_LONGITUDE,  open_layers.getLongitude() );
-    */
 
     while(open_layers.hasCommand())
     {
     	 	Object[] cmd_pack=open_layers.getCommand();
     	    String cmd=(String)cmd_pack[0];
     	    Object[] args=(Object[])cmd_pack[1];
-    	    writer.call(open_layers,cmd,args); 	
+    	    writer.call(open_layers,cmd,args);
     }
    
     // only needed for custom variants (theming)
