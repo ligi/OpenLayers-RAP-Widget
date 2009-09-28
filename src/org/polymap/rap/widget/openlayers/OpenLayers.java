@@ -32,14 +32,6 @@
 
 package org.polymap.rap.widget.openlayers;
 
-/*******************************************************************************
- * 
- *  for <a href="http://polymap.org">Polymap</a>
- *  
- * @Licence LGPL V3 ( see lgpl-3.0.txt in the root of this Project ) 
- * 
- *  ******************************************************************************/
-
 import java.util.Vector;
 
 import org.eclipse.swt.widgets.Composite;
