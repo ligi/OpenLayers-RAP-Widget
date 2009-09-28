@@ -1,4 +1,4 @@
-package org.polymap.rap.widget.openlayers;
+package org.polymap.rap.widget.openlayers.controls;
 
 /*
  * polymap.org
@@ -20,41 +20,21 @@ package org.polymap.rap.widget.openlayers;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
- */
+*/
 
-import org.eclipse.rwt.resources.IResource;
-import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
+
+import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
- *   Resource for the OpenLayers RAP Widget
+ * 
+ *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
  *
- * @author 	Marcus -LiGi- B&uuml;schleb< mail: ligi (at) polymap (dot) de >
- *   
- */
+*/
 
-public class OpenLayersResource implements IResource {
+public class MouseDefaultsControl extends Control{
 
-  public String getCharset() {
-    return "ISO-8859-1";
-  }
-
-  public ClassLoader getLoader() {
-    return this.getClass().getClassLoader();
-  }
-
-  public RegisterOptions getOptions() {
-    return RegisterOptions.VERSION_AND_COMPRESS;
-  }
-
-  public String getLocation() {
-    return "org/polymap/rap/widget/openlayers/OpenLayersWrapper.js";
-  }
-
-  public boolean isJSLibrary() {
-    return true;
-  }
-
-  public boolean isExternal() {
-    return false;
-  }
+	public MouseDefaultsControl(OpenLayers widget)
+	{
+		super.create(widget,"  new OpenLayers.Control.MouseDefaults();" );
+	}
 }

@@ -1,4 +1,4 @@
-package org.polymap.rap.widget.openlayers;
+package org.polymap.rap.widget.openlayers.layers;
 
 /*
  * polymap.org
@@ -20,41 +20,23 @@ package org.polymap.rap.widget.openlayers;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
- */
+*/
 
-import org.eclipse.rwt.resources.IResource;
-import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
+
+import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
- *   Resource for the OpenLayers RAP Widget
+ * 
+ *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
  *
- * @author 	Marcus -LiGi- B&uuml;schleb< mail: ligi (at) polymap (dot) de >
- *   
- */
+*/
 
-public class OpenLayersResource implements IResource {
+public class WMSLayer extends Layer{
 
-  public String getCharset() {
-    return "ISO-8859-1";
-  }
+	public WMSLayer(OpenLayers widget,String name,String wms_url,String wms_layers)
+	{
+		super.setName(name);
+		super.create(widget,"  new OpenLayers.Layer.WMS( '"+name +"','"+wms_url+"',{layers:'"+wms_layers+ "'});" );
+	}
 
-  public ClassLoader getLoader() {
-    return this.getClass().getClassLoader();
-  }
-
-  public RegisterOptions getOptions() {
-    return RegisterOptions.VERSION_AND_COMPRESS;
-  }
-
-  public String getLocation() {
-    return "org/polymap/rap/widget/openlayers/OpenLayersWrapper.js";
-  }
-
-  public boolean isJSLibrary() {
-    return true;
-  }
-
-  public boolean isExternal() {
-    return false;
-  }
 }

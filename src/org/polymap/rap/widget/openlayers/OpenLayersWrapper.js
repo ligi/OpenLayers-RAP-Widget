@@ -17,18 +17,18 @@
  * License along with this software; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
- *
- * $Id: $
- *
- * @author 	Marcus -LiGi- Bueschleb
- * 	mail to 		ligi (at) polymap (dot) de
- *                  
- * @version $Revision: $
- *
- * Intension of this class:
+ */
+ 
+ 
+ 
+ /**
  *   JavaScript Part for the OpenLayers RAP Widget
+ *  
+ * @author 	Marcus -LiGi- Bueschleb
+ * 	mail to 		ligi (at) polymap (dot) de                 
  *   
  */
+ 
  
 qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     extend: qx.ui.layout.CanvasLayout,
@@ -39,26 +39,33 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
         this._id = id;
         this._map = null;
         this._objs = {};
-    },
+     },
     
     properties : {}, 
     
     members : {
-    	map_init : function()
-    		{
+    	map_init : function() {
     			qx.ui.core.Widget.flushGlobalQueues(); 
 				if( this._map == null )
 	            		this._map = new OpenLayers.Map({div:  document.getElementById( this._id ), controls: [] });
-    		},
-		
-		addWMS : function (wms_ref, wms_label , wms_url,wms_layers)
-			{
-				this._objs[wms_ref]=new   OpenLayers.Layer.WMS(wms_label,wms_url,{layers:wms_layers});
-        		this._map.addLayer(this._objs[wms_ref]);
-			},
+    	},
+    	
+		map_eval : function( code2eval ) {
+    			eval(code2eval);
+    	},
+    	
+		addLayer : function(layer_ref) {
+			this._map.addLayer(this._objs[layer_ref]);
+		},	
+
+    	addControl : function(control_ref) {
+    		this._map.addControl(this._objs[control_ref]);
+    	},
+
 		zoomTo: function(zoom_level)	{
-        		this._map.zoomTo(	zoom_level);
+        	this._map.zoomTo(	zoom_level);
         },
+
     	setCenter: function(center_lon,center_lat) {
     		qx.ui.core.Widget.flushGlobalQueues();
     		try {
@@ -66,12 +73,7 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
           	}
           	// if there is no map layer yet setting the center could lead to problems
           	catch ( e) {  }
-    	},	
-    	addControl : function(control_ref,control_def)
-    	{
-    		eval("this._objs['"+control_ref+"']= new "+control_def);
-    		this._map.addControl(this._objs[control_ref]);
     	}
     }
-    
+   
 } );

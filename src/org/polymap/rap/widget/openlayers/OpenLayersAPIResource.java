@@ -1,3 +1,5 @@
+package org.polymap.rap.widget.openlayers;
+
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,28 +22,26 @@
  *
  * $Id: $
  *
- * @author 	Marcus -LiGi- Bueschleb
- * 	mail to 		ligi (at) polymap (dot) de
- *                  
- * @version $Revision: $
- *
- * Intension of this class:
- *   API Resource for the OpenLayers RAP Widget
- *   
  */
 
-package org.polymap.rap.widget.openlayers;
 
-import org.eclipse.rwt.internal.util.HTML;
+
 import org.eclipse.rwt.resources.IResource;
 import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
 
+/**
+ *  API Resource for the OpenLayers RAP Widget
+ *
+ * @author 	Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ *                  
+ */
+
 public class OpenLayersAPIResource implements IResource {
 
- private String location;
+// private String location;
 
   public String getCharset() {
-    return HTML.CHARSET_NAME_ISO_8859_1;
+    return "ISO-8859-1";
   }
 
   public ClassLoader getLoader() {

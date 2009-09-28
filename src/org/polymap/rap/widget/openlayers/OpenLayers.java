@@ -1,3 +1,5 @@
+package org.polymap.rap.widget.openlayers;
+
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -18,24 +20,24 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
- * $Id: $
- *
- * @author 	Marcus -LiGi- Bueschleb
- * 	mail to 		ligi (at) polymap (dot) de
- *                  
- * @version $Revision: $
- *
- * Intension of this class:
- *   Composite part for the OpenLayers RAP Widget
- *   
- */
-
-package org.polymap.rap.widget.openlayers;
+*/
 
 import java.util.Vector;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
+
+import org.polymap.rap.widget.openlayers.controls.Control;
+import org.polymap.rap.widget.openlayers.layers.Layer;
+
+
+/**
+ * 
+ *  Composite part for the OpenLayers RAP Widget
+ * 
+ *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
+ *
+*/
 
 public class OpenLayers extends Composite {
   
@@ -63,31 +65,30 @@ public class OpenLayers extends Composite {
 	  cmd_stack.add(cmd_arr);
   }
   
-  public boolean hasCommand()
-  {
+  // with a single parameter
+  public void addCommand(String cmd,String param) {
+	 Object[] param_arr={param};
+	 addCommand(cmd,param_arr);
+  }
+  
+  public boolean hasCommand() {
 	  return (!cmd_stack.isEmpty());  
   }
   
-  public Object[] getCommand()
-  {
+  public Object[] getCommand() {
 	  Object[] res=cmd_stack.elementAt(0);
 	  cmd_stack.removeElementAt(0);
 	  return res;
   }
   
-  
-  public String addWMS(String id,String label,String url,String layers)
+  public void  addLayer(Layer layer2add)
   {
-	  String[] param_arr={generateObjectReference("wms"),label,url,layers};
-	  addCommand("addWMS",param_arr);
-	  return param_arr[0];
+	addCommand("addLayer",layer2add.getObjRef());
   }
-
-  public String addControl(String control_def)
+  
+  public void addControl(Control control2add)
   {
-	  String[] param_arr={generateObjectReference("ctrl"),control_def};
-	  addCommand("addControl",param_arr);
-	  return param_arr[0];
+	  addCommand("addControl",control2add.getObjRef());
   }
 
   public void zoomTo(int zoom) {

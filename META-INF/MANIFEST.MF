@@ -8,5 +8,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.servlet;version="2.5.0",
  javax.servlet.http;version="2.5.0"
 Export-Package: org.polymap.rap.widget.internal.openlayers.openlayerskit,
- org.polymap.rap.widget.openlayers
+ org.polymap.rap.widget.openlayers,
+ org.polymap.rap.widget.openlayers.base,
+ org.polymap.rap.widget.openlayers.controls,
+ org.polymap.rap.widget.openlayers.layers
 Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.2.1"
