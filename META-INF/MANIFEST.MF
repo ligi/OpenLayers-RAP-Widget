@@ -13,5 +13,6 @@ Export-Package: org.polymap.rap.widget.internal.openlayers.openlayerskit,
  org.polymap.rap.widget.openlayers.base,
  org.polymap.rap.widget.openlayers.base_types,
  org.polymap.rap.widget.openlayers.controls,
+ org.polymap.rap.widget.openlayers.features,
  org.polymap.rap.widget.openlayers.layers
 Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.2.1"
