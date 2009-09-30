@@ -26,10 +26,10 @@ package org.polymap.rap.widget.openlayers.base;
 import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
+ * Client Side OpenLayers Object Base Class 
+ * holding a reference and keeps track of changes to the object
  * 
- *  Life Cycle Adapter for the OpenLayers RAP Widget
- * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
+ *  @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
  *
 */
 
