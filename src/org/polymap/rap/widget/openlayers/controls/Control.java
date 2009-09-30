@@ -32,5 +32,10 @@ import org.polymap.rap.widget.openlayers.base.OpenLayersObject;;
 
 
 public class Control extends OpenLayersObject{
+
+	public void activate()
+	{
+		super.addObjModCode("obj.activate();");
+	}
 	
 }
