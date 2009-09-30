@@ -22,9 +22,6 @@ package org.polymap.rap.widget.openlayers.layers;
  *
 */
 
-
-import org.polymap.rap.widget.openlayers.OpenLayers;
-
 /**
  * 
  *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
@@ -33,12 +30,10 @@ import org.polymap.rap.widget.openlayers.OpenLayers;
 
 public class VectorLayer extends Layer{
 
-	public VectorLayer(OpenLayers widget,String name)
+	public VectorLayer(String name)
 	{
 		super.setName(name);
-		
-		super.create(widget,"  new OpenLayers.Layer.Vector( '"+name + "' );" );
-		
+		super.create("  new OpenLayers.Layer.Vector( '"+name + "' );" );
 	}
 	
 }

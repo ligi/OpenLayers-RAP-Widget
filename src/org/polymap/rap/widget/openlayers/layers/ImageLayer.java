@@ -22,8 +22,6 @@ package org.polymap.rap.widget.openlayers.layers;
  *
 */
 
-
-import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.polymap.rap.widget.openlayers.base_types.Bounds;
 import org.polymap.rap.widget.openlayers.base_types.Size;
 
@@ -35,12 +33,10 @@ import org.polymap.rap.widget.openlayers.base_types.Size;
 
 public class ImageLayer extends Layer{
 
-	public ImageLayer(OpenLayers widget,String name,String url,Bounds bounds,Size size)
+	public ImageLayer(String name,String url,Bounds bounds,Size size)
 	{
 		super.setName(name);
-		
-		super.create(widget,"  new OpenLayers.Layer.Image( '"+name + "','" +url+"', " +bounds.getJSObjRef() + "," + size.getJSObjRef() + " );" );
-		
+		super.create("  new OpenLayers.Layer.Image( '"+name + "','" +url+"', " +bounds.getJSObjRef() + "," + size.getJSObjRef() + " );" );
 	}
 	
 }

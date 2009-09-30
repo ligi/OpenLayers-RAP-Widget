@@ -22,8 +22,6 @@ package org.polymap.rap.widget.openlayers.controls;
  *
 */
 
-
-import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.polymap.rap.widget.openlayers.layers.VectorLayer;
 
 /**
@@ -35,8 +33,8 @@ import org.polymap.rap.widget.openlayers.layers.VectorLayer;
 
 public class EditingToolbarControl extends Control{
 
-	public EditingToolbarControl(OpenLayers widget,VectorLayer layer)
+	public EditingToolbarControl(VectorLayer layer)
 	{
-		super.create(widget,"  new OpenLayers.Control.EditingToolbar( "+ layer.getJSObjRef() +"   );" );
+		super.create("  new OpenLayers.Control.EditingToolbar( "+ layer.getJSObjRef() +"   );" );
 	}
 }

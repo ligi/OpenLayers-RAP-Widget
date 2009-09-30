@@ -22,9 +22,6 @@ package org.polymap.rap.widget.openlayers.controls;
  *
 */
 
-
-import org.polymap.rap.widget.openlayers.OpenLayers;
-
 /**
  * 
  *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
@@ -33,8 +30,8 @@ import org.polymap.rap.widget.openlayers.OpenLayers;
 
 public class MouseDefaultsControl extends Control{
 
-	public MouseDefaultsControl(OpenLayers widget)
+	public MouseDefaultsControl()
 	{
-		super.create(widget,"  new OpenLayers.Control.MouseDefaults();" );
+		super.create("  new OpenLayers.Control.MouseDefaults();" );
 	}
 }

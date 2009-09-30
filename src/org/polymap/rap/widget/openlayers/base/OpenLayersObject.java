@@ -37,10 +37,8 @@ public class OpenLayersObject {
 	
 	private OpenLayers widget=null;
 	private String obj_ref=null;
-	
 	private String obj_mod_code="";
-	
-	
+		
 	public void addObjModCode(String code)
 	{
 		obj_mod_code+=code;
@@ -51,10 +49,10 @@ public class OpenLayersObject {
 		return widget;
 	}
 
-	public void create(OpenLayers widget,String js_create_code) {
-			this.widget = widget;
-			this.setObjRef(widget.generateObjectReference("o"));
-			widget.addCommand("map_eval", getJSObjRef() +" = " + js_create_code);
+	public void create(String js_create_code) {
+		this.widget=OpenLayersWidgetProvider.getInstance().getWidget();
+		this.setObjRef(widget.generateObjectReference("o"));
+		widget.addCommand("map_eval", getJSObjRef() +" = " + js_create_code);
 	}
 
 	public void changes2widget()

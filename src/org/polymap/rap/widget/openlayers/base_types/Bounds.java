@@ -23,7 +23,6 @@ package org.polymap.rap.widget.openlayers.base_types;
 */
 
 
-import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 /**
@@ -35,8 +34,8 @@ import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 public class Bounds extends OpenLayersObject{
 
-	public Bounds(OpenLayers widget,double left,double bottom , double right , double top)
+	public Bounds(double left,double bottom , double right , double top)
 	{
-		super.create(widget,"  new OpenLayers.Bounds( "+ left +"," + bottom +"," + right + "," + top +  ");" );
+		super.create("  new OpenLayers.Bounds( "+ left +"," + bottom +"," + right + "," + top +  ");" );
 	}
 }

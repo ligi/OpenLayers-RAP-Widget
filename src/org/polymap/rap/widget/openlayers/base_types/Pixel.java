@@ -22,8 +22,6 @@ package org.polymap.rap.widget.openlayers.base_types;
  *
 */
 
-
-import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 /**
@@ -35,8 +33,8 @@ import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 public class Pixel extends OpenLayersObject{
 
-	public Pixel(OpenLayers widget,int x,int y)
+	public Pixel(int x,int y)
 	{
-		super.create(widget,"  new OpenLayers.Pixel( "+ x +"," + y + ");" );
+		super.create("  new OpenLayers.Pixel( "+ x +"," + y + ");" );
 	}
 }

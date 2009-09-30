@@ -23,7 +23,6 @@ package org.polymap.rap.widget.openlayers.base_types;
 */
 
 
-import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 /**
@@ -35,8 +34,8 @@ import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 public class LonLat extends OpenLayersObject{
 
-	public LonLat(OpenLayers widget,double lon , double lat)
+	public LonLat(double lon , double lat)
 	{
-		super.create(widget,"  new OpenLayers.LonLat( "+ lon +"," + lat + ");" );
+		super.create("  new OpenLayers.LonLat( "+ lon +"," + lat + ");" );
 	}
 }

@@ -27,6 +27,7 @@ import java.util.Vector;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
+import org.polymap.rap.widget.openlayers.base.OpenLayersWidgetProvider;
 import org.polymap.rap.widget.openlayers.controls.Control;
 import org.polymap.rap.widget.openlayers.layers.Layer;
 
@@ -48,7 +49,8 @@ public class OpenLayers extends Composite {
   public OpenLayers( final Composite parent, final int style ) {
 	    super( parent, style );
 	    cmd_stack=new Vector<Object[]>();
-	  }
+	    OpenLayersWidgetProvider.getInstance().setWidget(this);
+  	}
   
   // no layout
   public void setLayout( final Layout layout ) {  }

@@ -22,8 +22,6 @@ package org.polymap.rap.widget.openlayers.base_types;
  *
 */
 
-
-import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 /**
@@ -35,8 +33,8 @@ import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 public class Size extends OpenLayersObject{
 
-	public Size(OpenLayers widget,int width,int height)
+	public Size(int width,int height)
 	{
-		super.create(widget,"  new OpenLayers.Size( "+ width +"," + height + ");" );
+		super.create("  new OpenLayers.Size( "+ width +"," + height + ");" );
 	}
 }

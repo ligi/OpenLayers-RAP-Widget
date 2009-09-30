@@ -33,10 +33,10 @@ import org.polymap.rap.widget.openlayers.OpenLayers;
 
 public class WMSLayer extends Layer{
 
-	public WMSLayer(OpenLayers widget,String name,String wms_url,String wms_layers)
+	public WMSLayer(String name,String wms_url,String wms_layers)
 	{
 		super.setName(name);
-		super.create(widget,"  new OpenLayers.Layer.WMS( '"+name +"','"+wms_url+"',{layers:'"+wms_layers+ "'});" );
+		super.create("  new OpenLayers.Layer.WMS( '"+name +"','"+wms_url+"',{layers:'"+wms_layers+ "'});" );
 	}
 
 }
