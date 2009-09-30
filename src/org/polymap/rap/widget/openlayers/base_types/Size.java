@@ -22,6 +22,7 @@ package org.polymap.rap.widget.openlayers.base_types;
  *
 */
 
+import org.eclipse.swt.graphics.Rectangle;
 import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 /**
@@ -37,4 +38,11 @@ public class Size extends OpenLayersObject{
 	{
 		super.create("  new OpenLayers.Size( "+ width +"," + height + ");" );
 	}
+	
+	public Size(Rectangle rect)
+	{
+		super.create("  new OpenLayers.Size( "+ rect.width +"," + rect.height + ");" );
+	}
+	
+	
 }
