@@ -1,5 +1,7 @@
 package org.polymap.rap.widget.openlayers.layers;
 
+import org.polymap.rap.widget.openlayers.features.VectorFeature;
+
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -35,5 +37,9 @@ public class VectorLayer extends Layer{
 		super.setName(name);
 		super.create("  new OpenLayers.Layer.Vector( '"+name + "' );" );
 	}
-	
+
+	public void addFeatures(VectorFeature vf)
+	{
+		super.addObjModCode("obj.addFeatures(" + vf.getJSObjRef() +"); ");
+	}
 }
