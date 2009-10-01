@@ -44,8 +44,7 @@ public class OpenLayers extends Composite {
   
   
   Vector<Object[]> cmd_stack;
-  int obj_ref=0;
-
+  
   public OpenLayers( final Composite parent, final int style ) {
 	    super( parent, style );
 	    cmd_stack=new Vector<Object[]>();
@@ -55,11 +54,7 @@ public class OpenLayers extends Composite {
   // no layout
   public void setLayout( final Layout layout ) {  }
 
-  public String generateObjectReference(String prefix)
-  {
-	  obj_ref++;
-	  return prefix+obj_ref;
-  }
+
 
   public void addCommand(String cmd,Object[] params)
   {

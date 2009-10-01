@@ -50,8 +50,9 @@ public class OpenLayersObject {
 	}
 
 	public void create(String js_create_code) {
-		this.widget=OpenLayersWidgetProvider.getInstance().getWidget();
-		this.setObjRef(widget.generateObjectReference("o"));
+		OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
+		this.widget=wp.getWidget();
+		this.setObjRef(wp.generateObjectReference("o"));
 		widget.addCommand("map_eval", getJSObjRef() +" = " + js_create_code);
 	}
 
@@ -61,6 +62,7 @@ public class OpenLayersObject {
 		{
 			if (obj_mod_code!="")
 				widget.addCommand("map_eval", "obj="+getJSObjRef()+"; "+ obj_mod_code);
+			
 			obj_mod_code="";
 		}
 	}
@@ -73,7 +75,7 @@ public class OpenLayersObject {
 	}
 
 	public String getJSObjRef() {
-		return "this._objs['"+obj_ref+"']";
+		return "objs['"+obj_ref+"']";
 	}
 
 }

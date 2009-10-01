@@ -8,6 +8,9 @@ public class OpenLayersWidgetProvider {
 
 	private OpenLayers widget;
 
+	int obj_ref=0;
+
+	
 	public OpenLayers getWidget()	{ 
 		System.out.println("giving instance"+this.hashCode());
 		return widget;
@@ -15,6 +18,8 @@ public class OpenLayersWidgetProvider {
 	
 	public void setWidget(OpenLayers widget)	{ 
 		this.widget=widget;
+		// create the initial object space ( hash )
+		widget.addCommand("map_eval", "if ( typeof objs == 'undefined' ) objs={};");
 	}
 	
 	private OpenLayersWidgetProvider() {
@@ -28,4 +33,10 @@ public class OpenLayersWidgetProvider {
 		
 		return instance;  
 	}  
+	
+	public String generateObjectReference(String prefix)
+	  {
+		  obj_ref++;
+		  return prefix+obj_ref;
+	  }
 }

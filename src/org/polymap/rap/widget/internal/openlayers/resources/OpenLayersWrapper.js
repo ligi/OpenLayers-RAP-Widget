@@ -38,8 +38,7 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
         this.setHtmlAttribute( "id", id );
         this._id = id;
         this._map = null;
-        this._objs = {};
-     },
+      	},
     
     properties : {}, 
     
@@ -55,11 +54,11 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     	},
     	
 		addLayer : function(layer_ref) {
-			this._map.addLayer(this._objs[layer_ref]);
+			this._map.addLayer(objs[layer_ref]);
 		},	
 
     	addControl : function(control_ref) {
-    		this._map.addControl(this._objs[control_ref]);
+    		this._map.addControl(objs[control_ref]);
     	},
 
 		zoomTo: function(zoom_level)	{
