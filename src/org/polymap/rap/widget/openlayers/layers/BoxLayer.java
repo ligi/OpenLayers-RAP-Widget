@@ -1,6 +1,6 @@
 package org.polymap.rap.widget.openlayers.layers;
 
-import org.polymap.rap.widget.openlayers.marker.Marker;
+import org.polymap.rap.widget.openlayers.marker.BoxMarker;
 
 /*
  * polymap.org
@@ -38,7 +38,7 @@ public class BoxLayer extends Layer{
 		super.create("  new OpenLayers.Layer.Boxes( '"+name + "');" );
 	}
 
-	public void addMarker(Marker marker)
+	public void addMarker(BoxMarker marker)
 	{
 		super.addObjModCode("obj.addMarker(" + marker.getJSObjRef() + ");");
 	}
