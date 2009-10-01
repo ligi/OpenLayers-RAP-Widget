@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: PolyMap
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.servlet;version="2.5.0",
- javax.servlet.http;version="2.5.0"
+ javax.servlet.http;version="2.5.0",
+ org.polymap.rap.widget.openlayers.base_types
 Export-Package: org.polymap.rap.widget.internal.openlayers.openlayerskit,
  org.polymap.rap.widget.internal.openlayers.resources,
  org.polymap.rap.widget.openlayers,
@@ -14,5 +15,6 @@ Export-Package: org.polymap.rap.widget.internal.openlayers.openlayerskit,
  org.polymap.rap.widget.openlayers.base_types,
  org.polymap.rap.widget.openlayers.controls,
  org.polymap.rap.widget.openlayers.features,
- org.polymap.rap.widget.openlayers.layers
+ org.polymap.rap.widget.openlayers.layers,
+ org.polymap.rap.widget.openlayers.marker
 Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.2.1"
