@@ -22,9 +22,6 @@ package org.polymap.rap.widget.openlayers.layers;
  *
 */
 
-
-import org.polymap.rap.widget.openlayers.OpenLayers;
-
 /**
  * 
  *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
