@@ -22,10 +22,10 @@
  
  
  /**
- *   JavaScript Part for the OpenLayers RAP Widget
+ * JavaScript Part for the OpenLayers RAP Widget
  *  
  * @author 	Marcus -LiGi- Bueschleb
- * 	mail to 		ligi (at) polymap (dot) de                 
+ * mail to	ligi (at) polymap (dot) de                 
  *   
  */
  
@@ -47,23 +47,23 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     			qx.ui.core.Widget.flushGlobalQueues(); 
 				if( this._map == null )
 	            		this._map = new OpenLayers.Map({div:  document.getElementById( this._id ), controls: [] });
-    	},
+	    },
     	
-		map_eval : function( code2eval ) {
+	map_eval : function( code2eval ) {
     			eval(code2eval);
-    	},
+	    },
     	
-		addLayer : function(layer_ref) {
+	addLayer : function(layer_ref) {
 			this._map.addLayer(objs[layer_ref]);
-		},	
+	    },	
 
     	addControl : function(control_ref) {
     		this._map.addControl(objs[control_ref]);
-    	},
+	    },
 
-		zoomTo: function(zoom_level)	{
+	zoomTo: function(zoom_level)	{
         	this._map.zoomTo(	zoom_level);
-        },
+	    },
 
     	setCenter: function(center_lon,center_lat) {
     		qx.ui.core.Widget.flushGlobalQueues();
@@ -72,7 +72,7 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
           	}
           	// if there is no map layer yet setting the center could lead to problems
           	catch ( e) {  }
-    	}
+	    }
     }
    
 } );
