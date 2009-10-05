@@ -27,7 +27,7 @@ import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
  * Client Side OpenLayers Object Base Class 
- * holding a reference and keeps track of changes to the object
+ * holding a reference to the widget and keeps track of changes to the object
  * 
  *  @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
  *
