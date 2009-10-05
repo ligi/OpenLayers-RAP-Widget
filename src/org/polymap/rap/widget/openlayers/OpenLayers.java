@@ -99,5 +99,9 @@ public class OpenLayers extends Composite {
 	  addCommand("setCenter",param_arr);
   }
  
+  public void setBaseLayer(Layer layer)
+  {
+	  addCommand("map_eval","this._map.setBaseLayer("+layer.getJSObjRef()+");");
+  }
   
 }
