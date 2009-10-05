@@ -49,5 +49,9 @@ public class Layer extends OpenLayersObject{
 	public void setVisibility(Boolean is_visible){
 		addObjModCode("obj.setVisibility("+ is_visible +");");
 	}
+
+	public void display(Boolean flag){
+		addObjModCode("obj.display("+ flag +");");
+	}
 	
 }
