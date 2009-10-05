@@ -56,8 +56,7 @@ public class OpenLayers extends Composite {
 
 
 
-  public void addCommand(String cmd,Object[] params)
-  {
+  public void addCommand(String cmd,Object[] params) {
 	  Object[] cmd_arr={cmd,params};
 	  cmd_stack.add(cmd_arr);
   }
@@ -78,13 +77,11 @@ public class OpenLayers extends Composite {
 	  return res;
   }
   
-  public void  addLayer(Layer layer2add)
-  {
+  public void  addLayer(Layer layer2add) {
 	addCommand("addLayer",layer2add.getObjRef());
   }
   
-  public void addControl(Control control2add)
-  {
+  public void addControl(Control control2add) {
 	  addCommand("addControl",control2add.getObjRef());
   }
 
@@ -93,14 +90,12 @@ public class OpenLayers extends Composite {
 	  addCommand("zoomTo",param_arr);
   }
 
-  public void setCenter(double center_lon,double center_lat)
-  {
+  public void setCenter(double center_lon,double center_lat) {
 	  Object[] param_arr={center_lon,center_lat};
 	  addCommand("setCenter",param_arr);
   }
  
-  public void setBaseLayer(Layer layer)
-  {
+  public void setBaseLayer(Layer layer) {
 	  addCommand("map_eval","this._map.setBaseLayer("+layer.getJSObjRef()+");");
   }
   
