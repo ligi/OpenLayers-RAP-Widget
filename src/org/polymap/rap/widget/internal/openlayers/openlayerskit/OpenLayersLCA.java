@@ -23,6 +23,8 @@
 package org.polymap.rap.widget.internal.openlayers.openlayerskit;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import org.polymap.rap.widget.openlayers.OpenLayers;
 import org.eclipse.rwt.lifecycle.AbstractWidgetLCA;
@@ -54,7 +56,23 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
    * Read the parameters transfered from the client
    */
   public void readData( final Widget widget ) {
-    
+	  	OpenLayers map = ( OpenLayers )widget;
+	    String event = WidgetLCAUtil.readPropertyValue( map, "event_name" );
+	    	    
+	    if ( event!=null)
+	    	{
+	    	HashMap <String,String> payload_map=new HashMap<String,String>();
+	    	
+	    	Iterator <String> it = map.events.payload_by_name.get(event).iterator(); 
+			
+	    	while (it.hasNext())
+	    	{
+	    		String act=it.next();
+	    		payload_map.put(act, WidgetLCAUtil.readPropertyValue( map, "event_payload_" + act ));
+	    	}
+	    	map.events.process_event(event,payload_map);
+	    	}
+
   }
 
   /*

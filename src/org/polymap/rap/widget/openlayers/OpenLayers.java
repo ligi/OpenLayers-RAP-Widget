@@ -27,6 +27,7 @@ import java.util.Vector;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
+import org.polymap.rap.widget.openlayers.base.OpenLayersEvents;
 import org.polymap.rap.widget.openlayers.base.OpenLayersWidgetProvider;
 import org.polymap.rap.widget.openlayers.controls.Control;
 import org.polymap.rap.widget.openlayers.layers.Layer;
@@ -43,18 +44,18 @@ import org.polymap.rap.widget.openlayers.layers.Layer;
 public class OpenLayers extends Composite {
   
   
-  Vector<Object[]> cmd_stack;
+  public Vector<Object[]> cmd_stack;
+  public OpenLayersEvents events;
   
   public OpenLayers( final Composite parent, final int style ) {
 	    super( parent, style );
 	    cmd_stack=new Vector<Object[]>();
 	    OpenLayersWidgetProvider.getInstance().setWidget(this);
+	    events=new OpenLayersEvents(this);
   	}
   
   // no layout
   public void setLayout( final Layout layout ) {  }
-
-
 
   public void addCommand(String cmd,Object[] params) {
 	  Object[] cmd_arr={cmd,params};

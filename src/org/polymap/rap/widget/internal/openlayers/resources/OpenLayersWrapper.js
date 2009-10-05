@@ -38,7 +38,9 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
         this.setHtmlAttribute( "id", id );
         this._id = id;
         this._map = null;
-      	},
+        this._event_id = 0;
+        
+	},
     
     properties : {}, 
     
@@ -46,14 +48,18 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     	map_init : function() {
     			qx.ui.core.Widget.flushGlobalQueues(); 
 				if( this._map == null )
-	            		this._map = new OpenLayers.Map({div:  document.getElementById( this._id ), controls: [] });
+					{
+						this._map = new OpenLayers.Map({div:  document.getElementById( this._id ), controls: [] });
+					//	this._map.events.register('click', this,this.process_event);
+					}
+				
 	    },
     	
-	map_eval : function( code2eval ) {
+	    map_eval : function( code2eval ) {
     			eval(code2eval);
 	    },
     	
-	addLayer : function(layer_ref) {
+	    addLayer : function(layer_ref) {
 			this._map.addLayer(objs[layer_ref]);
 	    },	
 
@@ -61,17 +67,29 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     		this._map.addControl(objs[control_ref]);
 	    },
 
-	zoomTo: function(zoom_level)	{
+	    zoomTo: function(zoom_level)	{
         	this._map.zoomTo(	zoom_level);
 	    },
 
-    	setCenter: function(center_lon,center_lat) {
+	    setCenter: function(center_lon,center_lat) {
     		qx.ui.core.Widget.flushGlobalQueues();
     		try {
         		this._map.setCenter(new OpenLayers.LonLat(center_lon,center_lat));
           	}
           	// if there is no map layer yet setting the center could lead to problems
           	catch ( e) {  }
+	    },
+	    
+	    process_event: function(e) {
+	        if( !org_eclipse_rap_rwt_EventUtil_suspend ) {
+
+                var openlayersId = org.eclipse.swt.WidgetManager.getInstance().findIdByWidget( this );
+  
+                var req = org.eclipse.swt.Request.getInstance();
+                req.addParameter( openlayersId + ".last_event_id", e.type );
+                req.send();
+            } 
+	        
 	    }
     }
    
