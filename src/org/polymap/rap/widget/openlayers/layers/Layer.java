@@ -42,9 +42,12 @@ public class Layer extends OpenLayersObject{
 		this.name = name;
 	}
 	
-	public void setIsBaseLayer(Boolean is_base_layer)
-	{			
+	public void setIsBaseLayer(Boolean is_base_layer) 	{			
 		addObjModCode("obj.setIsBaseLayer("+is_base_layer+ ");");
+	}
+	
+	public void setVisibility(Boolean is_visible){
+		addObjModCode("obj.setVisibility("+ is_visible +");");
 	}
 	
 }
