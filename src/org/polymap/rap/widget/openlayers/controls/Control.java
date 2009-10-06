@@ -38,4 +38,10 @@ public class Control extends OpenLayersObject{
 		super.addObjModCode("obj.activate();");
 	}
 	
+	public void deactivate()
+	{
+		super.addObjModCode("obj.deactivate();");
+	}
+	
+	
 }
