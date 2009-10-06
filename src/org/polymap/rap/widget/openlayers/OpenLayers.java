@@ -85,7 +85,11 @@ public class OpenLayers extends Composite {
   public void addControl(Control control2add) {
 	  addCommand("addControl",control2add.getObjRef());
   }
-
+  
+  public void removeControl(Control control2rm) {
+	  addCommand("map_eval","this._map.removeControl(" + control2rm.getJSObjRef() +");");
+  }
+  
   public void zoomTo(int zoom) {
 	  Object[] param_arr={zoom};
 	  addCommand("zoomTo",param_arr);
