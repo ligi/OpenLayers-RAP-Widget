@@ -1,7 +1,3 @@
-package org.polymap.rap.widget.openlayers.controls;
-
-import org.polymap.rap.widget.openlayers.layers.Layer;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -22,19 +18,23 @@ import org.polymap.rap.widget.openlayers.layers.Layer;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.controls;
+
+import org.polymap.rap.widget.openlayers.layers.Layer;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class SelectFeatureControl extends Control{
+public class SelectFeatureControl extends Control {
 
-	public SelectFeatureControl(Layer layer)
-	{
-		super.create("  new OpenLayers.Control.SelectFeature(" +layer.getJSObjRef() + " );" );
+	public SelectFeatureControl(Layer layer) {
+		super.create("  new OpenLayers.Control.SelectFeature("
+				+ layer.getJSObjRef() + " );");
 	}
-	
+
 }

@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.base;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,52 +18,51 @@ package org.polymap.rap.widget.openlayers.base;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
-
+ */
+package org.polymap.rap.widget.openlayers.base;
 
 import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
- * Client Side OpenLayers Object Base Class 
- * holding a reference to the widget and keeps track of changes to the object
+ * Client Side OpenLayers Object Base Class holding a reference to the widget
+ * and keeps track of changes to the object
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
 public class OpenLayersObject {
-	
-	private OpenLayers widget=null;
-	private String obj_ref=null;
-	private String obj_mod_code="";
-		
-	public void addObjModCode(String code)
-	{
-		obj_mod_code+=code;
-		changes2widget();	
+
+	private OpenLayers widget = null;
+	private String obj_ref = null;
+	private String obj_mod_code = "";
+
+	public void addObjModCode(String code) {
+		obj_mod_code += code;
+		changes2widget();
 	}
-	
+
 	public OpenLayers getWidget() {
 		return widget;
 	}
 
 	public void create(String js_create_code) {
 		OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
-		this.widget=wp.getWidget();
+		this.widget = wp.getWidget();
 		this.setObjRef(wp.generateObjectReference("o"));
-		widget.addCommand("map_eval", getJSObjRef() +" = " + js_create_code);
+		widget.addCommand("map_eval", getJSObjRef() + " = " + js_create_code);
 	}
 
-	public void changes2widget()
-	{
-		if (widget!=null)
-		{
-			if (obj_mod_code!="")
-				widget.addCommand("map_eval", "obj="+getJSObjRef()+"; "+ obj_mod_code);
-			
-			obj_mod_code="";
+	public void changes2widget() {
+		if (widget != null) {
+			if (obj_mod_code != "")
+				widget.addCommand("map_eval", "obj=" + getJSObjRef() + "; "
+						+ obj_mod_code);
+
+			obj_mod_code = "";
 		}
 	}
+
 	public void setObjRef(String obj_ref) {
 		this.obj_ref = obj_ref;
 	}
@@ -75,7 +72,7 @@ public class OpenLayersObject {
 	}
 
 	public String getJSObjRef() {
-		return "objs['"+obj_ref+"']";
+		return "objs['" + obj_ref + "']";
 	}
 
 }

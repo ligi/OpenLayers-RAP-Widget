@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.features;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,21 +18,23 @@ package org.polymap.rap.widget.openlayers.features;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.features;
 
 import org.polymap.rap.widget.openlayers.base_types.Bounds;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class VectorFeature extends Feature{
+public class VectorFeature extends Feature {
 
-	public VectorFeature(Bounds bounds)
-	{
-		super.create("  new OpenLayers.Feature.Vector( " + bounds.getJSObjRef() + ".toGeometry() );" );
+	public VectorFeature(Bounds bounds) {
+		super.create("  new OpenLayers.Feature.Vector( " + bounds.getJSObjRef()
+				+ ".toGeometry() );");
 	}
 
 }

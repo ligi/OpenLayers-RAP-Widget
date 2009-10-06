@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.layers;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,20 +18,22 @@ package org.polymap.rap.widget.openlayers.layers;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.layers;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class WMSLayer extends Layer{
+public class WMSLayer extends Layer {
 
-	public WMSLayer(String name,String wms_url,String wms_layers)
-	{
+	public WMSLayer(String name, String wms_url, String wms_layers) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.WMS( '"+name +"','"+wms_url+"',{layers:'"+wms_layers+ "'});" );
+		super.create("  new OpenLayers.Layer.WMS( '" + name + "','" + wms_url
+				+ "',{layers:'" + wms_layers + "'});");
 	}
 
 }

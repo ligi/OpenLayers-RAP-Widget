@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.internal.openlayers.resources;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -22,39 +20,41 @@ package org.polymap.rap.widget.internal.openlayers.resources;
  *
  */
 
+package org.polymap.rap.widget.internal.openlayers.resources;
+
 import org.eclipse.rwt.resources.IResource;
 import org.eclipse.rwt.resources.IResourceManager.RegisterOptions;
 
 /**
- *   Resource for the OpenLayers RAP Widget
- *
- * @author 	Marcus -LiGi- B&uuml;schleb< mail: ligi (at) polymap (dot) de >
- *   
+ * Resource for the OpenLayers RAP Widget
+ * 
+ * @author Marcus -LiGi- B&uuml;schleb< mail: ligi (at) polymap (dot) de >
+ * 
  */
 
 public class OpenLayersResource implements IResource {
 
-  public String getCharset() {
-    return "ISO-8859-1";
-  }
+	public String getCharset() {
+		return "ISO-8859-1";
+	}
 
-  public ClassLoader getLoader() {
-    return this.getClass().getClassLoader();
-  }
+	public ClassLoader getLoader() {
+		return this.getClass().getClassLoader();
+	}
 
-  public RegisterOptions getOptions() {
-    return RegisterOptions.VERSION_AND_COMPRESS;
-  }
+	public RegisterOptions getOptions() {
+		return RegisterOptions.VERSION_AND_COMPRESS;
+	}
 
-  public String getLocation() {
-    return "org/polymap/rap/widget/internal/openlayers/resources/OpenLayersWrapper.js";
-  }
+	public String getLocation() {
+		return "org/polymap/rap/widget/internal/openlayers/resources/OpenLayersWrapper.js";
+	}
 
-  public boolean isJSLibrary() {
-    return true;
-  }
+	public boolean isJSLibrary() {
+		return true;
+	}
 
-  public boolean isExternal() {
-    return false;
-  }
+	public boolean isExternal() {
+		return false;
+	}
 }

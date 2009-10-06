@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.controls;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,28 +18,26 @@ package org.polymap.rap.widget.openlayers.controls;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
 
-import org.polymap.rap.widget.openlayers.base.OpenLayersObject;;
+package org.polymap.rap.widget.openlayers.controls;
+
+import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
+public class Control extends OpenLayersObject {
 
-public class Control extends OpenLayersObject{
-
-	public void activate()
-	{
+	public void activate() {
 		super.addObjModCode("obj.activate();");
 	}
-	
-	public void deactivate()
-	{
+
+	public void deactivate() {
 		super.addObjModCode("obj.deactivate();");
 	}
-	
-	
+
 }

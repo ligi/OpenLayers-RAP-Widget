@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.layers;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,7 +18,8 @@ package org.polymap.rap.widget.openlayers.layers;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+package org.polymap.rap.widget.openlayers.layers;
 
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.internal.graphics.ResourceFactory;
@@ -29,26 +28,27 @@ import org.polymap.rap.widget.openlayers.base_types.Size;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class ImageLayer extends Layer{
+public class ImageLayer extends Layer {
 
-	public ImageLayer(String name , Image image,Bounds bounds)
-	{
-		_ImageLayer(name,ResourceFactory.getImagePath(image) , bounds , new Size(image.getBounds()));
-		//super.create(" alert(' " + ResourceFactory.getImagePath(image) +"');" );
+	public ImageLayer(String name, Image image, Bounds bounds) {
+		_ImageLayer(name, ResourceFactory.getImagePath(image), bounds,
+				new Size(image.getBounds()));
+		// super.create(" alert(' " + ResourceFactory.getImagePath(image) +"');"
+		// );
 	}
-	
-	public ImageLayer(String name,String url,Bounds bounds,Size size)
-	{
-		_ImageLayer(name,url,bounds,size);
+
+	public ImageLayer(String name, String url, Bounds bounds, Size size) {
+		_ImageLayer(name, url, bounds, size);
 	}
-	
-	public void _ImageLayer(String name,String url,Bounds bounds,Size size)
-	{
+
+	public void _ImageLayer(String name, String url, Bounds bounds, Size size) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.Image( '"+name + "','" +url+"', " +bounds.getJSObjRef() + "," + size.getJSObjRef() + " );" );
+		super.create("  new OpenLayers.Layer.Image( '" + name + "','" + url
+				+ "', " + bounds.getJSObjRef() + "," + size.getJSObjRef()
+				+ " );");
 	}
 }

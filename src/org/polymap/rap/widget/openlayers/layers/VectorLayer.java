@@ -1,7 +1,3 @@
-package org.polymap.rap.widget.openlayers.layers;
-
-import org.polymap.rap.widget.openlayers.features.VectorFeature;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -22,24 +18,26 @@ import org.polymap.rap.widget.openlayers.features.VectorFeature;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.layers;
+
+import org.polymap.rap.widget.openlayers.features.VectorFeature;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class VectorLayer extends Layer{
+public class VectorLayer extends Layer {
 
-	public VectorLayer(String name)
-	{
+	public VectorLayer(String name) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.Vector( '"+name + "' );" );
+		super.create("  new OpenLayers.Layer.Vector( '" + name + "' );");
 	}
 
-	public void addFeatures(VectorFeature vf)
-	{
-		super.addObjModCode("obj.addFeatures(" + vf.getJSObjRef() +"); ");
+	public void addFeatures(VectorFeature vf) {
+		super.addObjModCode("obj.addFeatures(" + vf.getJSObjRef() + "); ");
 	}
 }

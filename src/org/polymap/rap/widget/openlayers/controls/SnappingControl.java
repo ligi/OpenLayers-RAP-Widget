@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.controls;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,42 +18,38 @@ package org.polymap.rap.widget.openlayers.controls;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.controls;
 
 import org.polymap.rap.widget.openlayers.layers.VectorLayer;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
+public class SnappingControl extends Control {
 
-public class SnappingControl extends Control{
-
-	public SnappingControl(VectorLayer layer,VectorLayer target, Boolean greedy)
-	{
-		_create(layer,target.getJSObjRef(),greedy);
+	public SnappingControl(VectorLayer layer, VectorLayer target, Boolean greedy) {
+		_create(layer, target.getJSObjRef(), greedy);
 	}
 
-	public SnappingControl(VectorLayer layer,VectorLayer[] targets, Boolean greedy)
-	{
-		String targets_code="";
-		for ( VectorLayer target : targets)
-		{
-			if (!targets_code.equals(""))	
-				targets_code+=",";
-			targets_code+=target.getJSObjRef();
+	public SnappingControl(VectorLayer layer, VectorLayer[] targets,
+			Boolean greedy) {
+		String targets_code = "";
+		for (VectorLayer target : targets) {
+			if (!targets_code.equals(""))
+				targets_code += ",";
+			targets_code += target.getJSObjRef();
 		}
-		_create(layer,targets_code,greedy);
+		_create(layer, targets_code, greedy);
 	}
-	
-	private void _create(VectorLayer layer,String target_code, Boolean greedy)
-	{
-		super.create("  new OpenLayers.Control.Snapping({ " +
-				"layer:"+ layer.getJSObjRef() + "," +
-				"targets: [" + target_code +"]," +
-				"greedy:"+ greedy +
-				"});" );
+
+	private void _create(VectorLayer layer, String target_code, Boolean greedy) {
+		super.create("  new OpenLayers.Control.Snapping({ " + "layer:"
+				+ layer.getJSObjRef() + "," + "targets: [" + target_code + "],"
+				+ "greedy:" + greedy + "});");
 	}
 }

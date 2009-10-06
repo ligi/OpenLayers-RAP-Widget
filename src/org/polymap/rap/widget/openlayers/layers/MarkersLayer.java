@@ -1,7 +1,3 @@
-package org.polymap.rap.widget.openlayers.layers;
-
-import org.polymap.rap.widget.openlayers.marker.Marker;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -22,24 +18,26 @@ import org.polymap.rap.widget.openlayers.marker.Marker;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.layers;
+
+import org.polymap.rap.widget.openlayers.marker.Marker;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class MarkersLayer extends Layer{
+public class MarkersLayer extends Layer {
 
-	public MarkersLayer(String name)
-	{
+	public MarkersLayer(String name) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.Markers( '"+name + "');" );
+		super.create("  new OpenLayers.Layer.Markers( '" + name + "');");
 	}
 
-	public void addMarker(Marker marker)
-	{
+	public void addMarker(Marker marker) {
 		super.addObjModCode("obj.addMarker(" + marker.getJSObjRef() + ");");
 	}
 }

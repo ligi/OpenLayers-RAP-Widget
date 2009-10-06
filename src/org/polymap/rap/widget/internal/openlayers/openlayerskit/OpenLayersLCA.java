@@ -37,85 +37,83 @@ import org.eclipse.swt.widgets.Widget;
 
 /**
  * 
- *  Life Cycle Adapter for the OpenLayers RAP Widget
+ * Life Cycle Adapter for the OpenLayers RAP Widget
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
 public class OpenLayersLCA extends AbstractWidgetLCA {
 
-  public void preserveValues( final Widget widget ) {
-    ControlLCAUtil.preserveValues( ( Control )widget );
+	public void preserveValues(final Widget widget) {
+		ControlLCAUtil.preserveValues((Control) widget);
 
-    // only needed for custom variants (theming)
-    WidgetLCAUtil.preserveCustomVariant( widget );
-  }
+		// only needed for custom variants (theming)
+		WidgetLCAUtil.preserveCustomVariant(widget);
+	}
 
-  /*
-   * Read the parameters transfered from the client
-   */
-  public void readData( final Widget widget ) {
-	  	OpenLayers map = ( OpenLayers )widget;
-	    String event = WidgetLCAUtil.readPropertyValue( map, "event_name" );
-	    	    
-	    if ( event!=null)
-	    	{
-	    	HashMap <String,String> payload_map=new HashMap<String,String>();
-	    	
-	    	Iterator <String> it = map.events.payload_by_name.get(event).iterator(); 
-			
-	    	while (it.hasNext())
-	    	{
-	    		String act=it.next();
-	    		payload_map.put(act, WidgetLCAUtil.readPropertyValue( map, "event_payload_" + act ));
-	    	}
-	    	map.events.process_event(event,payload_map);
-	    	}
+	/*
+	 * Read the parameters transfered from the client
+	 */
+	public void readData(final Widget widget) {
+		OpenLayers map = (OpenLayers) widget;
+		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
 
-  }
+		if (event != null) {
+			HashMap<String, String> payload_map = new HashMap<String, String>();
 
-  /*
-   * Initial creation procedure of the widget
-   */
-  public void renderInitialization( final Widget widget ) throws IOException {
-    JSWriter writer = JSWriter.getWriterFor( widget );
-    String id = WidgetUtil.getId( widget );
-    writer.newWidget( "org.polymap.rap.widget.openlayers.OpenLayers", new Object[]{
-      id
-    } );
-    writer.set( "appearance", "composite" );
-    writer.set( "overflow", "hidden" );
-    ControlLCAUtil.writeStyleFlags( ( OpenLayers )widget );
-    writer.call( ( OpenLayers )widget , "map_init", null );
-  }
+			Iterator<String> it = map.events.payload_by_name.get(event)
+					.iterator();
 
-  public void renderChanges( final Widget widget ) throws IOException {
-    OpenLayers open_layers = ( OpenLayers )widget;
-    ControlLCAUtil.writeChanges(  open_layers );
-    JSWriter writer = JSWriter.getWriterFor( widget );
+			while (it.hasNext()) {
+				String act = it.next();
+				payload_map.put(act, WidgetLCAUtil.readPropertyValue(map,
+						"event_payload_" + act));
+			}
+			map.events.process_event(event, payload_map);
+		}
 
-    while(open_layers.hasCommand())
-    {
-    	 	Object[] cmd_pack=open_layers.getCommand();
-    	    String cmd=(String)cmd_pack[0];
-    	    Object[] args=(Object[])cmd_pack[1];
-    	    writer.call(open_layers,cmd,args);
-    }
-   
-    // only needed for custom variants (theming)
-    WidgetLCAUtil.writeCustomVariant( widget );
-  }
+	}
 
-  public void renderDispose( final Widget widget ) throws IOException {
-    JSWriter writer = JSWriter.getWriterFor( widget );
-    writer.dispose();
-  }
+	/*
+	 * Initial creation procedure of the widget
+	 */
+	public void renderInitialization(final Widget widget) throws IOException {
+		JSWriter writer = JSWriter.getWriterFor(widget);
+		String id = WidgetUtil.getId(widget);
+		writer.newWidget("org.polymap.rap.widget.openlayers.OpenLayers",
+				new Object[] { id });
+		writer.set("appearance", "composite");
+		writer.set("overflow", "hidden");
+		ControlLCAUtil.writeStyleFlags((OpenLayers) widget);
+		writer.call((OpenLayers) widget, "map_init", null);
+	}
 
-  public void createResetHandlerCalls( String typePoolId ) throws IOException {
-  }
+	public void renderChanges(final Widget widget) throws IOException {
+		OpenLayers open_layers = (OpenLayers) widget;
+		ControlLCAUtil.writeChanges(open_layers);
+		JSWriter writer = JSWriter.getWriterFor(widget);
 
-  public String getTypePoolId( Widget widget ) {
-    return null;
-  }
+		while (open_layers.hasCommand()) {
+			Object[] cmd_pack = open_layers.getCommand();
+			String cmd = (String) cmd_pack[0];
+			Object[] args = (Object[]) cmd_pack[1];
+			writer.call(open_layers, cmd, args);
+		}
+
+		// only needed for custom variants (theming)
+		WidgetLCAUtil.writeCustomVariant(widget);
+	}
+
+	public void renderDispose(final Widget widget) throws IOException {
+		JSWriter writer = JSWriter.getWriterFor(widget);
+		writer.dispose();
+	}
+
+	public void createResetHandlerCalls(String typePoolId) throws IOException {
+	}
+
+	public String getTypePoolId(Widget widget) {
+		return null;
+	}
 }

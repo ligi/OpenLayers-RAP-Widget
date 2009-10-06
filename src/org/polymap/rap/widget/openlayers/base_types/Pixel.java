@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.base_types;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,21 +18,21 @@ package org.polymap.rap.widget.openlayers.base_types;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.base_types;
 
 import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
+public class Pixel extends OpenLayersObject {
 
-public class Pixel extends OpenLayersObject{
-
-	public Pixel(int x,int y)
-	{
-		super.create("  new OpenLayers.Pixel( "+ x +"," + y + ");" );
+	public Pixel(int x, int y) {
+		super.create("  new OpenLayers.Pixel( " + x + "," + y + ");");
 	}
 }

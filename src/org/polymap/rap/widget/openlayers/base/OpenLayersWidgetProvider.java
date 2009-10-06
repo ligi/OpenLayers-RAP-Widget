@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.base;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,48 +18,51 @@ package org.polymap.rap.widget.openlayers.base;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.base;
 
 import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
- * Widget Provider
- * holding a reference to the widget and generate client side object hash / id's
+ * Widget Provider holding a reference to the widget and generate client side
+ * object hash / id's
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
 public class OpenLayersWidgetProvider {
 
-	private static OpenLayersWidgetProvider instance=null;
+	private static OpenLayersWidgetProvider instance = null;
 
 	private OpenLayers widget;
 
-	private int obj_ref=0;
-	
-	public OpenLayers getWidget()	{ 
+	private int obj_ref = 0;
+
+	public OpenLayers getWidget() {
 		return widget;
 	}
-	
-	public void setWidget(OpenLayers widget)	{ 
-		this.widget=widget;
+
+	public void setWidget(OpenLayers widget) {
+		this.widget = widget;
 		// create the initial object space ( hash )
-		widget.addCommand("map_eval", "if ( typeof objs == 'undefined' ) objs={};");
+		widget.addCommand("map_eval",
+				"if ( typeof objs == 'undefined' ) objs={};");
 	}
-	
+
 	private OpenLayersWidgetProvider() {
 	}
 
-	public synchronized static OpenLayersWidgetProvider getInstance() 	{  
-		if (instance == null)  
-			instance = new OpenLayersWidgetProvider();  
-		
-		return instance;  
-	}  
-	
+	public synchronized static OpenLayersWidgetProvider getInstance() {
+		if (instance == null)
+			instance = new OpenLayersWidgetProvider();
+
+		return instance;
+	}
+
 	public String generateObjectReference(String prefix) {
-		  obj_ref++;
-		  return prefix+obj_ref;
-	  }
+		obj_ref++;
+		return prefix + obj_ref;
+	}
 }

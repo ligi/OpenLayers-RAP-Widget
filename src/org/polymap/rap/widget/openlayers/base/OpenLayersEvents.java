@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.base;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,8 +18,9 @@ package org.polymap.rap.widget.openlayers.base;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
 
+package org.polymap.rap.widget.openlayers.base;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,60 +29,58 @@ import java.util.Set;
 import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
- * Client Side OpenLayers Object Base Class 
- * holding a reference to the widget and keeps track of changes to the object
+ * Client Side OpenLayers Object Base Class holding a reference to the widget
+ * and keeps track of changes to the object
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
 public class OpenLayersEvents {
-	
+
 	OpenLayers map;
 	OpenLayersEventListener listener;
-	public HashMap<String,Set<String>> payload_by_name;
-	
-	
+	public HashMap<String, Set<String>> payload_by_name;
+
 	public OpenLayersEvents(OpenLayers map) {
-		this.map=map;
-		payload_by_name=new HashMap<String,Set<String>>();
+		this.map = map;
+		payload_by_name = new HashMap<String, Set<String>>();
 	}
 
-	public void register(OpenLayersEventListener listener,String name,HashMap<String,String> payload_request)
-	{
-		String payload_code="";
-		
-		if (payload_request!=null)
-		{
+	public void register(OpenLayersEventListener listener, String name,
+			HashMap<String, String> payload_request) {
+		String payload_code = "";
+
+		if (payload_request != null) {
 			payload_by_name.put(name, payload_request.keySet());
-			
-			Iterator <String> it;
-			
-			it = payload_request.keySet().iterator(); 
-			while(it.hasNext()) { 
-				String key=it.next();
-				payload_code+=	"req.addParameter( openlayersId + '.event_payload_" + key + "' , " + payload_request.get(key) + "  );";
-				} 
+
+			Iterator<String> it;
+
+			it = payload_request.keySet().iterator();
+			while (it.hasNext()) {
+				String key = it.next();
+				payload_code += "req.addParameter( openlayersId + '.event_payload_"
+						+ key + "' , " + payload_request.get(key) + "  );";
+			}
 		}
-	
-		map.addCommand("map_eval", "this._map.events.register('" + name +"', this," +
-				"function (event) {" +
-			
-		        "if( !org_eclipse_rap_rwt_EventUtil_suspend ) {"+
-		        	"var openlayersId = org.eclipse.swt.WidgetManager.getInstance().findIdByWidget( this );"+
-	   				"var req = org.eclipse.swt.Request.getInstance();"+
-	                "req.addParameter( openlayersId + '.event_name', event.type );"+
-	            	"" + payload_code +
-	                "req.send();"+
-	            "}"+ 
-				"});");
-		this.listener=listener;
-		//listener.process_event(name);
+
+		map.addCommand(
+						"map_eval",
+						"this._map.events.register('"
+								+ name
+								+ "', this,"
+								+ "function (event) {"
+								+ "if( !org_eclipse_rap_rwt_EventUtil_suspend ) {"
+								+ "var openlayersId = org.eclipse.swt.WidgetManager.getInstance().findIdByWidget( this );"
+								+ "var req = org.eclipse.swt.Request.getInstance();"
+								+ "req.addParameter( openlayersId + '.event_name', event.type );"
+								+ "" + payload_code + "req.send();" + "}"
+								+ "});");
+		this.listener = listener;
 	}
-	
-	public void process_event(String name,HashMap <String,String> payload)
-	{
-		listener.process_event(name,payload);
+
+	public void process_event(String name, HashMap<String, String> payload) {
+		listener.process_event(name, payload);
 	}
-	
+
 }

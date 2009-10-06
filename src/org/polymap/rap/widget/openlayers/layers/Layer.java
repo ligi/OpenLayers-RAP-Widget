@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.layers;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,17 +18,21 @@ package org.polymap.rap.widget.openlayers.layers;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
 
-import org.polymap.rap.widget.openlayers.base.OpenLayersObject;;
+package org.polymap.rap.widget.openlayers.layers;
+
+import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
+
+;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class Layer extends OpenLayersObject{
+public class Layer extends OpenLayersObject {
 
 	String name;
 
@@ -41,17 +43,17 @@ public class Layer extends OpenLayersObject{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public void setIsBaseLayer(Boolean is_base_layer) 	{			
-		addObjModCode("obj.setIsBaseLayer("+is_base_layer+ ");");
-	}
-	
-	public void setVisibility(Boolean is_visible){
-		addObjModCode("obj.setVisibility("+ is_visible +");");
+
+	public void setIsBaseLayer(Boolean is_base_layer) {
+		addObjModCode("obj.setIsBaseLayer(" + is_base_layer + ");");
 	}
 
-	public void display(Boolean flag){
-		addObjModCode("obj.display("+ flag +");");
+	public void setVisibility(Boolean is_visible) {
+		addObjModCode("obj.setVisibility(" + is_visible + ");");
 	}
-	
+
+	public void display(Boolean flag) {
+		addObjModCode("obj.display(" + flag + ");");
+	}
+
 }

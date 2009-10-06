@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.marker;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,28 +18,28 @@ package org.polymap.rap.widget.openlayers.marker;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
 
-import org.polymap.rap.widget.openlayers.base_types.Bounds;
+package org.polymap.rap.widget.openlayers.marker;
+
 import org.polymap.rap.widget.openlayers.base_types.Icon;
 import org.polymap.rap.widget.openlayers.base_types.LonLat;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
+public class IconMarker extends Marker {
 
-public class IconMarker extends Marker{
+	public IconMarker(LonLat lon_lat, Icon icon) {
+		super.create(" new OpenLayers.Marker(" + lon_lat.getJSObjRef() + ","
+				+ icon.getJSObjRef() + ".clone());");
+	}
 
-		public IconMarker(LonLat lon_lat , Icon icon )
-		{
-			super.create(" new OpenLayers.Marker(" + lon_lat.getJSObjRef() + "," + icon.getJSObjRef() + ".clone());");
-		}
-		
-		public IconMarker(LonLat lon_lat )
-		{
-			super.create(" new OpenLayers.Marker(" + lon_lat.getJSObjRef() + ",null);");
-		}
+	public IconMarker(LonLat lon_lat) {
+		super.create(" new OpenLayers.Marker(" + lon_lat.getJSObjRef()
+				+ ",null);");
+	}
 }

@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.base;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,21 +18,23 @@ package org.polymap.rap.widget.openlayers.base;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
 
+package org.polymap.rap.widget.openlayers.base;
 
 import java.util.HashMap;
 
 /**
- * Client Side OpenLayers Object Base Class 
- * holding a reference to the widget and keeps track of changes to the object
+ * Client Side OpenLayers Object Base Class holding a reference to the widget
+ * and keeps track of changes to the object
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
 public interface OpenLayersEventListener {
-	
-	abstract void process_event(String event_name,HashMap<String,String> payload);
-	
+
+	abstract void process_event(String event_name,
+			HashMap<String, String> payload);
+
 }

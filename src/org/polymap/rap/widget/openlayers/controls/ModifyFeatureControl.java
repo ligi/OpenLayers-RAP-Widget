@@ -1,5 +1,3 @@
-package org.polymap.rap.widget.openlayers.controls;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -20,35 +18,34 @@ package org.polymap.rap.widget.openlayers.controls;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.controls;
 
 import org.polymap.rap.widget.openlayers.layers.VectorLayer;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
+public class ModifyFeatureControl extends Control {
 
-public class ModifyFeatureControl extends Control{
-	
-	public final static int RESHAPE	= 1;	
-	public final static int RESIZE		= 2; 		
-	public final static int ROTATE	= 4;		
-	public final static int DRAG		= 8;			
-	
-	public ModifyFeatureControl(VectorLayer layer)
-	{
-		super.create("  new OpenLayers.Control.ModifyFeature( "+ layer.getJSObjRef() +"   );" );
+	public final static int RESHAPE = 1;
+	public final static int RESIZE = 2;
+	public final static int ROTATE = 4;
+	public final static int DRAG = 8;
+
+	public ModifyFeatureControl(VectorLayer layer) {
+		super.create("  new OpenLayers.Control.ModifyFeature( "
+				+ layer.getJSObjRef() + "   );");
 	}
-	
-	public String mode2name (int mode)
-	{
-		switch(mode)
-		{
+
+	public String mode2name(int mode) {
+		switch (mode) {
 		case DRAG:
-				return "DRAG";
+			return "DRAG";
 		case ROTATE:
 			return "ROTATE";
 		case RESIZE:
@@ -59,15 +56,15 @@ public class ModifyFeatureControl extends Control{
 			return "UNKNOWN_MODE";
 		}
 	}
-	public void addMode(int mode)
-	{
-		super.addObjModCode("obj.mode |=  OpenLayers.Control.ModifyFeature." + mode2name(mode));		
+
+	public void addMode(int mode) {
+		super.addObjModCode("obj.mode |=  OpenLayers.Control.ModifyFeature."
+				+ mode2name(mode));
 	}
 
-	public void rmMode(int mode)
-	{
-		super.addObjModCode("obj.mode &=  ~OpenLayers.Control.ModifyFeature." + mode2name(mode));		
+	public void rmMode(int mode) {
+		super.addObjModCode("obj.mode &=  ~OpenLayers.Control.ModifyFeature."
+				+ mode2name(mode));
 	}
-	
-	
+
 }

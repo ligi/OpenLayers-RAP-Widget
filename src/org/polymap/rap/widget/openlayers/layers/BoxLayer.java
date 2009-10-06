@@ -1,7 +1,3 @@
-package org.polymap.rap.widget.openlayers.layers;
-
-import org.polymap.rap.widget.openlayers.marker.BoxMarker;
-
 /*
  * polymap.org
  * Copyright 2009, Polymap GmbH, and individual contributors as indicated
@@ -22,24 +18,26 @@ import org.polymap.rap.widget.openlayers.marker.BoxMarker;
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  *
-*/
+ */
+
+package org.polymap.rap.widget.openlayers.layers;
+
+import org.polymap.rap.widget.openlayers.marker.BoxMarker;
 
 /**
  * 
- *  @author Marcus -LiGi- B&uuml;schleb < mail:	ligi (at) polymap (dot) de >
- *
-*/
+ * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * 
+ */
 
-public class BoxLayer extends Layer{
+public class BoxLayer extends Layer {
 
-	public BoxLayer(String name)
-	{
+	public BoxLayer(String name) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.Boxes( '"+name + "');" );
+		super.create("  new OpenLayers.Layer.Boxes( '" + name + "');");
 	}
 
-	public void addMarker(BoxMarker marker)
-	{
+	public void addMarker(BoxMarker marker) {
 		super.addObjModCode("obj.addMarker(" + marker.getJSObjRef() + ");");
 	}
 }
