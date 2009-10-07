@@ -75,11 +75,28 @@ public class OpenLayersObject {
 		return "objs['" + obj_ref + "']";
 	}
 
-	public String getJSObjName(OpenLayersObject o) {
-		if (o==null)
+	public String getJSObj(OpenLayersObject object) {
+		if (object==null)
 			return "null";
 		else 
-			return o.getJSObjRef();
+			return object.getJSObjRef();
 	}
 
+	public String getJSObj(OpenLayersObject[] oa) {
+		if (oa==null)
+			return "[null]";
+		else 
+		{
+			String res="[";
+			for ( OpenLayersObject obj : oa)
+			{
+				if (!res.equals("["))
+					res+=",";
+				res+=getJSObj(obj);
+			}
+			return res+"]";
+		}
+			
+	}
+	
 }
