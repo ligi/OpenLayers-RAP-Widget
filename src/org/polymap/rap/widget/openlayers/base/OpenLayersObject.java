@@ -75,4 +75,11 @@ public class OpenLayersObject {
 		return "objs['" + obj_ref + "']";
 	}
 
+	public String getJSObjName(OpenLayersObject o) {
+		if (o==null)
+			return "null";
+		else 
+			return o.getJSObjRef();
+	}
+
 }
