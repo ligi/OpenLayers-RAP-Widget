@@ -23,6 +23,7 @@
 package org.polymap.rap.widget.openlayers.base_types;
 
 import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
+import org.polymap.rap.widget.openlayers.geometry.PolygonGeometry;
 
 /**
  * 
@@ -36,4 +37,9 @@ public class Bounds extends OpenLayersObject {
 		super.create("  new OpenLayers.Bounds( " + left + "," + bottom + ","
 				+ right + "," + top + ");");
 	}
+
+	public PolygonGeometry toGeometry() {
+		return new PolygonGeometry(this);
+	}
+
 }
