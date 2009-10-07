@@ -24,7 +24,7 @@ package org.polymap.rap.widget.openlayers.features;
 
 import org.polymap.rap.widget.openlayers.base_types.Bounds;
 import org.polymap.rap.widget.openlayers.base_types.Style;
-import org.polymap.rap.widget.openlayers.geometry.PointGeometry;
+import org.polymap.rap.widget.openlayers.geometry.Geometry;
 
 /**
  * 
@@ -34,15 +34,11 @@ import org.polymap.rap.widget.openlayers.geometry.PointGeometry;
 
 public class VectorFeature extends Feature {
 
-	public VectorFeature(Bounds bounds) {
-		_create(bounds.getJSObjRef() + ".toGeometry()");
-	}
-
-	public VectorFeature(PointGeometry point) {
+	public VectorFeature(Geometry point) {
 		_create(point.getJSObjRef());
 	}
 
-	public VectorFeature(PointGeometry point , Style style) {
+	public VectorFeature(Geometry point , Style style) {
 		_create(point.getJSObjRef() ,  style.getJSObjRef());
 	}
 	
