@@ -22,15 +22,13 @@
 
 package org.polymap.rap.widget.openlayers.geometry;
 
-import org.polymap.rap.widget.openlayers.base.OpenLayersObject;
-
 /**
  * 
  * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
  * 
  */
 
-public class PointGeometry extends OpenLayersObject {
+public class PointGeometry extends Geometry {
 
 	public PointGeometry(double x, double y) {
 		super.create("new OpenLayers.Geometry.Point( " + x + "," + y  + ");");
