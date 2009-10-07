@@ -35,4 +35,8 @@ public class PolygonGeometry extends Geometry {
 	public PolygonGeometry(Bounds bounds) {
 		super.create(bounds.getJSObjRef() + ".toGeometry();");
 	}
+	
+	public PolygonGeometry(LinearRingGeometry linear_ring) {
+		super.create("new OpenLayers.Geometry.Polygon(" + linear_ring.getJSObjRef() + ");");
+	}	
 }
