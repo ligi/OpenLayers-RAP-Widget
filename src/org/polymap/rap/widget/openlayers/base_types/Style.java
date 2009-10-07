@@ -34,7 +34,7 @@ public class Style extends OpenLayersObject {
 
 	public Style() {
 		super.create("OpenLayers.Util.extend({}, "
-				+ "OpenLayers.Feature.Vector.style[ 'default']" + ")");
+				+ "OpenLayers.Feature.Vector.style[ 'default'])");
 	}
 
 	public void setAttribute(String attribute_name, String attribute_value) {
