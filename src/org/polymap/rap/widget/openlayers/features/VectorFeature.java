@@ -23,6 +23,8 @@
 package org.polymap.rap.widget.openlayers.features;
 
 import org.polymap.rap.widget.openlayers.base_types.Bounds;
+import org.polymap.rap.widget.openlayers.base_types.Style;
+import org.polymap.rap.widget.openlayers.geometry.PointGeometry;
 
 /**
  * 
@@ -33,8 +35,22 @@ import org.polymap.rap.widget.openlayers.base_types.Bounds;
 public class VectorFeature extends Feature {
 
 	public VectorFeature(Bounds bounds) {
-		super.create("  new OpenLayers.Feature.Vector( " + bounds.getJSObjRef()
-				+ ".toGeometry() );");
+		_create(bounds.getJSObjRef() + ".toGeometry()");
 	}
 
+	public VectorFeature(PointGeometry point) {
+		_create(point.getJSObjRef());
+	}
+
+	public VectorFeature(PointGeometry point , Style style) {
+		_create(point.getJSObjRef() ,  style.getJSObjRef());
+	}
+	
+	private void _create(String js_name) {
+		super.create("new OpenLayers.Feature.Vector(" + js_name + ");");
+	}
+	
+	private void _create(String js_name,String js_style) {
+		super.create("new OpenLayers.Feature.Vector(" + js_name +",null," + js_style +  ");");
+	}
 }
