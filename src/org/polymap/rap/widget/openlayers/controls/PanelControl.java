@@ -31,7 +31,7 @@ package org.polymap.rap.widget.openlayers.controls;
 public class PanelControl extends Control {
 
 	public PanelControl() {
-		super.create("  new OpenLayers.Control.Panel( );");
+		super("new OpenLayers.Control.Panel();");
 	}
 
 	public void addControls(Control[] ctrls) {
