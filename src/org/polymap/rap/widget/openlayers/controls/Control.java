@@ -40,4 +40,11 @@ public class Control extends OpenLayersObject {
 		super.addObjModCode("obj.deactivate();");
 	}
 
+	public Control() {
+
+	}
+
+	public Control(String construct_code) {
+		super.create(construct_code);
+	}
 }
