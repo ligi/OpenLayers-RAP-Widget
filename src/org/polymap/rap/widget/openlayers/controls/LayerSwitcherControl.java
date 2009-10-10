@@ -28,9 +28,9 @@ package org.polymap.rap.widget.openlayers.controls;
  * 
  */
 
-public class LayerSwitcherControl extends Control {
+public class LayerSwitcherControl extends MinimizeableControl {
 
 	public LayerSwitcherControl() {
-		super.create("  new OpenLayers.Control.LayerSwitcher();");
+		super.create("new OpenLayers.Control.LayerSwitcher();");
 	}
 }
