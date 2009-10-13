@@ -33,8 +33,8 @@
 qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     extend: qx.ui.layout.CanvasLayout,
     
-    construct: function( id ) {
-        this.base( arguments );
+    construct: function( id) {
+		this.base( arguments );
         this.setHtmlAttribute( "id", id );
         this._id = id;
         this._map = null;
@@ -45,15 +45,46 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
     properties : {}, 
     
     members : {
-    	map_init : function() {
+    	map_init : function(lib_url) {
+    	   
+    	function loadScript(url, callback , context){
+
+    	    var script = document.createElement("script");
+    	    script.type = "text/javascript";
+
+    	    if (script.readyState){  //IE
+    	        script.onreadystatechange = function(){
+    	            if (script.readyState == "loaded" ||  script.readyState == "complete"){
+    	                script.onreadystatechange = null;
+    	                callback(context);
+    	            }
+    	        };
+    	    } else {  //Others
+    	        script.onload = function(){
+    	            callback(context);
+    	        };
+    	    }
+
+    	    script.src = url;
+    	    document.getElementsByTagName("head")[0].appendChild(script);
+    	}
+    	
+    	loadScript(lib_url , function(context) {
     			qx.ui.core.Widget.flushGlobalQueues(); 
-				if( this._map == null )
-					{
-						this._map = new OpenLayers.Map({div:  document.getElementById( this._id ), controls: [] });
-					//	this._map.events.register('click', this,this.process_event);
+    			
+				if( context._map == null ) {
+						context._map = new OpenLayers.Map({div:  document.getElementById( context._id ), controls: [] });
+						if( !org_eclipse_rap_rwt_EventUtil_suspend ) {
+			                var openlayersId = org.eclipse.swt.WidgetManager.getInstance().findIdByWidget( context );
+			                var req = org.eclipse.swt.Request.getInstance();
+			                req.addParameter( openlayersId + ".map_init_done", "true" );
+			                req.send();
+			            } 
+						
 					}
+    			} , this); // loadScript
 				
-	    },
+    	},
     	
 	    map_eval : function( code2eval ) {
     			eval(code2eval);
@@ -81,7 +112,7 @@ qx.Class.define( "org.polymap.rap.widget.openlayers.OpenLayers", {
 	    },
 	    
 	    process_event: function(e) {
-	        if( !org_eclipse_rap_rwt_EventUtil_suspend ) {
+	    	if( !org_eclipse_rap_rwt_EventUtil_suspend ) {
 
                 var openlayersId = org.eclipse.swt.WidgetManager.getInstance().findIdByWidget( this );
   

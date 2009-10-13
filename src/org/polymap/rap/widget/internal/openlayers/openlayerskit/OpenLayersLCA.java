@@ -45,6 +45,8 @@ import org.eclipse.swt.widgets.Widget;
 
 public class OpenLayersLCA extends AbstractWidgetLCA {
 
+	//Boolean init_done = false;
+
 	public void preserveValues(final Widget widget) {
 		ControlLCAUtil.preserveValues((Control) widget);
 
@@ -57,6 +59,13 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 	 */
 	public void readData(final Widget widget) {
 		OpenLayers map = (OpenLayers) widget;
+		if (!map.init_done) {
+			String init_done_s = WidgetLCAUtil.readPropertyValue(map,
+					"map_init_done");
+			if (init_done_s != null)
+				map.init_done = init_done_s.equals("true");
+		}
+
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
 
 		if (event != null) {
@@ -82,11 +91,11 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 		JSWriter writer = JSWriter.getWriterFor(widget);
 		String id = WidgetUtil.getId(widget);
 		writer.newWidget("org.polymap.rap.widget.openlayers.OpenLayers",
-				new Object[] { id });
+				new Object[] { id});
 		writer.set("appearance", "composite");
 		writer.set("overflow", "hidden");
 		ControlLCAUtil.writeStyleFlags((OpenLayers) widget);
-		writer.call((OpenLayers) widget, "map_init", null);
+		writer.call((OpenLayers) widget, "map_init", new Object[] { ((OpenLayers) widget).getJSLocation() });
 	}
 
 	public void renderChanges(final Widget widget) throws IOException {
@@ -94,7 +103,7 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 		ControlLCAUtil.writeChanges(open_layers);
 		JSWriter writer = JSWriter.getWriterFor(widget);
 
-		while (open_layers.hasCommand()) {
+		while (open_layers.hasCommand() && open_layers.init_done) {
 			Object[] cmd_pack = open_layers.getCommand();
 			String cmd = (String) cmd_pack[0];
 			Object[] args = (Object[]) cmd_pack[1];

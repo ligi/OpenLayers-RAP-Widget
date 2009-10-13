@@ -42,6 +42,7 @@ import org.polymap.rap.widget.openlayers.layers.Layer;
 
 public class OpenLayers extends Composite {
 
+	public boolean init_done;
 	public Vector<Object[]> cmd_stack;
 	public OpenLayersEvents events;
 
@@ -51,7 +52,13 @@ public class OpenLayers extends Composite {
 		OpenLayersWidgetProvider.getInstance().setWidget(this);
 		events = new OpenLayersEvents(this);
 	}
-
+	
+	String js_location="http://www.openlayers.org/api/OpenLayers.js";
+	
+	public String getJSLocation()
+	{
+		return js_location;
+	}
 	// no layout
 	public void setLayout(final Layout layout) {
 	}

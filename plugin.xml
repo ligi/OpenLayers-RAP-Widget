@@ -5,9 +5,6 @@
          id="org.polymap.rap.OpenLayers_Widget"
          point="org.eclipse.rap.ui.resources">
       <resource
-            class="org.polymap.rap.widget.internal.openlayers.resources.OpenLayersAPIResource">
-      </resource>
-      <resource
             class="org.polymap.rap.widget.internal.openlayers.resources.OpenLayersResource">
       </resource>
    </extension>
