@@ -22,6 +22,7 @@
 
 package org.polymap.rap.widget.openlayers.base;
 
+import org.eclipse.rwt.SessionSingletonBase;
 import org.polymap.rap.widget.openlayers.OpenLayers;
 
 /**
@@ -32,9 +33,7 @@ import org.polymap.rap.widget.openlayers.OpenLayers;
  * 
  */
 
-public class OpenLayersWidgetProvider {
-
-	private static OpenLayersWidgetProvider instance = null;
+public class OpenLayersWidgetProvider extends SessionSingletonBase {
 
 	private OpenLayers widget;
 
@@ -55,10 +54,7 @@ public class OpenLayersWidgetProvider {
 	}
 
 	public synchronized static OpenLayersWidgetProvider getInstance() {
-		if (instance == null)
-			instance = new OpenLayersWidgetProvider();
-
-		return instance;
+		return (OpenLayersWidgetProvider) getInstance(OpenLayersWidgetProvider.class);
 	}
 
 	public String generateObjectReference(String prefix) {
