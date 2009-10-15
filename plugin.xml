@@ -5,7 +5,7 @@
          id="org.polymap.rap.OpenLayers_Widget"
          point="org.eclipse.rap.ui.resources">
       <resource
-            class="org.polymap.rap.widget.internal.openlayers.resources.OpenLayersResource">
+            class="org.polymap.openlayers.rap.widget.internal.resources.OpenLayersResource">
       </resource>
    </extension>
 
