@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.polymap.openlayers.rap.widget.OpenLayers;
+import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 
 /**
  * Client Side OpenLayers Object Base Class holding a reference to the widget
