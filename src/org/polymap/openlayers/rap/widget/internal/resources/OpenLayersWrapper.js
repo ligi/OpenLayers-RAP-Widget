@@ -57,7 +57,6 @@ qx.Class.define("org.polymap.rap.widget.openlayers.OpenLayers", {
 		this.base(arguments);
 		this.setHtmlAttribute("id", id);
 		this._id = id;
-		this._event_id = 0;
 	},
 
 	properties : {},
@@ -83,21 +82,8 @@ qx.Class.define("org.polymap.rap.widget.openlayers.OpenLayers", {
 
 		},
 					
-		map_eval : function(code2eval) {
+		eval : function(code2eval) {
 			eval(code2eval);
-		},
-
-		process_event : function(e) {
-			if (!org_eclipse_rap_rwt_EventUtil_suspend) {
-
-				var openlayersId = org.eclipse.swt.WidgetManager.getInstance()
-						.findIdByWidget(this);
-
-				var req = org.eclipse.swt.Request.getInstance();
-				req.addParameter(openlayersId + ".last_event_id", e.type);
-				req.send();
-			}
-
 		}
 	}
 

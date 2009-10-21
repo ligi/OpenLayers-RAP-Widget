@@ -35,47 +35,35 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 public class OpenLayersMap extends OpenLayersObject {
 
 	public OpenLayersMap() {
-		//super.create_out_of_hash("this._map");
 		super.create ("new OpenLayers.Map( { div : document.getElementById(this._id),	controls : []	});");
 	}
 	
 	public void addLayer(Layer layer2add) {
 		super.addObjModCode("addLayer",layer2add);
-		//addCommand("addLayer", layer2add.getObjRef());
 	}
 
 	public void addControl(Control control2add) {
 		super.addObjModCode("addControl",control2add);
-		//addCommand("addControl", control2add.getObjRef());
 	}
 
 	public void setProxy(String proxy){
 		super.addObjModCode("OpenLayers.ProxyHost='"+proxy+"';");
-		//addCommand("map_eval", "OpenLayers.ProxyHost='"+proxy+"';");
 	}
 	
 	public void removeControl(Control control2rm) {
 		super.addObjModCode("removeControl",control2rm);
-		//addCommand("map_eval", "this._map.removeControl("
-	//			+ control2rm.getJSObjRef() + ");");
 	}
 
 	public void zoomTo(int zoom) {
 		super.addObjModCode("zoomTo",zoom);
-		//Object[] param_arr = { zoom };
-		//addCommand("zoomTo", param_arr);
 	}
 
 	public void setCenter(double center_lon, double center_lat) {
 		super.addObjModCode("setCenter", new LonLat(center_lon,center_lat));
-		//Object[] param_arr = { center_lon, center_lat };
-		//addCommand("setCenter", param_arr);
 	}
 
 	public void setBaseLayer(Layer layer) {
 		super.addObjModCode("setBaseLayer",layer);
-		//addCommand("map_eval", "this._map.setBaseLayer(" + layer.getJSObjRef()
-		//		+ ");");
 	}
 
 }

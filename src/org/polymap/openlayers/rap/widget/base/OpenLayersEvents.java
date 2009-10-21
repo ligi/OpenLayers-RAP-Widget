@@ -83,7 +83,7 @@ public class OpenLayersEvents {
 	}
 
 	public void process_event(String name, HashMap<String, String> payload) {
-		listener.process_event(name, payload);
+		listener.process_event(obj,name, payload);
 	}
 
 }

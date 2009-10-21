@@ -27,6 +27,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.polymap.openlayers.rap.widget.OpenLayers;
+import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
+import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
 import org.eclipse.rwt.lifecycle.AbstractWidgetLCA;
 import org.eclipse.rwt.lifecycle.ControlLCAUtil;
 import org.eclipse.rwt.lifecycle.JSWriter;
@@ -45,7 +47,7 @@ import org.eclipse.swt.widgets.Widget;
 
 public class OpenLayersLCA extends AbstractWidgetLCA {
 
-	//Boolean init_done = false;
+	// Boolean init_done = false;
 
 	public void preserveValues(final Widget widget) {
 		ControlLCAUtil.preserveValues((Control) widget);
@@ -67,26 +69,30 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 		}
 
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
-		String src = WidgetLCAUtil.readPropertyValue(map, "event_src_obj");
-if (src!=null)
-{
-	System.out.println("event from src_obj" + src);
-}
-		/*
+
 		if (event != null) {
+			OpenLayersWidgetProvider wp = OpenLayersWidgetProvider
+					.getInstance();
+
+			OpenLayersObject src = wp.obj_ref2obj.get(WidgetLCAUtil
+					.readPropertyValue(map, "event_src_obj"));
+
 			HashMap<String, String> payload_map = new HashMap<String, String>();
 
-			Iterator<String> it = map.events.payload_by_name.get(event)
-					.iterator();
+			if (src.events.payload_by_name.get(event) != null) {
+				Iterator<String> it = src.events.payload_by_name.get(event)
+						.iterator();
 
-			while (it.hasNext()) {
-				String act = it.next();
-				payload_map.put(act, WidgetLCAUtil.readPropertyValue(map,
-						"event_payload_" + act));
+				while (it.hasNext()) {
+					String act = it.next();
+					payload_map.put(act, WidgetLCAUtil.readPropertyValue(map,
+							"event_payload_" + act));
+				}
 			}
-			map.events.process_event(event, payload_map);
+			src.events.process_event(event, payload_map);
+
 		}
-*/
+
 	}
 
 	/*
@@ -96,11 +102,12 @@ if (src!=null)
 		JSWriter writer = JSWriter.getWriterFor(widget);
 		String id = WidgetUtil.getId(widget);
 		writer.newWidget("org.polymap.rap.widget.openlayers.OpenLayers",
-				new Object[] { id});
+				new Object[] { id });
 		writer.set("appearance", "composite");
 		writer.set("overflow", "hidden");
 		ControlLCAUtil.writeStyleFlags((OpenLayers) widget);
-		writer.call((OpenLayers) widget, "load_lib", new Object[] { ((OpenLayers) widget).getJSLocation() });
+		writer.call((OpenLayers) widget, "load_lib",
+				new Object[] { ((OpenLayers) widget).getJSLocation() });
 	}
 
 	public void renderChanges(final Widget widget) throws IOException {
@@ -109,7 +116,7 @@ if (src!=null)
 		JSWriter writer = JSWriter.getWriterFor(widget);
 
 		if (open_layers.lib_init_done) {
-			open_layers.map_init_done=true;
+			open_layers.map_init_done = true;
 		}
 		while (open_layers.hasCommand() && open_layers.map_init_done) {
 			Object[] cmd_pack = open_layers.getCommand();

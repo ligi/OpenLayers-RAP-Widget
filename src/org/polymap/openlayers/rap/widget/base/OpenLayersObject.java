@@ -67,21 +67,14 @@ public class OpenLayersObject {
 
 	public void create(String js_create_code) {
 		OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
-		this.setObjRef(wp.generateObjectReference("o"));
-		getWidget().addCommand("map_eval", getJSObjRef() + " = " + js_create_code);
-	}
-
-	boolean out_of_hash = false;
-
-	public void create_out_of_hash(String obj_ref_str) {
-		out_of_hash = true;
-		this.setObjRef(obj_ref_str);
+		this.setObjRef(wp.generateObjectReference("o",this));
+		getWidget().addCommand("eval", getJSObjRef() + "=" + js_create_code);
 	}
 
 	public void changes2widget() {
 		if (getWidget()!= null) {
 			if (obj_mod_code != "")
-				widget.addCommand("map_eval", "obj=" + getJSObjRef() + "; "
+				widget.addCommand("eval", "obj=" + getJSObjRef() + "; "
 						+ obj_mod_code);
 
 			obj_mod_code = "";
@@ -97,10 +90,7 @@ public class OpenLayersObject {
 	}
 
 	public String getJSObjRef() {
-		if (out_of_hash)
-			return obj_ref;
-		else
-			return "objs['" + obj_ref + "']";
+		return "objs['" + obj_ref + "']";
 	}
 
 	public String getJSObj(OpenLayersObject object) {

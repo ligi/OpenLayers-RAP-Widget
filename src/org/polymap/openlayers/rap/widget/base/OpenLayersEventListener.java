@@ -34,7 +34,7 @@ import java.util.HashMap;
 
 public interface OpenLayersEventListener {
 
-	abstract void process_event(String event_name,
+	abstract void process_event(OpenLayersObject src_obj,String event_name,
 			HashMap<String, String> payload);
 
 }
