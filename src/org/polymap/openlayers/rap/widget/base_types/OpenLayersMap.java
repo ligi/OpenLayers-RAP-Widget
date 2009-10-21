@@ -35,7 +35,8 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 public class OpenLayersMap extends OpenLayersObject {
 
 	public OpenLayersMap() {
-		super.create_out_of_hash("this._map");
+		//super.create_out_of_hash("this._map");
+		super.create ("new OpenLayers.Map( { div : document.getElementById(this._id),	controls : []	});");
 	}
 	
 	public void addLayer(Layer layer2add) {

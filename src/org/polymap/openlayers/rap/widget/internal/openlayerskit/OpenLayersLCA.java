@@ -59,15 +59,19 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 	 */
 	public void readData(final Widget widget) {
 		OpenLayers map = (OpenLayers) widget;
-		if (!map.init_done) {
+		if (!map.lib_init_done) {
 			String init_done_s = WidgetLCAUtil.readPropertyValue(map,
-					"map_init_done");
+					"load_lib_done");
 			if (init_done_s != null)
-				map.init_done = init_done_s.equals("true");
+				map.lib_init_done = init_done_s.equals("true");
 		}
 
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
-
+		String src = WidgetLCAUtil.readPropertyValue(map, "event_src_obj");
+if (src!=null)
+{
+	System.out.println("event from src_obj" + src);
+}
 		/*
 		if (event != null) {
 			HashMap<String, String> payload_map = new HashMap<String, String>();
@@ -96,7 +100,7 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 		writer.set("appearance", "composite");
 		writer.set("overflow", "hidden");
 		ControlLCAUtil.writeStyleFlags((OpenLayers) widget);
-		writer.call((OpenLayers) widget, "map_init", new Object[] { ((OpenLayers) widget).getJSLocation() });
+		writer.call((OpenLayers) widget, "load_lib", new Object[] { ((OpenLayers) widget).getJSLocation() });
 	}
 
 	public void renderChanges(final Widget widget) throws IOException {
@@ -104,7 +108,10 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 		ControlLCAUtil.writeChanges(open_layers);
 		JSWriter writer = JSWriter.getWriterFor(widget);
 
-		while (open_layers.hasCommand() && open_layers.init_done) {
+		if (open_layers.lib_init_done) {
+			open_layers.map_init_done=true;
+		}
+		while (open_layers.hasCommand() && open_layers.map_init_done) {
 			Object[] cmd_pack = open_layers.getCommand();
 			String cmd = (String) cmd_pack[0];
 			Object[] args = (Object[]) cmd_pack[1];

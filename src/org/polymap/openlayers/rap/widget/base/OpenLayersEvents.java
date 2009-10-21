@@ -75,6 +75,8 @@ public class OpenLayersEvents {
 								+ "var openlayersId = org.eclipse.swt.WidgetManager.getInstance().findIdByWidget( this );"
 								+ "var req = org.eclipse.swt.Request.getInstance();"
 								+ "req.addParameter( openlayersId + '.event_name', event.type );"
+								+ "req.addParameter( openlayersId + '.event_src_obj', '" + obj.getObjRef() + "' );"
+
 								+ "" + payload_code + "req.send();" + "}"
 								+ "});");
 		this.listener = listener;

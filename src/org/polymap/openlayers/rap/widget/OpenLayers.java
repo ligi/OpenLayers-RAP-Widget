@@ -43,7 +43,11 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 
 public class OpenLayers extends Composite {
 
-	public boolean init_done;
+	public boolean lib_init_done=false;
+	public boolean map_init_done=false;
+	
+	
+	
 	public Vector<Object[]> cmd_stack;
 
 	public OpenLayersMap map;
