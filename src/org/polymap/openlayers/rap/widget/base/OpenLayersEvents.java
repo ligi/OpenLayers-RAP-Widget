@@ -38,12 +38,12 @@ import org.polymap.openlayers.rap.widget.OpenLayers;
 
 public class OpenLayersEvents {
 
-	OpenLayers map;
+	OpenLayersObject obj;
 	OpenLayersEventListener listener;
 	public HashMap<String, Set<String>> payload_by_name;
 
-	public OpenLayersEvents(OpenLayers map) {
-		this.map = map;
+	public OpenLayersEvents(OpenLayersObject obj) {
+		this.obj = obj;
 		payload_by_name = new HashMap<String, Set<String>>();
 	}
 
@@ -64,9 +64,10 @@ public class OpenLayersEvents {
 			}
 		}
 
-		map.addCommand(
-						"map_eval",
-						"this._map.events.register('"
+		obj.addObjModCode(
+		//.addCommand(
+//						"map_eval",
+						"obj.events.register('"
 								+ name
 								+ "', this,"
 								+ "function (event) {"
