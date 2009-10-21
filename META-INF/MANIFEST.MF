@@ -7,6 +7,7 @@ Bundle-Vendor: PolyMap
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.servlet;version="2.5.0",
  javax.servlet.http;version="2.5.0",
+ org.mortbay.util,
  org.polymap.openlayers.rap.widget.base_types
 Export-Package: org.polymap.openlayers.rap.widget,
  org.polymap.openlayers.rap.widget.base,
@@ -17,5 +18,7 @@ Export-Package: org.polymap.openlayers.rap.widget,
  org.polymap.openlayers.rap.widget.internal.openlayerskit,
  org.polymap.openlayers.rap.widget.internal.resources,
  org.polymap.openlayers.rap.widget.layers,
- org.polymap.openlayers.rap.widget.marker
-Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.2.1"
+ org.polymap.openlayers.rap.widget.marker,
+ org.polymap.openlayers.rap.widget.util
+Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.2.1",
+ org.apache.commons.logging;bundle-version="1.0.4"
