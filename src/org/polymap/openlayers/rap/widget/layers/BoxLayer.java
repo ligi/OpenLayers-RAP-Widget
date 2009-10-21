@@ -38,6 +38,6 @@ public class BoxLayer extends Layer {
 	}
 
 	public void addMarker(BoxMarker marker) {
-		super.addObjModCode("obj.addMarker(" + marker.getJSObjRef() + ");");
+		super.addObjModCode("addMarker" , marker);
 	}
 }

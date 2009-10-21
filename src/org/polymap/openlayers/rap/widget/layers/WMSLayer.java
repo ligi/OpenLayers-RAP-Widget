@@ -32,7 +32,7 @@ public class WMSLayer extends Layer {
 
 	public WMSLayer(String name, String wms_url, String wms_layers) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.WMS( '" + name + "','" + wms_url
+		super.create("new OpenLayers.Layer.WMS( '" + name + "','" + wms_url
 				+ "',{layers:'" + wms_layers + "'});");
 	}
 

@@ -37,8 +37,6 @@ public class ImageLayer extends Layer {
 	public ImageLayer(String name, Image image, Bounds bounds) {
 		_ImageLayer(name, ResourceFactory.getImagePath(image), bounds,
 				new Size(image.getBounds()));
-		// super.create(" alert(' " + ResourceFactory.getImagePath(image) +"');"
-		// );
 	}
 
 	public ImageLayer(String name, String url, Bounds bounds, Size size) {
@@ -47,7 +45,7 @@ public class ImageLayer extends Layer {
 
 	public void _ImageLayer(String name, String url, Bounds bounds, Size size) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.Image( '" + name + "','" + url
+		super.create("new OpenLayers.Layer.Image( '" + name + "','" + url
 				+ "', " + bounds.getJSObjRef() + "," + size.getJSObjRef()
 				+ " );");
 	}

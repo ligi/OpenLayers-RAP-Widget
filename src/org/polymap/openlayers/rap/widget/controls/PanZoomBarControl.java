@@ -31,6 +31,6 @@ package org.polymap.openlayers.rap.widget.controls;
 public class PanZoomBarControl extends Control {
 
 	public PanZoomBarControl() {
-		super.create("  new OpenLayers.Control.PanZoomBar();");
+		super.create("new OpenLayers.Control.PanZoomBar();");
 	}
 }

@@ -31,6 +31,6 @@ package org.polymap.openlayers.rap.widget.controls;
 public class MouseDefaultsControl extends Control {
 
 	public MouseDefaultsControl() {
-		super.create("  new OpenLayers.Control.MouseDefaults();");
+		super.create("new OpenLayers.Control.MouseDefaults();");
 	}
 }

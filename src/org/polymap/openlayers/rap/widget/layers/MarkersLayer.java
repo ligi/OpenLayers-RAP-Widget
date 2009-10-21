@@ -34,10 +34,10 @@ public class MarkersLayer extends Layer {
 
 	public MarkersLayer(String name) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.Markers( '" + name + "');");
+		super.create("new OpenLayers.Layer.Markers( '" + name + "');");
 	}
 
 	public void addMarker(Marker marker) {
-		super.addObjModCode("obj.addMarker(" + marker.getJSObjRef() + ");");
+		super.addObjModCode("addMarker" , marker);
 	}
 }

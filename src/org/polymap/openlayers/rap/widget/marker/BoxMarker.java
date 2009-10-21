@@ -33,6 +33,6 @@ import org.polymap.openlayers.rap.widget.base_types.Bounds;
 public class BoxMarker extends Marker {
 
 	public BoxMarker(Bounds bounds) {
-		super.create(" new OpenLayers.Marker.Box(" + bounds.getJSObjRef()+ ")");
+		super.create("new OpenLayers.Marker.Box(" + bounds.getJSObjRef()+ ")");
 	}
 }

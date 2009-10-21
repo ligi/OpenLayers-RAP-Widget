@@ -34,12 +34,12 @@ import org.polymap.openlayers.rap.widget.base_types.LonLat;
 public class IconMarker extends Marker {
 
 	public IconMarker(LonLat lon_lat, Icon icon) {
-		super.create(" new OpenLayers.Marker(" + lon_lat.getJSObjRef() + ","
+		super.create("new OpenLayers.Marker(" + lon_lat.getJSObjRef() + ","
 				+ icon.getJSObjRef() + ".clone());");
 	}
 
 	public IconMarker(LonLat lon_lat) {
-		super.create(" new OpenLayers.Marker(" + lon_lat.getJSObjRef()
+		super.create("new OpenLayers.Marker(" + lon_lat.getJSObjRef()
 				+ ",null);");
 	}
 }

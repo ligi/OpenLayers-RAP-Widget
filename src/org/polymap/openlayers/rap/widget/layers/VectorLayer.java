@@ -34,10 +34,10 @@ public class VectorLayer extends Layer {
 
 	public VectorLayer(String name) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.Vector( '" + name + "' );");
+		super.create("new OpenLayers.Layer.Vector( '" + name + "' );");
 	}
 
 	public void addFeatures(VectorFeature vf) {
-		super.addObjModCode("obj.addFeatures(" + vf.getJSObjRef() + "); ");
+		super.addObjModCode("addFeatures" , vf);
 	}
 }

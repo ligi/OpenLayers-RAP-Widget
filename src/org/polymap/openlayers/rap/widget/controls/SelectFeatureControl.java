@@ -33,7 +33,7 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 public class SelectFeatureControl extends Control {
 
 	public SelectFeatureControl(Layer layer) {
-		super.create("  new OpenLayers.Control.SelectFeature("
+		super.create("new OpenLayers.Control.SelectFeature("
 				+ layer.getJSObjRef() + " );");
 	}
 

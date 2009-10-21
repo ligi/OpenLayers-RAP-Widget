@@ -48,7 +48,7 @@ public class SnappingControl extends Control {
 	}
 
 	private void _create(VectorLayer layer, String target_code, Boolean greedy) {
-		super.create("  new OpenLayers.Control.Snapping({ " + "layer:"
+		super.create("new OpenLayers.Control.Snapping({ " + "layer:"
 				+ layer.getJSObjRef() + "," + "targets: [" + target_code + "],"
 				+ "greedy:" + greedy + "});");
 	}

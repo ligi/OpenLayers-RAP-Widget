@@ -32,6 +32,6 @@ public class KeyboardDefaultsControl extends Control{
 
 	public KeyboardDefaultsControl()
 	{
-		super.create("  new OpenLayers.Control.KeyboardDefaults();" );
+		super.create("new OpenLayers.Control.KeyboardDefaults();" );
 	}
 }

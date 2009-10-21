@@ -38,7 +38,7 @@ public class ModifyFeatureControl extends Control {
 	public final static int DRAG = 8;
 
 	public ModifyFeatureControl(VectorLayer layer) {
-		super.create("  new OpenLayers.Control.ModifyFeature( "
+		super.create("new OpenLayers.Control.ModifyFeature( "
 				+ layer.getJSObjRef() + "   );");
 	}
 

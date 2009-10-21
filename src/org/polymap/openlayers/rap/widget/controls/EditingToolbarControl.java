@@ -33,7 +33,7 @@ import org.polymap.openlayers.rap.widget.layers.VectorLayer;
 public class EditingToolbarControl extends Control {
 
 	public EditingToolbarControl(VectorLayer layer) {
-		super.create("  new OpenLayers.Control.EditingToolbar( "
+		super.create("new OpenLayers.Control.EditingToolbar( "
 				+ layer.getJSObjRef() + "   );");
 	}
 }

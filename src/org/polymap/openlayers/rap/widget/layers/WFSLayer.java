@@ -32,7 +32,7 @@ public class WFSLayer extends Layer {
 
 	public WFSLayer(String name, String wfs_url, String wfs_layers) {
 		super.setName(name);
-		super.create("  new OpenLayers.Layer.WFS( '" + name + "','" + wfs_url
+		super.create(" new OpenLayers.Layer.WFS( '" + name + "','" + wfs_url
 				+ "',{typename:'" + wfs_layers + "'});");
 				//, {ratio:1.25, minZoomLevel:4, style: OpenLayers.Util.extend({}, OpenLayers.Feature.Vector.style['default'])} );");
 	}

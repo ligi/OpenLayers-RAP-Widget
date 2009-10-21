@@ -31,6 +31,6 @@ package org.polymap.openlayers.rap.widget.controls;
 public class MousePositionControl extends Control {
 
 	public MousePositionControl() {
-		super.create(" new OpenLayers.Control.MousePosition();");
+		super.create("new OpenLayers.Control.MousePosition();");
 	}
 }

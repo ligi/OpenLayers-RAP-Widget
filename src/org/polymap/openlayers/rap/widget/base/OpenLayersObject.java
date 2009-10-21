@@ -56,6 +56,14 @@ public class OpenLayersObject {
 		addObjModCode(getJSObjRef() + "." + function + "(" + val + ");");
 	}
 
+	public void addObjModCode(String function, boolean val) {
+		addObjModCode(getJSObjRef() + "." + function + "(" + val + ");");
+	}
+
+	public void addObjModCode(String function, double val) {
+		addObjModCode(getJSObjRef() + "." + function + "(" + val + ");");
+	}
+
 	public OpenLayers getWidget() {
 		if (widget == null) {
 			OpenLayersWidgetProvider wp = OpenLayersWidgetProvider
