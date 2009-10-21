@@ -68,6 +68,7 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
 
+		/*
 		if (event != null) {
 			HashMap<String, String> payload_map = new HashMap<String, String>();
 
@@ -81,7 +82,7 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 			}
 			map.events.process_event(event, payload_map);
 		}
-
+*/
 	}
 
 	/*
