@@ -107,6 +107,10 @@ public class OpenLayers extends Composite {
 		addCommand("addControl", control2add.getObjRef());
 	}
 
+	public void setProxy(String proxy){
+		addCommand("map_eval", "OpenLayers.ProxyHost='"+proxy+"';");
+	}
+	
 	public void removeControl(Control control2rm) {
 		addCommand("map_eval", "this._map.removeControl("
 				+ control2rm.getJSObjRef() + ");");
