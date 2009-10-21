@@ -41,7 +41,7 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
  * 
  */
 
-public class OpenLayersWidget extends Composite {
+public class OpenLayers extends Composite {
 
 	public boolean lib_init_done=false;
 	public boolean map_init_done=false;
@@ -55,12 +55,12 @@ public class OpenLayersWidget extends Composite {
 	// default external location
 	public String js_location = "http://www.openlayers.org/api/OpenLayers.js";
 
-	public OpenLayersWidget(final Composite parent, final int style) {
+	public OpenLayers(final Composite parent, final int style) {
 		super(parent, style);
 		prepare();
 	}
 
-	public OpenLayersWidget(final Composite parent, final int style,
+	public OpenLayers(final Composite parent, final int style,
 			String lib_location) {
 		super(parent, style);
 		prepare();

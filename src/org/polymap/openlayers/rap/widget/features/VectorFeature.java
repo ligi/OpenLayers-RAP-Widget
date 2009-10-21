@@ -22,6 +22,7 @@
 
 package org.polymap.openlayers.rap.widget.features;
 
+import org.polymap.openlayers.rap.widget.base_types.Bounds;
 import org.polymap.openlayers.rap.widget.base_types.Style;
 import org.polymap.openlayers.rap.widget.geometry.Geometry;
 

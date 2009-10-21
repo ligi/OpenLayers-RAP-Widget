@@ -25,7 +25,7 @@ package org.polymap.openlayers.rap.widget.base;
 import java.util.HashMap;
 
 import org.eclipse.rwt.SessionSingletonBase;
-import org.polymap.openlayers.rap.widget.OpenLayersWidget;
+import org.polymap.openlayers.rap.widget.OpenLayers;
 
 /**
  * Widget Provider holding a reference to the widget and generate client side
@@ -37,7 +37,7 @@ import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 
 public class OpenLayersWidgetProvider extends SessionSingletonBase {
 
-	private OpenLayersWidget widget;
+	private OpenLayers widget;
 
 	public HashMap<String,OpenLayersObject> obj_ref2obj;
 	
@@ -48,11 +48,11 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
 		obj_ref2obj=new HashMap<String,OpenLayersObject>();
 	}
 	
-	public OpenLayersWidget getWidget() {
+	public OpenLayers getWidget() {
 		return widget;
 	}
 
-	public void setWidget(OpenLayersWidget widget) {
+	public void setWidget(OpenLayers widget) {
 		this.widget = widget;
 		// create the initial object space ( hash )
 		widget.addCommand("eval",
