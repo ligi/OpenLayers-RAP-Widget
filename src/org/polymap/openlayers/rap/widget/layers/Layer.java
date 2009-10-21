@@ -56,4 +56,7 @@ public class Layer extends OpenLayersObject {
 		addObjModCode("obj.display(" + flag + ");");
 	}
 
+	public void setOpacity(double newOpacity) {
+		addObjModCode("obj.setOpacity(" + newOpacity + ")");
+	}
 }
