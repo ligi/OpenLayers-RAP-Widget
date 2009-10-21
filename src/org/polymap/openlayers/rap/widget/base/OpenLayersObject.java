@@ -36,25 +36,50 @@ public class OpenLayersObject {
 	private OpenLayers widget = null;
 	private String obj_ref = null;
 	private String obj_mod_code = "";
+	public OpenLayersEvents events;
+
+	public OpenLayersObject() {
+		events = new OpenLayersEvents(this);
+	}
 
 	public void addObjModCode(String code) {
 		obj_mod_code += code;
 		changes2widget();
 	}
 
+	public void addObjModCode(String function, OpenLayersObject obj) {
+		addObjModCode(getJSObjRef() + "." + function + "(" + obj.getJSObjRef()
+				+ ");");
+	}
+
+	public void addObjModCode(String function, int val) {
+		addObjModCode(getJSObjRef() + "." + function + "(" + val + ");");
+	}
+
 	public OpenLayers getWidget() {
+		if (widget == null) {
+			OpenLayersWidgetProvider wp = OpenLayersWidgetProvider
+					.getInstance();
+			this.widget = wp.getWidget();
+		}
 		return widget;
 	}
 
 	public void create(String js_create_code) {
 		OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
-		this.widget = wp.getWidget();
 		this.setObjRef(wp.generateObjectReference("o"));
-		widget.addCommand("map_eval", getJSObjRef() + " = " + js_create_code);
+		getWidget().addCommand("map_eval", getJSObjRef() + " = " + js_create_code);
+	}
+
+	boolean out_of_hash = false;
+
+	public void create_out_of_hash(String obj_ref_str) {
+		out_of_hash = true;
+		this.setObjRef(obj_ref_str);
 	}
 
 	public void changes2widget() {
-		if (widget != null) {
+		if (getWidget()!= null) {
 			if (obj_mod_code != "")
 				widget.addCommand("map_eval", "obj=" + getJSObjRef() + "; "
 						+ obj_mod_code);
@@ -72,31 +97,32 @@ public class OpenLayersObject {
 	}
 
 	public String getJSObjRef() {
-		return "objs['" + obj_ref + "']";
+		if (out_of_hash)
+			return obj_ref;
+		else
+			return "objs['" + obj_ref + "']";
 	}
 
 	public String getJSObj(OpenLayersObject object) {
-		if (object==null)
+		if (object == null)
 			return "null";
-		else 
+		else
 			return object.getJSObjRef();
 	}
 
 	public String getJSObj(OpenLayersObject[] oa) {
-		if (oa==null)
+		if (oa == null)
 			return "[null]";
-		else 
-		{
-			String res="[";
-			for ( OpenLayersObject obj : oa)
-			{
+		else {
+			String res = "[";
+			for (OpenLayersObject obj : oa) {
 				if (!res.equals("["))
-					res+=",";
-				res+=getJSObj(obj);
+					res += ",";
+				res += getJSObj(obj);
 			}
-			return res+"]";
+			return res + "]";
 		}
-			
+
 	}
-	
+
 }
