@@ -50,7 +50,7 @@ function loadScript(url, callback, context) {
 	document.getElementsByTagName("head")[0].appendChild(script);
 }
 
-qx.Class.define("org.polymap.rap.widget.openlayers.OpenLayers", {
+qx.Class.define("org.polymap.openlayers.rap.widget.OpenLayersWidget", {
 	extend : qx.ui.layout.CanvasLayout,
 
 	construct : function(id) {

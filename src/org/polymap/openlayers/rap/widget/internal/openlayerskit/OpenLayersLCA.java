@@ -101,7 +101,7 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 	public void renderInitialization(final Widget widget) throws IOException {
 		JSWriter writer = JSWriter.getWriterFor(widget);
 		String id = WidgetUtil.getId(widget);
-		writer.newWidget("org.polymap.rap.widget.openlayers.OpenLayers",
+		writer.newWidget("org.polymap.openlayers.rap.widget.OpenLayersWidget",
 				new Object[] { id });
 		writer.set("appearance", "composite");
 		writer.set("overflow", "hidden");
