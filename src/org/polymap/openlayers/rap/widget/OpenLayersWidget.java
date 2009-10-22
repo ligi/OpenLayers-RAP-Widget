@@ -24,6 +24,7 @@ package org.polymap.openlayers.rap.widget;
 
 import java.util.Vector;
 
+import org.eclipse.rwt.lifecycle.IWidgetLifeCycleAdapter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
@@ -31,6 +32,7 @@ import org.polymap.openlayers.rap.widget.base.OpenLayersEvents;
 import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
 import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
 import org.polymap.openlayers.rap.widget.controls.Control;
+import org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit.OpenLayersWidgetLCA;
 import org.polymap.openlayers.rap.widget.layers.Layer;
 
 /**
@@ -41,12 +43,9 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
  * 
  */
 
-public class OpenLayers extends Composite {
+public class OpenLayersWidget extends Composite {
 
 	public boolean lib_init_done=false;
-	public boolean map_init_done=false;
-	
-	
 	
 	public Vector<Object[]> cmd_stack;
 
@@ -55,12 +54,24 @@ public class OpenLayers extends Composite {
 	// default external location
 	public String js_location = "http://www.openlayers.org/api/OpenLayers.js";
 
-	public OpenLayers(final Composite parent, final int style) {
+	@Override
+	 public Object getAdapter( Class adapter ) {
+		    Object result;
+		    if( adapter == IWidgetLifeCycleAdapter.class ) {
+		      result = new OpenLayersWidgetLCA();
+		    } else {
+		      result = super.getAdapter( adapter );
+		    }
+		    return result;
+		  }
+
+	
+	public OpenLayersWidget(final Composite parent, final int style) {
 		super(parent, style);
 		prepare();
 	}
 
-	public OpenLayers(final Composite parent, final int style,
+	public OpenLayersWidget(final Composite parent, final int style,
 			String lib_location) {
 		super(parent, style);
 		prepare();

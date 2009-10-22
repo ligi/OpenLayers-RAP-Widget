@@ -22,8 +22,6 @@
 
 package org.polymap.openlayers.rap.widget.controls;
 
-import org.polymap.openlayers.rap.widget.layers.Layer;
-
 /**
  * 
  * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >

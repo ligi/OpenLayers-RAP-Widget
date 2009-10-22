@@ -21,7 +21,7 @@
  */
 package org.polymap.openlayers.rap.widget.base;
 
-import org.polymap.openlayers.rap.widget.OpenLayers;
+import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 
 /**
  * Client Side OpenLayers Object Base Class holding a reference to the widget
@@ -33,7 +33,7 @@ import org.polymap.openlayers.rap.widget.OpenLayers;
 
 public class OpenLayersObject {
 
-	private OpenLayers widget = null;
+	private OpenLayersWidget widget = null;
 	private String obj_ref = null;
 	private String obj_mod_code = "";
 	public OpenLayersEvents events;
@@ -64,7 +64,7 @@ public class OpenLayersObject {
 		addObjModCode(getJSObjRef() + "." + function + "(" + val + ");");
 	}
 
-	public OpenLayers getWidget() {
+	public OpenLayersWidget getWidget() {
 		if (widget == null) {
 			OpenLayersWidgetProvider wp = OpenLayersWidgetProvider
 					.getInstance();

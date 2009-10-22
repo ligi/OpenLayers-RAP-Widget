@@ -20,13 +20,13 @@
  *   
  */
 
-package org.polymap.openlayers.rap.widget.internal.openlayerskit;
+package org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.polymap.openlayers.rap.widget.OpenLayers;
+import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
 import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
 import org.eclipse.rwt.lifecycle.AbstractWidgetLCA;
@@ -45,7 +45,7 @@ import org.eclipse.swt.widgets.Widget;
  * 
  */
 
-public class OpenLayersLCA extends AbstractWidgetLCA {
+public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 
 	// Boolean init_done = false;
 
@@ -60,7 +60,7 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 	 * Read the parameters transfered from the client
 	 */
 	public void readData(final Widget widget) {
-		OpenLayers map = (OpenLayers) widget;
+		OpenLayersWidget map = (OpenLayersWidget) widget;
 		if (!map.lib_init_done) {
 			String init_done_s = WidgetLCAUtil.readPropertyValue(map,
 					"load_lib_done");
@@ -105,20 +105,17 @@ public class OpenLayersLCA extends AbstractWidgetLCA {
 				new Object[] { id });
 		writer.set("appearance", "composite");
 		writer.set("overflow", "hidden");
-		ControlLCAUtil.writeStyleFlags((OpenLayers) widget);
-		writer.call((OpenLayers) widget, "load_lib",
-				new Object[] { ((OpenLayers) widget).getJSLocation() });
+		ControlLCAUtil.writeStyleFlags((OpenLayersWidget) widget);
+		writer.call((OpenLayersWidget) widget, "load_lib",
+				new Object[] { ((OpenLayersWidget) widget).getJSLocation() });
 	}
 
 	public void renderChanges(final Widget widget) throws IOException {
-		OpenLayers open_layers = (OpenLayers) widget;
+		OpenLayersWidget open_layers = (OpenLayersWidget) widget;
 		ControlLCAUtil.writeChanges(open_layers);
 		JSWriter writer = JSWriter.getWriterFor(widget);
 
-		if (open_layers.lib_init_done) {
-			open_layers.map_init_done = true;
-		}
-		while (open_layers.hasCommand() && open_layers.map_init_done) {
+		while (open_layers.hasCommand() && open_layers.lib_init_done) {
 			Object[] cmd_pack = open_layers.getCommand();
 			String cmd = (String) cmd_pack[0];
 			Object[] args = (Object[]) cmd_pack[1];
