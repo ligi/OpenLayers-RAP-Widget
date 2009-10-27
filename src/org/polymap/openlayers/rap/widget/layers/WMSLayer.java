@@ -35,6 +35,12 @@ public class WMSLayer extends Layer {
 		super.create("new OpenLayers.Layer.WMS( '" + name + "','" + wms_url
 				+ "',{layers:'" + wms_layers + "'});");
 	}
+
+    public WMSLayer(String name, String wms_url, String wms_layers, int buffer) {
+		super.setName(name);
+		super.create("new OpenLayers.Layer.WMS( '" + name + "','" + wms_url
+				+ "',{layers:'" + wms_layers + "'},{'buffer':"+buffer+"});");
+	}
 	
 	public void setFormat(String new_format) {
 		super.addObjModCode("obj.params.FORMAT='" + new_format + "'");
