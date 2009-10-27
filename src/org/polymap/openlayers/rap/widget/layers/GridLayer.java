@@ -22,27 +22,17 @@
 
 package org.polymap.openlayers.rap.widget.layers;
 
+import org.polymap.openlayers.rap.widget.marker.Marker;
+
 /**
  * 
  * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
  * 
  */
 
-public class WMSLayer extends GridLayer {
+public class GridLayer extends Layer {
 
-	public WMSLayer(String name, String wms_url, String wms_layers) {
-		super.setName(name);
-		super.create("new OpenLayers.Layer.WMS( '" + name + "','" + wms_url
-				+ "',{layers:'" + wms_layers + "'});");
-	}
-
-    public WMSLayer(String name, String wms_url, String wms_layers, int buffer) {
-		super.setName(name);
-		super.create("new OpenLayers.Layer.WMS( '" + name + "','" + wms_url
-				+ "',{layers:'" + wms_layers + "'},{'buffer':"+buffer+"});");
-	}
-	
-	public void setFormat(String new_format) {
-		super.addObjModCode("obj.params.FORMAT='" + new_format + "'");
+	public void setSingleTile(boolean singletile) {
+		super.addObjModCode("obj.singleTile="+singletile+";");
 	}
 }
