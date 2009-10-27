@@ -22,7 +22,7 @@
 
 package org.polymap.openlayers.rap.widget.layers;
 
-import org.polymap.openlayers.rap.widget.marker.Marker;
+import org.polymap.openlayers.rap.widget.base_types.Size;
 
 /**
  * 
@@ -30,9 +30,15 @@ import org.polymap.openlayers.rap.widget.marker.Marker;
  * 
  */
 
-public class GridLayer extends Layer {
+public class GridLayer
+        extends Layer {
 
-	public void setSingleTile(boolean singletile) {
-		super.addObjModCode("obj.singleTile="+singletile+";");
-	}
+    public void setSingleTile( boolean singletile ) {
+        super.addObjModCode( "obj.singleTile=" + singletile + ";" );
+    }
+
+
+    public void setTileSize( Size size ) {
+        super.addObjModCode( "obj.tileSize=" + size.getJSObjRef() + ";" );
+    }
 }
