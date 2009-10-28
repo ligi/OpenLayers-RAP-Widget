@@ -33,6 +33,17 @@ import org.polymap.openlayers.rap.widget.base_types.Size;
 public class GridLayer
         extends Layer {
 
+    /**
+     * Setting singletile to true moves the layer into single-tile mode,
+     * meaning that one tile will be loaded. The tile's size will be determined
+     * by the 'ratio'
+     * property. When the tile is dragged such that it does not cover the
+     * entire viewport, it is reloaded.
+     * 
+     * @param Boolean singletile
+     * 
+     */
+
     public void setSingleTile( boolean singletile ) {
         setObjAttr( "singleTile", singletile );
     }
@@ -41,4 +52,32 @@ public class GridLayer
     public void setTileSize( Size size ) {
         setObjAttr( "tileSize", size );
     }
+
+
+    /**
+     * Used only when in single-tile mode, this specifies the
+     * ratio of the size of the single tile to the size of the map.
+     * 
+     * @param Double ratio - the ratio used when in single tile mode ( default
+     *        1.5 )
+     */
+
+    public void setRatio( Double ratio ) {
+        setObjAttr( "ratio", ratio );
+    }
+
+
+    /**
+     * Used only when in gridded mode, this specifies the number of
+     * extra rows and colums of tiles on each side which will
+     * surround the minimum grid tiles to cover the map.
+     * 
+     * @param int buffer - the buffer size ( default 2 )
+     * 
+     */
+
+    public void setBuffer( int buffer ) {
+        setObjAttr( "buffer", buffer );
+    }
+
 }
