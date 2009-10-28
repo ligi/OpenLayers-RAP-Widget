@@ -34,11 +34,11 @@ public class GridLayer
         extends Layer {
 
     public void setSingleTile( boolean singletile ) {
-        super.addObjModCode( "obj.singleTile=" + singletile + ";" );
+        setObjAttr( "singleTile", singletile );
     }
 
 
     public void setTileSize( Size size ) {
-        super.addObjModCode( "obj.tileSize=" + size.getJSObjRef() + ";" );
+        setObjAttr( "tileSize", size );
     }
 }
