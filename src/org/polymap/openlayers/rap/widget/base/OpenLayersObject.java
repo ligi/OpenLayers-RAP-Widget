@@ -84,7 +84,7 @@ public class OpenLayersObject {
 
 
     public void setObjAttr( String attr, boolean val ) {
-        addObjModCode( getJSObjRef() + "." + attr + "=" + val + ");" );
+        addObjModCode( getJSObjRef() + "." + attr + "=" + val + ";" );
     }
 
 

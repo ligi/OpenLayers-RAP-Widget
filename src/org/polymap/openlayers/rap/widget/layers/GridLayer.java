@@ -51,6 +51,7 @@ public class GridLayer
 
     public void setTileSize( Size size ) {
         setObjAttr( "tileSize", size );
+        
     }
 
 
