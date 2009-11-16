@@ -66,4 +66,13 @@ public class OpenLayersMap extends OpenLayersObject {
 		super.addObjModCode("setBaseLayer",layer);
 	}
 
+	
+	public void setProjection(Projection projection){
+		super.setObjAttr("projection", projection);
+	}
+	
+
+	public void setDisplayProjection(Projection projection){
+		super.setObjAttr("displayProjection", projection);
+	}
 }
