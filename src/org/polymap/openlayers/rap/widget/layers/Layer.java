@@ -45,18 +45,23 @@ public class Layer extends OpenLayersObject {
 	}
 
 	public void setIsBaseLayer(Boolean is_base_layer) {
-		addObjModCode("setIsBaseLayer",  is_base_layer );
+		addObjModCode("setIsBaseLayer", is_base_layer);
 	}
 
 	public void setVisibility(Boolean is_visible) {
-		addObjModCode("setVisibility" , is_visible );
+		addObjModCode("setVisibility", is_visible);
 	}
 
 	public void display(Boolean flag) {
-		addObjModCode("display" , flag );
+		addObjModCode("display", flag);
 	}
 
 	public void setOpacity(double newOpacity) {
-		addObjModCode("setOpacity", newOpacity );
+		addObjModCode("setOpacity", newOpacity);
 	}
+
+	public void redraw() {
+		addObjModCode("obj.redraw();");
+	}
+
 }
