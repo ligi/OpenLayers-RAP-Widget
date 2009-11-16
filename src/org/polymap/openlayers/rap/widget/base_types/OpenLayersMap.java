@@ -58,6 +58,15 @@ public class OpenLayersMap extends OpenLayersObject {
 		super.addObjModCode("zoomTo",zoom);
 	}
 
+
+	public void zoomToExtent(Bounds extent , boolean closest) {
+		super.addObjModCode("zoomToExtent",extent,closest);
+	}
+	
+	public void zoomToScale(double scale , boolean closest) {
+		super.addObjModCode("zoomToScale",scale,closest);
+	}
+	
 	public void setCenter(double center_lon, double center_lat) {
 		super.addObjModCode("setCenter", new LonLat(center_lon,center_lat));
 	}

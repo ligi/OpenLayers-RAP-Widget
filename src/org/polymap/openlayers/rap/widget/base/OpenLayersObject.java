@@ -57,10 +57,20 @@ public class OpenLayersObject {
         addObjModCode( getJSObjRef() + "." + function + "(" + obj.getJSObjRef() + ");" );
     }
 
+    public void addObjModCode( String function, OpenLayersObject obj , boolean bool) {
+        addObjModCode( getJSObjRef() + "." + function + "(" + obj.getJSObjRef() + "," + bool + ");" );
+    }
 
+
+    public void addObjModCode( String function, double dbl , boolean bool) {
+        addObjModCode( getJSObjRef() + "." + function + "(" + dbl + "," + bool + ");" );
+    }
+
+    
     public void addObjModCode( String function, int val ) {
         addObjModCode( getJSObjRef() + "." + function + "(" + val + ");" );
     }
+
 
 
     public void addObjModCode( String function, boolean val ) {
