@@ -22,6 +22,7 @@
 
 package org.polymap.openlayers.rap.widget.layers;
 
+import org.polymap.openlayers.rap.widget.base_types.Protocol;
 import org.polymap.openlayers.rap.widget.features.VectorFeature;
 
 /**
@@ -36,7 +37,17 @@ public class VectorLayer extends Layer {
 		super.setName(name);
 		super.create("new OpenLayers.Layer.Vector( '" + name + "' );");
 	}
-
+	
+	public VectorLayer(String name,Protocol protocol) {
+		super.setName(name);
+		super.create("new OpenLayers.Layer.Vector( '" + name + "',{" +
+				"" +
+				"strategies: [new OpenLayers.Strategy.Fixed()]," +
+				"protocol:" + protocol.getJSObjRef() +
+				"} );");
+	}
+	
+	
 	public void addFeatures(VectorFeature vf) {
 		super.addObjModCode("addFeatures" , vf);
 	}
