@@ -37,4 +37,8 @@ public class SelectFeatureControl extends Control {
 				+ layer.getJSObjRef() + " );");
 	}
 
+	public SelectFeatureControl(Layer[] layers) {
+		super.create("new OpenLayers.Control.SelectFeature("
+				+ getJSObj(layers) + " );");
+	}
 }
