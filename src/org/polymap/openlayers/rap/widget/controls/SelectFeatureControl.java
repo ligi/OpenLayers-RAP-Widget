@@ -34,11 +34,11 @@ public class SelectFeatureControl extends Control {
 
 	public SelectFeatureControl(Layer layer) {
 		super.create("new OpenLayers.Control.SelectFeature("
-				+ layer.getJSObjRef() + " );");
+				+ layer.getJSObjRef() + ");");
 	}
 
 	public SelectFeatureControl(Layer[] layers) {
 		super.create("new OpenLayers.Control.SelectFeature("
-				+ getJSObj(layers) + " );");
+				+ getJSObj(layers) + ");");
 	}
 }
