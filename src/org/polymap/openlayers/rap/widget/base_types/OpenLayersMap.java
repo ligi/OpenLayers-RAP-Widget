@@ -42,6 +42,11 @@ public class OpenLayersMap extends OpenLayersObject {
 		super.addObjModCode("addLayer",layer2add);
 	}
 
+	public void removeLayer(Layer layer2rm) {
+		super.addObjModCode("removeLayer",layer2rm);
+	}
+	
+	
 	public void addControl(Control control2add) {
 		super.addObjModCode("addControl",control2add);
 	}
@@ -74,7 +79,6 @@ public class OpenLayersMap extends OpenLayersObject {
 	public void setBaseLayer(Layer layer) {
 		super.addObjModCode("setBaseLayer",layer);
 	}
-
 	
 	public void setProjection(Projection projection){
 		super.setObjAttr("projection", projection);
