@@ -45,8 +45,7 @@ public class OpenLayersMap extends OpenLayersObject {
 	public void removeLayer(Layer layer2rm) {
 		super.addObjModCode("removeLayer",layer2rm);
 	}
-	
-	
+		
 	public void addControl(Control control2add) {
 		super.addObjModCode("addControl",control2add);
 	}
