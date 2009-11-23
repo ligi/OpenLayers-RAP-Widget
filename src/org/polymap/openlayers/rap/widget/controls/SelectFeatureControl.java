@@ -109,7 +109,7 @@ public class SelectFeatureControl extends Control {
 	 */
 
 	public void setBox(boolean box) {
-		assert started_with_hover_enabled : "if you want to toggle box selection you have to start with box=true in the constructor";
+		assert started_with_box_enabled : "if you want to toggle box selection you have to start with box=true in the constructor";
 		super.setObjAttr("box", box);
 	}
 
