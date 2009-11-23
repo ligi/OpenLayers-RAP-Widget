@@ -36,6 +36,11 @@ public class SelectFeatureControl extends Control {
 		super.create("new OpenLayers.Control.SelectFeature("
 				+ layer.getJSObjRef() + ");");
 	}
+	
+	public SelectFeatureControl(Layer layer,boolean hover) {
+		super.create("new OpenLayers.Control.SelectFeature("
+				+ layer.getJSObjRef() + ", {    multiple: false, hover: " + hover + " } );");
+	}
 
 	public SelectFeatureControl(Layer[] layers) {
 		super.create("new OpenLayers.Control.SelectFeature("
