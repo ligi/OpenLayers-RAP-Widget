@@ -59,6 +59,9 @@ public class SelectFeatureControl extends Control {
 		super.setObjAttr("hover", hover);
 	}
 	
+	public void setRenderIntent(String intent) {
+		super.setObjAttr("renderIntent", intent);
+	}
 	/*
 	 * {Boolean} If true do not actually select features (i.e. place them in the layers selected features array), just highlight them.  This property has no effect if hover is false.  Defaults to false.
 	 */

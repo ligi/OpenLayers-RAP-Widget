@@ -92,6 +92,9 @@ public class OpenLayersObject {
         addObjModCode( getJSObjRef() + "." + attr + "=" + val + ";" );
     }
 
+    public void setObjAttr( String attr, String val ) {
+        addObjModCode( getJSObjRef() + "." + attr + "='" + val + "';" );
+    }
 
     public void setObjAttr( String attr, boolean val ) {
         addObjModCode( getJSObjRef() + "." + attr + "=" + val + ";" );
