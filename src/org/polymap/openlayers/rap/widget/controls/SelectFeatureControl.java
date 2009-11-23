@@ -32,12 +32,15 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 
 public class SelectFeatureControl extends Control {
 
+	public boolean started_with_hover_enabled=false;
+	
 	public SelectFeatureControl(Layer layer) {
 		super.create("new OpenLayers.Control.SelectFeature("
 				+ layer.getJSObjRef() + ");");
 	}
 	
 	public SelectFeatureControl(Layer layer,boolean hover) {
+		started_with_hover_enabled=hover;
 		super.create("new OpenLayers.Control.SelectFeature("
 				+ layer.getJSObjRef() + ", {    multiple: false, hover: " + hover + " } );");
 	}
@@ -52,6 +55,7 @@ public class SelectFeatureControl extends Control {
 	 */
 	
 	public void setHover(boolean hover) {
+		assert started_with_hover_enabled : "if you want to toggle hoover you have to start with hover=true in the constructor";
 		super.setObjAttr("hover", hover);
 	}
 	
