@@ -41,4 +41,19 @@ public class SelectFeatureControl extends Control {
 		super.create("new OpenLayers.Control.SelectFeature("
 				+ getJSObj(layers) + ");");
 	}
+	
+	/*
+	 * 	{Boolean} Select on mouse over and deselect on mouse out. 
+	 */
+	
+	public void setHover(boolean hover) {
+		super.setObjAttr("hover", hover);
+	}
+	
+	/*
+	 * {Boolean} If true do not actually select features (i.e. place them in the layers selected features array), just highlight them.  This property has no effect if hover is false.  Defaults to false.
+	 */
+	public void setHighlightOnly(Boolean highlight_only) {
+		super.setObjAttr("highlightOnly",highlight_only);
+	}
 }
