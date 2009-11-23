@@ -47,6 +47,7 @@ public class OpenLayersMap extends OpenLayersObject {
 	}
 		
 	public void addControl(Control control2add) {
+		control2add.has_map=true;
 		super.addObjModCode("addControl",control2add);
 	}
 

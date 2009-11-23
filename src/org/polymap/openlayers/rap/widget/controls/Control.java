@@ -33,6 +33,8 @@ import org.polymap.openlayers.rap.widget.base_types.ControlPosition;
 
 public class Control extends OpenLayersObject {
 
+	public boolean has_map=false;
+	
 	public Control() {
 	}
 
@@ -41,6 +43,7 @@ public class Control extends OpenLayersObject {
 	}
 
 	public void activate() {
+		assert has_map;
 		super.addObjModCode("obj.activate();");
 	}
 
