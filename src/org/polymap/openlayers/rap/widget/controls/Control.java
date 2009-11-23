@@ -42,6 +42,9 @@ public class Control extends OpenLayersObject {
 		super.create(construct_code);
 	}
 
+	/**
+	 * Activates this non-visual control. The control has to be added to a map previously.
+	 */
 	public void activate() {
 		assert has_map : "control needs a map before activating it";
 		super.addObjModCode("obj.activate();");

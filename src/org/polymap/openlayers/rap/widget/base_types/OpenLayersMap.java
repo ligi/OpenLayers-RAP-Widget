@@ -34,6 +34,15 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 
 public class OpenLayersMap extends OpenLayersObject {
 
+    /** Event: triggered after mouseover the map. */
+    public static String        EVENT_MOUSE_OVER = "mouseover";
+    
+    /** Event: triggered after mouseout the map. */
+    public static String        EVENT_MOUSE_OUT = "mouseout";
+    
+    /** Event: triggered after mousemove the map. */
+    public static String        EVENT_MOUSE_MOVE = "mousemove";
+    
 	public OpenLayersMap() {
 		super.create ("new OpenLayers.Map( { div : document.getElementById(this._id),	controls : []	});");
 	}

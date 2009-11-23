@@ -25,17 +25,29 @@ package org.polymap.openlayers.rap.widget.controls;
 import org.polymap.openlayers.rap.widget.layers.VectorLayer;
 
 /**
+ * Acts as a snapping agent while editing vector features.
  * 
  * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
- * 
  */
-
 public class SnappingControl extends Control {
 
 	public SnappingControl(VectorLayer layer, VectorLayer target, Boolean greedy) {
 		_create(layer, target.getJSObjRef(), greedy);
 	}
 
+
+    /**
+     * @param layer {OpenLayers.Layer.Vector} The editable layer. Features from
+     *        this layer that are digitized or modified may have vertices
+     *        snapped to features from any of the target layers.
+     * @param targets {Array(Object | OpenLayers.Layer.Vector)} A list of
+     *        objects for configuring target layers. See valid properties of the
+     *        target objects. If the items in the targets list are vector layers
+     *        (instead of configuration objects), the defaults from the
+     *        <defaults> property will apply. The editable layer itself may be a
+     *        target
+     * @param greedy
+     */
 	public SnappingControl(VectorLayer layer, VectorLayer[] targets,
 			Boolean greedy) {
 		String targets_code = "";

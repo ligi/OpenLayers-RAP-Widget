@@ -32,7 +32,16 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 
 public class SelectFeatureControl extends Control {
 
-	public boolean started_with_hover_enabled=false;
+    /** Triggered before a feature is highlighted. */
+    public static String        EVENT_BEFORE_HIGHLIGHTED = "beforefeaturehighlighted";
+    
+    /** Triggered when a feature is highlighted. */
+    public static String        EVENT_HIGHLIGHTED = "featurehighlighted";
+
+    /** Triggered when a feature is unhighlighted. */
+    public static String        EVENT_UNHIGHLIGHTED = "featureunhighlighted";
+    
+    public boolean started_with_hover_enabled = false;
 	
 	public SelectFeatureControl(Layer layer) {
 		super.create("new OpenLayers.Control.SelectFeature("
