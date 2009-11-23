@@ -33,13 +33,22 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 public class SelectFeatureControl extends Control {
 
     /** Triggered before a feature is highlighted. */
-    public static String        EVENT_BEFORE_HIGHLIGHTED = "beforefeaturehighlighted";
+    public final static String        EVENT_BEFORE_HIGHLIGHTED = "beforefeaturehighlighted";
     
     /** Triggered when a feature is highlighted. */
-    public static String        EVENT_HIGHLIGHTED = "featurehighlighted";
+    public final static String        EVENT_HIGHLIGHTED = "featurehighlighted";
 
     /** Triggered when a feature is unhighlighted. */
-    public static String        EVENT_UNHIGHLIGHTED = "featureunhighlighted";
+    public final static String        EVENT_UNHIGHLIGHTED = "featureunhighlighted";
+    
+    
+    public final static int 		  FLAG_BOX=1;
+    
+    public final static int 		  FLAG_HOVER=2;
+    
+    public final static int 		  FLAG_MULTIPLE=4;
+    
+    
     
     public boolean started_with_hover_enabled = false;
     public boolean started_with_box_enabled = false;
@@ -50,6 +59,9 @@ public class SelectFeatureControl extends Control {
 				+ layer.getJSObjRef() + ");");
 	}
 
+	/*
+	 * @deprecated	use SelectFeatureControl(Layer layer, int flags) instead
+	 */	
 	public SelectFeatureControl(Layer layer, boolean hover) {
 		started_with_hover_enabled = hover;
 		super.create("new OpenLayers.Control.SelectFeature("
@@ -57,12 +69,25 @@ public class SelectFeatureControl extends Control {
 				+ hover + " } );");
 	}
 
+	/*
+	 * @deprecated	use SelectFeatureControl(Layer layer, int flags) instead
+	 */
+	
 	public SelectFeatureControl(Layer layer, boolean hover, boolean box) {
 		started_with_hover_enabled = hover;
 		started_with_box_enabled = box;
 		super.create("new OpenLayers.Control.SelectFeature("
 				+ layer.getJSObjRef() + ", {    multiple: false, hover: "
 				+ hover + ", box: " + box + " } );");
+	}
+
+	public SelectFeatureControl(Layer layer, int flags) {
+		started_with_hover_enabled = ((flags&FLAG_HOVER)!=0);
+		started_with_box_enabled = ((flags&FLAG_BOX)!=0);
+		boolean multiple =  ((flags&FLAG_MULTIPLE)!=0);
+		super.create("new OpenLayers.Control.SelectFeature("
+				+ layer.getJSObjRef() + ", {    multiple: " + multiple + ", hover: "
+				+ started_with_hover_enabled + ", box: " + started_with_box_enabled + " } );");
 	}
 
 	public SelectFeatureControl(Layer[] layers) {
