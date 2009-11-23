@@ -42,8 +42,6 @@ public class SelectFeatureControl extends Control {
     public static String        EVENT_UNHIGHLIGHTED = "featureunhighlighted";
     
     public boolean started_with_hover_enabled = false;
-	
-    public boolean started_with_hover_enabled = false;
     public boolean started_with_box_enabled = false;
 
 
