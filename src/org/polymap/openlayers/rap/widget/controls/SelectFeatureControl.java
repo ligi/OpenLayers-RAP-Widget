@@ -62,7 +62,7 @@ public class SelectFeatureControl extends Control {
 	/*
 	 * @deprecated	use SelectFeatureControl(Layer layer, int flags) instead
 	 */	
-	public SelectFeatureControl(Layer layer, boolean hover) {
+	@Deprecated public SelectFeatureControl(Layer layer, boolean hover) {
 		started_with_hover_enabled = hover;
 		super.create("new OpenLayers.Control.SelectFeature("
 				+ layer.getJSObjRef() + ", {    multiple: false, hover: "
@@ -73,7 +73,7 @@ public class SelectFeatureControl extends Control {
 	 * @deprecated	use SelectFeatureControl(Layer layer, int flags) instead
 	 */
 	
-	public SelectFeatureControl(Layer layer, boolean hover, boolean box) {
+	@Deprecated public SelectFeatureControl(Layer layer, boolean hover, boolean box) {
 		started_with_hover_enabled = hover;
 		started_with_box_enabled = box;
 		super.create("new OpenLayers.Control.SelectFeature("
