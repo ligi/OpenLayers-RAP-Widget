@@ -43,7 +43,7 @@ public class Control extends OpenLayersObject {
 	}
 
 	public void activate() {
-		assert has_map;
+		assert has_map : "control needs a map before activating it";
 		super.addObjModCode("obj.activate();");
 	}
 
