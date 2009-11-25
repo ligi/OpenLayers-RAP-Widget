@@ -31,7 +31,7 @@ import org.polymap.openlayers.rap.widget.base_types.Size;
  */
 
 public class GridLayer
-        extends Layer {
+        extends HTTPRequestLayer {
 
     /**
      * Setting singletile to true moves the layer into single-tile mode,
