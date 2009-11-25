@@ -57,6 +57,7 @@ qx.Class.define("org.polymap.openlayers.rap.widget.OpenLayersWidget", {
 		this.base(arguments);
 		this.setHtmlAttribute("id", id);
 		this._id = id;
+		this.set(  {  backgroundColor : "white"  });
 	},
 
 	properties : {},
