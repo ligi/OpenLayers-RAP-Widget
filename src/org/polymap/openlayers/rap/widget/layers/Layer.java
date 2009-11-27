@@ -64,4 +64,7 @@ public class Layer extends OpenLayersObject {
 		addObjModCode("obj.redraw();");
 	}
 
+	public void setZIndex(int index) {
+	    addObjModCode("setZIndex", index);  
+	}
 }
