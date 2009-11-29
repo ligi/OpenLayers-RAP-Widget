@@ -94,7 +94,24 @@ public class OpenLayersMap extends OpenLayersObject {
 	}
 	
 
-	public void setDisplayProjection(Projection projection){
-		super.setObjAttr("displayProjection", projection);
-	}
+    public void setDisplayProjection(Projection projection){
+        super.setObjAttr("displayProjection", projection);
+    }
+
+    public void setMaxExtent(Bounds extent){
+        super.setObjAttr("maxExtent", extent);
+    }
+
+
+    /**
+     * This property is what allows OpenLayers to know what scale things are
+     * being rendered at, which is important for scale-based methods of zooming
+     * and the Scale display control.
+     * 
+     * @param units The map units. Defaults to "degrees". Possible values are
+     *        "degrees" (or "dd"), "m", "ft", "km", "mi", "inches".
+     */
+    public void setUnits(String units){
+        super.setObjAttr("units", units);
+    }
 }
