@@ -32,21 +32,21 @@ import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
 
 public class StyleMap extends OpenLayersObject {
 
-    /*
+    /**
      * all intents with default style
      */
     public StyleMap() {
         super.create("new OpenLayers.StyleMap( );");
     }
     
-    /*
+    /**
      * all intents get the style specified in style
      */
 	public StyleMap(Style style) {
 		super.create("new OpenLayers.StyleMap( " +  style.getJSObjRef()+ ");");
 	}
 	
-	/*
+	/**
 	 * set the style for a sepcific intent ( e.g.  default / select / temporary / delete
 	 */
 	public void setIntentStyle(String intent, Style style) {
