@@ -50,7 +50,7 @@ public class StyleMap extends OpenLayersObject {
 	 * set the style for a sepcific intent ( e.g.  default / select / temporary / delete
 	 */
 	public void setIntentStyle(String intent, Style style) {
-	    super.addObjModCode("obj.styles['"+intent+"']="+style.getJSObjRef() +");");
+	    super.addObjModCode("obj.styles['"+intent+"']="+style.getJSObjRef() +";");
 	}
 	
 
