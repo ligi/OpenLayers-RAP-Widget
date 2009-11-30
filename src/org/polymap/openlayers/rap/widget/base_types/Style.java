@@ -32,27 +32,27 @@ import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
 
 public class Style extends OpenLayersObject {
 
-	public Style() {
-		super.create("OpenLayers.Util.extend({}, "
-				+ "OpenLayers.Feature.Vector.style[ 'default'])");
-	}
+    public Style() {
+        super.create("new OpenLayers.Style(OpenLayers.Util.extend({}, "
+                + "OpenLayers.Feature.Vector.style[ 'default']));");
+    }
 
-	/**
-	 * you can find a list of attributes <a href="http://dev.openlayers.org/releases/OpenLayers-2.8/doc/devdocs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.OpenLayers.Feature.Vector.style">here</a>
-	 * @param attribute_name
-	 * @param attribute_value
-	 */
-	public void setAttribute(String attribute_name, String attribute_value) {
-		super.addObjModCode("obj."+attribute_name+"='" + attribute_value + "';");
-	}
-	
-	/**
-	 * you can find a list of attributes <a href="http://dev.openlayers.org/releases/OpenLayers-2.8/doc/devdocs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.OpenLayers.Feature.Vector.style">here</a>
-	 * @param attribute_name
-	 * @param attribute_value
-	 */
-	public void setAttribute(String attribute_name, int attribute_value) {
-		super.addObjModCode("obj."+attribute_name+"=" + attribute_value + ";");
-	}
+    /**
+     * you can find a list of attributes <a href="http://dev.openlayers.org/releases/OpenLayers-2.8/doc/devdocs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.OpenLayers.Feature.Vector.style">here</a>
+     * @param attribute_name
+     * @param attribute_value
+     */
+    public void setAttribute(String attribute_name, String attribute_value) {
+        super.addObjModCode("obj.defaultStyle."+attribute_name+"='" + attribute_value + "';");
+    }
+    
+    /**
+     * you can find a list of attributes <a href="http://dev.openlayers.org/releases/OpenLayers-2.8/doc/devdocs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.OpenLayers.Feature.Vector.style">here</a>
+     * @param attribute_name
+     * @param attribute_value
+     */
+    public void setAttribute(String attribute_name, int attribute_value) {
+        super.addObjModCode("obj.defaultStyle."+attribute_name+"=" + attribute_value + ";");
+    }
 
 }
