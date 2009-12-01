@@ -24,6 +24,7 @@ package org.polymap.openlayers.rap.widget.controls;
 
 import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
 import org.polymap.openlayers.rap.widget.base_types.ControlPosition;
+import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
 
 /**
  * 
@@ -58,4 +59,7 @@ public class Control extends OpenLayersObject {
 		return new ControlPosition(this);
 	}
 
+	public void setMap(OpenLayersMap map) {
+	    super.addObjModCode("setMap",map);
+	}
 }

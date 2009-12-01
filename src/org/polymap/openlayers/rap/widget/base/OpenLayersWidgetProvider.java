@@ -23,6 +23,7 @@
 package org.polymap.openlayers.rap.widget.base;
 
 import java.util.HashMap;
+import java.util.Vector;
 
 import org.eclipse.rwt.SessionSingletonBase;
 import org.polymap.openlayers.rap.widget.OpenLayersWidget;
@@ -37,15 +38,20 @@ import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 
 public class OpenLayersWidgetProvider extends SessionSingletonBase {
 
+    
+    public boolean lib_init_done=false;
+    
 	private OpenLayersWidget widget;
 
 	public HashMap<String,OpenLayersObject> obj_ref2obj;
 	
 	private int obj_ref = 0;
 
+	public Vector<Object[]> cmd_stack;
 
 	private OpenLayersWidgetProvider() {
 		obj_ref2obj=new HashMap<String,OpenLayersObject>();
+		cmd_stack = new Vector<Object[]>();
 	}
 	
 	public OpenLayersWidget getWidget() {
@@ -53,7 +59,8 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
 	}
 
 	public void setWidget(OpenLayersWidget widget) {
-		this.widget = widget;
+	
+	    this.widget = widget;
 		// create the initial object space ( hash )
 		widget.addCommand("eval",
 				"if ( typeof objs == 'undefined' ) objs={};");
@@ -69,4 +76,11 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
 		obj_ref2obj.put(prefix + obj_ref, src_obj);
 		return prefix + obj_ref;
 	}
+
+	/*
+	public Object[] getCommand() {
+        Object[] res = cmd_stack.elementAt(0 );
+        OpenLayersWidgetProvider.getInstance().cmd_stack.removeElementAt(0);
+        return res;
+   }*/
 }

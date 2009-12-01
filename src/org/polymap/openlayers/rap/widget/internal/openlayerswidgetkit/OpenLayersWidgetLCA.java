@@ -65,14 +65,13 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 			String init_done_s = WidgetLCAUtil.readPropertyValue(map,
 					"load_lib_done");
 			if (init_done_s != null)
-				map.lib_init_done = init_done_s.equals("true");
+			    map.lib_init_done = init_done_s.equals("true");
 		}
 
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
 
 		if (event != null) {
-			OpenLayersWidgetProvider wp = OpenLayersWidgetProvider
-					.getInstance();
+			OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
 
 			OpenLayersObject src = wp.obj_ref2obj.get(WidgetLCAUtil
 					.readPropertyValue(map, "event_src_obj"));
@@ -106,7 +105,7 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 		writer.set("appearance", "composite");
 		writer.set("overflow", "hidden");
 		ControlLCAUtil.writeStyleFlags((OpenLayersWidget) widget);
-		writer.call((OpenLayersWidget) widget, "load_lib",
+		 writer.call((OpenLayersWidget) widget, "load_lib",
 				new Object[] { ((OpenLayersWidget) widget).getJSLocation() });
 	}
 

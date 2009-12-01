@@ -28,12 +28,9 @@ import org.eclipse.rwt.lifecycle.IWidgetLifeCycleAdapter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
-import org.polymap.openlayers.rap.widget.base.OpenLayersEvents;
 import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
 import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
-import org.polymap.openlayers.rap.widget.controls.Control;
 import org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit.OpenLayersWidgetLCA;
-import org.polymap.openlayers.rap.widget.layers.Layer;
 
 /**
  * 
@@ -47,7 +44,7 @@ public class OpenLayersWidget extends Composite {
 
 	public boolean lib_init_done=false;
 	
-	public Vector<Object[]> cmd_stack;
+	//public Vector<Object[]> cmd_stack;
 
 	public OpenLayersMap map;
 
@@ -83,7 +80,7 @@ public class OpenLayersWidget extends Composite {
 	}
 
 	public void prepare() {
-		cmd_stack = new Vector<Object[]>();
+
 		OpenLayersWidgetProvider.getInstance().setWidget(this);
 		map = new OpenLayersMap();
 	}
@@ -98,7 +95,7 @@ public class OpenLayersWidget extends Composite {
 
 	public void addCommand(String cmd, Object[] params) {
 		Object[] cmd_arr = { cmd, params };
-		cmd_stack.add(cmd_arr);
+		  OpenLayersWidgetProvider.getInstance().cmd_stack.add(cmd_arr);
 	}
 
 	// with a single parameter
@@ -108,12 +105,13 @@ public class OpenLayersWidget extends Composite {
 	}
 
 	public boolean hasCommand() {
-		return (!cmd_stack.isEmpty());
+		return ((! OpenLayersWidgetProvider.getInstance().cmd_stack.isEmpty()) &&(
+		        OpenLayersWidgetProvider.getInstance().getWidget()==this ))       ;
 	}
 
 	public Object[] getCommand() {
-		Object[] res = cmd_stack.elementAt(0);
-		cmd_stack.removeElementAt(0);
+		Object[] res =   OpenLayersWidgetProvider.getInstance().cmd_stack.elementAt(0);
+		OpenLayersWidgetProvider.getInstance().cmd_stack.removeElementAt(0);
 		return res;
 	}
 
