@@ -40,6 +40,14 @@ public class VectorLayer
         super.setName( name );
         super.create( "new OpenLayers.Layer.Vector( '" + name + "' );" );
     }
+    
+    
+    public VectorLayer( String name, StyleMap style_map ) {
+        super.setName( name );
+        super.create( "new OpenLayers.Layer.Vector( '" + name + "',{" + ""
+                + "strategies: [new OpenLayers.Strategy.Fixed()]" + "," + "styleMap:" + style_map.getJSObjRef() + "} );" );
+    }
+
 
 
     public VectorLayer( String name, Protocol protocol ) {
