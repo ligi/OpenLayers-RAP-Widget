@@ -98,6 +98,19 @@ public class OpenLayersMap extends OpenLayersObject {
 		super.setObjAttr("projection", projection);
 	}
 	
+	
+	public void setMaxScale(float scale){
+        super.setObjAttr("maxScale", scale);
+    }
+
+    public void setMinScale(float scale){
+        super.setObjAttr("minScale", scale);
+    }
+    
+    
+    public void setNumZoomLevels(int num) {
+        super.setObjAttr("numZoomLevels", num);
+    }
 
     public void setDisplayProjection(Projection projection){
         super.setObjAttr("displayProjection", projection);
