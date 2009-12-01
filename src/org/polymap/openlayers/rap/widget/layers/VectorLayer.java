@@ -45,7 +45,7 @@ public class VectorLayer
     public VectorLayer( String name, StyleMap style_map ) {
         super.setName( name );
         super.create( "new OpenLayers.Layer.Vector( '" + name + "',{" + ""
-                + "strategies: [new OpenLayers.Strategy.Fixed()]" + "," + "styleMap:" + style_map.getJSObjRef() + "} );" );
+                + "" + "styleMap:" + style_map.getJSObjRef() + "} );" );
     }
 
 
