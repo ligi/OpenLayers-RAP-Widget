@@ -22,6 +22,8 @@
 
 package org.polymap.openlayers.rap.widget.controls;
 
+import org.polymap.openlayers.rap.widget.layers.Layer;
+
 /**
  * 
  * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
@@ -33,4 +35,8 @@ public class OverviewMapControl extends MinimizeableControl {
 	public OverviewMapControl() {
 		super.create("new OpenLayers.Control.OverviewMap();");
 	}
+	
+	public void addLayer(Layer layer) {
+        super.create("obj.layers.push(" + layer.getJSObjRef() + ");");
+    }
 }
