@@ -22,6 +22,7 @@
 
 package org.polymap.openlayers.rap.widget.controls;
 
+import org.polymap.openlayers.rap.widget.base_types.Bounds;
 import org.polymap.openlayers.rap.widget.layers.Layer;
 
 /**
@@ -36,7 +37,27 @@ public class OverviewMapControl extends MinimizeableControl {
 		super.create("new OpenLayers.Control.OverviewMap();");
 	}
 	
+	
+	 public OverviewMapControl( Layer layer) {
+	        super.create("new OpenLayers.Control.OverviewMap(" +
+	        		"" +
+	        		"{" +
+	        	/*	"  mapOptions: {  maxExtent: "  + layer.getJSObjRef() +  ".getExtent()," +
+	        				 "projection: 'EPSG:900913'," + 
+	        				 
+	        				" maxResolution: 116.24879860156216 ," +
+	        				"units: 'm'" +
+	        				" }  ," +*/
+	        		"layers:[" + layer.getJSObjRef() +".clone()] " +
+	        	
+	        		
+	        		"});");
+	   }
+	
+    //layers: [jplOverview]
+
+	
 	public void addLayer(Layer layer) {
-        super.create("obj.layers.push(" + layer.getJSObjRef() + ");");
+        super.create("obj.layers=[" + layer.getJSObjRef() + "];");
     }
 }
