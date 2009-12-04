@@ -62,4 +62,8 @@ public class Control extends OpenLayersObject {
 	public void setMap(OpenLayersMap map) {
 	    super.addObjModCode("setMap",map);
 	}
+	
+	public void destroy() {
+        super.addObjModCode("obj.destroy();");
+    }
 }
