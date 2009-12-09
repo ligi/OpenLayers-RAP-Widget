@@ -39,19 +39,33 @@ import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 public class OpenLayersWidgetProvider extends SessionSingletonBase {
 
     
+    /** 
+     * flag to determine if the openlayers lib ( client side js ) is loaded for this session
+     * to block executing js commands before this
+     */
     public boolean lib_init_done=false;
+    
+    /** 
+     * HashMap to hold references to created objects as value with the client side id as key
+     */
+    public HashMap<String,OpenLayersObject> obj_ref2obj;
+    
+    
+    /**
+     * javascript command stack 
+     */
+    public Vector<OpenLayersCommand> cmd_stack;
+
     
 	private OpenLayersWidget widget;
 
-	public HashMap<String,OpenLayersObject> obj_ref2obj;
-	
+		
 	private int obj_ref = 0;
 
-	public Vector<Object[]> cmd_stack;
-
+	
 	private OpenLayersWidgetProvider() {
 		obj_ref2obj=new HashMap<String,OpenLayersObject>();
-		cmd_stack = new Vector<Object[]>();
+		cmd_stack = new Vector<OpenLayersCommand>();
 	}
 	
 	public OpenLayersWidget getWidget() {
@@ -62,8 +76,8 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
 	
 	    this.widget = widget;
 		// create the initial object space ( hash )
-		widget.addCommand("eval",
-				"if ( typeof objs == 'undefined' ) objs={};");
+		widget.addCommand( new OpenLayersCommand(
+				"if ( typeof objs == 'undefined' ) objs={};"));
 	}
 
 

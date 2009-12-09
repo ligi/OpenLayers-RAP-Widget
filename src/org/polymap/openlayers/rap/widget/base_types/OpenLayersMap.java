@@ -22,7 +22,6 @@
 
 package org.polymap.openlayers.rap.widget.base_types;
 
-import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
 import org.polymap.openlayers.rap.widget.controls.Control;
 import org.polymap.openlayers.rap.widget.layers.Layer;

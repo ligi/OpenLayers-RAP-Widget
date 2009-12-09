@@ -118,14 +118,14 @@ public class OpenLayersObject {
     public void create( String js_create_code ) {
         OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
         this.setObjRef( wp.generateObjectReference( "o", this ) );
-        getWidget().addCommand( "eval", getJSObjRef() + "=" + js_create_code );
+        getWidget().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code) );
     }
 
 
     public void changes2widget() {
         if (getWidget() != null) {
             if (obj_mod_code != "")
-                widget.addCommand( "eval", "obj=" + getJSObjRef() + "; " + obj_mod_code );
+                widget.addCommand(  new OpenLayersCommand( "obj=" + getJSObjRef() + "; " + obj_mod_code ));
 
             obj_mod_code = "";
         }

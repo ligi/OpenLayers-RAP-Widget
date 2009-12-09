@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.polymap.openlayers.rap.widget.OpenLayersWidget;
+import org.polymap.openlayers.rap.widget.base.OpenLayersCommand;
 import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
 import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
 import org.eclipse.rwt.lifecycle.AbstractWidgetLCA;
@@ -61,11 +62,11 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 	 */
 	public void readData(final Widget widget) {
 		OpenLayersWidget map = (OpenLayersWidget) widget;
-		if (!map.lib_init_done) {
+		if (!OpenLayersWidgetProvider.getInstance().lib_init_done) {
 			String init_done_s = WidgetLCAUtil.readPropertyValue(map,
 					"load_lib_done");
 			if (init_done_s != null)
-			    map.lib_init_done = init_done_s.equals("true");
+			    OpenLayersWidgetProvider.getInstance().lib_init_done = init_done_s.equals("true");
 		}
 
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
@@ -114,11 +115,11 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 		ControlLCAUtil.writeChanges(open_layers);
 		JSWriter writer = JSWriter.getWriterFor(widget);
 
-		while (open_layers.hasCommand() && open_layers.lib_init_done) {
-			Object[] cmd_pack = open_layers.getCommand();
-			String cmd = (String) cmd_pack[0];
-			Object[] args = (Object[]) cmd_pack[1];
-			writer.call(open_layers, cmd, args);
+		while (open_layers.hasCommand() && OpenLayersWidgetProvider.getInstance().lib_init_done) {
+			OpenLayersCommand cmd = open_layers.getCommand();
+		/*	String cmd = (String) cmd_pack[0];
+			Object[] args = (Object[]) cmd_pack[1]; */
+			writer.call(open_layers, "eval" , cmd.getCommandForWriter());
 		}
 
 		// only needed for custom variants (theming)
