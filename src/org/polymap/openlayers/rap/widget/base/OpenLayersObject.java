@@ -116,22 +116,22 @@ public class OpenLayersObject {
 */
 
     public void create( String js_create_code ) {
-        OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
+        OpenLayersSessionHandler wp = OpenLayersSessionHandler.getInstance();
         this.setObjRef( wp.generateObjectReference( "o", this ) );
-        OpenLayersWidgetProvider.getInstance().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code) );
+        OpenLayersSessionHandler.getInstance().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code) );
     }
     
     public void create_with_widget( String js_create_code,OpenLayersWidget widget ) {
-        OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
+        OpenLayersSessionHandler wp = OpenLayersSessionHandler.getInstance();
         this.setObjRef( wp.generateObjectReference( "o", this ) );
-        OpenLayersWidgetProvider.getInstance().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code,widget) );
+        OpenLayersSessionHandler.getInstance().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code,widget) );
     }
 
 
     public void changes2widget() {
 //        if (getWidget() != null) {
             if (obj_mod_code != "")
-                OpenLayersWidgetProvider.getInstance().addCommand(  new OpenLayersCommand( "obj=" + getJSObjRef() + "; " + obj_mod_code ));
+                OpenLayersSessionHandler.getInstance().addCommand(  new OpenLayersCommand( "obj=" + getJSObjRef() + "; " + obj_mod_code ));
 
             obj_mod_code = "";
 //        }

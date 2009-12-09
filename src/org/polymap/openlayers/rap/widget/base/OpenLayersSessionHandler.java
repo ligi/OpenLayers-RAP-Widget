@@ -36,7 +36,7 @@ import org.polymap.openlayers.rap.widget.OpenLayersWidget;
  * 
  */
 
-public class OpenLayersWidgetProvider extends SessionSingletonBase {
+public class OpenLayersSessionHandler extends SessionSingletonBase {
 
     
     /** 
@@ -63,7 +63,7 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
 	private int obj_ref = 0;
 
 	
-	private OpenLayersWidgetProvider() {
+	private OpenLayersSessionHandler() {
 		obj_ref2obj=new HashMap<String,OpenLayersObject>();
 		cmd_stack = new Vector<OpenLayersCommand>();
 	}
@@ -81,8 +81,8 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
 	}
 
 
-	public synchronized static OpenLayersWidgetProvider getInstance() {
-		return (OpenLayersWidgetProvider) getInstance(OpenLayersWidgetProvider.class);
+	public synchronized static OpenLayersSessionHandler getInstance() {
+		return (OpenLayersSessionHandler) getInstance(OpenLayersSessionHandler.class);
 	}
 
 	public String generateObjectReference(String prefix,OpenLayersObject src_obj) {

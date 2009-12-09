@@ -26,7 +26,7 @@ import org.eclipse.rwt.lifecycle.IWidgetLifeCycleAdapter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
-import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
+import org.polymap.openlayers.rap.widget.base.OpenLayersSessionHandler;
 import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
 import org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit.OpenLayersWidgetLCA;
 
@@ -79,7 +79,7 @@ public class OpenLayersWidget extends Composite {
 	}
 
 	public void prepare() {
-		OpenLayersWidgetProvider.getInstance().setWidget(this);
+		OpenLayersSessionHandler.getInstance().setWidget(this);
 		map = new OpenLayersMap(this);
 	}
 

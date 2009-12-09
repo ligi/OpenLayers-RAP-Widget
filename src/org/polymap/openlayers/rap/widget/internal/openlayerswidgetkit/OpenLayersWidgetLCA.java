@@ -29,7 +29,7 @@ import java.util.Iterator;
 import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 import org.polymap.openlayers.rap.widget.base.OpenLayersCommand;
 import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
-import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
+import org.polymap.openlayers.rap.widget.base.OpenLayersSessionHandler;
 import org.eclipse.rwt.lifecycle.AbstractWidgetLCA;
 import org.eclipse.rwt.lifecycle.ControlLCAUtil;
 import org.eclipse.rwt.lifecycle.JSWriter;
@@ -72,7 +72,7 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
 
 		if (event != null) {
-			OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
+			OpenLayersSessionHandler wp = OpenLayersSessionHandler.getInstance();
 
 			OpenLayersObject src = wp.obj_ref2obj.get(WidgetLCAUtil
 					.readPropertyValue(map, "event_src_obj"));
@@ -115,8 +115,8 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 		ControlLCAUtil.writeChanges(open_layers);
 		JSWriter writer = JSWriter.getWriterFor(widget);
 
-		while (OpenLayersWidgetProvider.getInstance().hasCommand( open_layers ) && open_layers.lib_init_done) {
-			OpenLayersCommand cmd = OpenLayersWidgetProvider.getInstance().getCommand();
+		while (OpenLayersSessionHandler.getInstance().hasCommand( open_layers ) && open_layers.lib_init_done) {
+			OpenLayersCommand cmd = OpenLayersSessionHandler.getInstance().getCommand();
 			writer.call(open_layers, "eval" , cmd.getCommandForWriter());
 		}
 
