@@ -33,7 +33,7 @@ import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 
 public class OpenLayersObject {
 
-    private OpenLayersWidget widget       = null;
+    //private OpenLayersWidget widget       = null;
 
     private String           obj_ref      = null;
 
@@ -105,30 +105,36 @@ public class OpenLayersObject {
         addObjModCode( getJSObjRef() + "." + attr + "=" + val + ";" );
     }
 
-
-    public OpenLayersWidget getWidget() {
+/*
+   public OpenLayersWidget getWidget() {
         if (widget == null) {
             OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
             this.widget = wp.getWidget();
         }
         return widget;
     }
-
+*/
 
     public void create( String js_create_code ) {
         OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
         this.setObjRef( wp.generateObjectReference( "o", this ) );
-        getWidget().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code) );
+        OpenLayersWidgetProvider.getInstance().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code) );
+    }
+    
+    public void create_with_widget( String js_create_code,OpenLayersWidget widget ) {
+        OpenLayersWidgetProvider wp = OpenLayersWidgetProvider.getInstance();
+        this.setObjRef( wp.generateObjectReference( "o", this ) );
+        OpenLayersWidgetProvider.getInstance().addCommand( new OpenLayersCommand( getJSObjRef() + "=" + js_create_code,widget) );
     }
 
 
     public void changes2widget() {
-        if (getWidget() != null) {
+//        if (getWidget() != null) {
             if (obj_mod_code != "")
-                widget.addCommand(  new OpenLayersCommand( "obj=" + getJSObjRef() + "; " + obj_mod_code ));
+                OpenLayersWidgetProvider.getInstance().addCommand(  new OpenLayersCommand( "obj=" + getJSObjRef() + "; " + obj_mod_code ));
 
             obj_mod_code = "";
-        }
+//        }
     }
 
 

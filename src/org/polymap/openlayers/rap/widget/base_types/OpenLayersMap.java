@@ -22,6 +22,7 @@
 
 package org.polymap.openlayers.rap.widget.base_types;
 
+import org.polymap.openlayers.rap.widget.OpenLayersWidget;
 import org.polymap.openlayers.rap.widget.base.OpenLayersObject;
 import org.polymap.openlayers.rap.widget.controls.Control;
 import org.polymap.openlayers.rap.widget.layers.Layer;
@@ -45,8 +46,8 @@ public class OpenLayersMap extends OpenLayersObject {
     
    
     
-	public OpenLayersMap() {
-		super.create ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	});");
+	public OpenLayersMap(OpenLayersWidget widget) {
+		super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	});",widget);
 	}
 	
 	public void addLayer(Layer layer2add) {
@@ -59,8 +60,6 @@ public class OpenLayersMap extends OpenLayersObject {
 		
 	public void addControl(Control control2add) {
 		control2add.has_map=true;
-		//control2add.setMap(this );
-		System.out.println(" adding control to map" + this );
 		super.addObjModCode("addControl",control2add);
 	}
 

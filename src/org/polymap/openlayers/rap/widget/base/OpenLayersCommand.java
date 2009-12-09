@@ -34,16 +34,16 @@ public class OpenLayersCommand {
      * ( e.g. creation of a Map ) if this is null it can be executed on all widgets
      *  **/
     
-    private OpenLayersWidget assigned_widged;
+    private OpenLayersWidget assigned_widget;
     
     public OpenLayersCommand(String cmd) {
         this.command=cmd;
-        this.assigned_widged=null;
+        this.assigned_widget=null;
     }
     
     public OpenLayersCommand(String cmd,OpenLayersWidget widget) {
         this.command=cmd;
-        this.assigned_widged=widget;
+        this.assigned_widget=widget;
     }
     
     public String getCommand() {
@@ -60,13 +60,17 @@ public class OpenLayersCommand {
     }
 
        
-    public OpenLayersWidget getAssigned_widged() {
-        return assigned_widged;
+    public OpenLayersWidget getAssigned_widget() {
+        return assigned_widget;
     }
 
     
-    public void setAssigned_widged( OpenLayersWidget assignedWidged ) {
-        assigned_widged = assignedWidged;
+    public void setAssigned_widget( OpenLayersWidget assignedWidget ) {
+        this.assigned_widget = assignedWidget;
+    }
+    
+    public boolean isSuitableFor(OpenLayersWidget widget) {
+        return ((assigned_widget==null) || (assigned_widget==widget));
     }
     
 }

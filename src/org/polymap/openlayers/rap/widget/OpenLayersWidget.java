@@ -22,13 +22,10 @@
 
 package org.polymap.openlayers.rap.widget;
 
-import java.util.Vector;
-
 import org.eclipse.rwt.lifecycle.IWidgetLifeCycleAdapter;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
-import org.polymap.openlayers.rap.widget.base.OpenLayersCommand;
 import org.polymap.openlayers.rap.widget.base.OpenLayersWidgetProvider;
 import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
 import org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit.OpenLayersWidgetLCA;
@@ -43,7 +40,7 @@ import org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit.OpenLayers
 
 public class OpenLayersWidget extends Composite {
 
-	//public boolean lib_init_done=false;
+	public boolean lib_init_done=false;
 	
 	//public Vector<Object[]> cmd_stack;
 
@@ -82,9 +79,8 @@ public class OpenLayersWidget extends Composite {
 	}
 
 	public void prepare() {
-
 		OpenLayersWidgetProvider.getInstance().setWidget(this);
-		map = new OpenLayersMap();
+		map = new OpenLayersMap(this);
 	}
 
 	public String getJSLocation() {
@@ -95,26 +91,5 @@ public class OpenLayersWidget extends Composite {
 	public void setLayout(final Layout layout) {
 	}
 
-	public void addCommand(OpenLayersCommand command) {
-		  OpenLayersWidgetProvider.getInstance().cmd_stack.add(command);
-	}
-
-	/*
-	// with a single parameter
-	public void addCommand(String cmd, String param) {
-		Object[] param_arr = { param };
-		addCommand(cmd, param_arr);
-	}*/
-
-	public boolean hasCommand() {
-		return ((! OpenLayersWidgetProvider.getInstance().cmd_stack.isEmpty()) &&(
-		        OpenLayersWidgetProvider.getInstance().getWidget()==this ))       ;
-	}
-
-	public OpenLayersCommand getCommand() {
-		OpenLayersCommand res =   OpenLayersWidgetProvider.getInstance().cmd_stack.elementAt(0);
-		OpenLayersWidgetProvider.getInstance().cmd_stack.removeElementAt(0);
-		return res;
-	}
-
+	
 }

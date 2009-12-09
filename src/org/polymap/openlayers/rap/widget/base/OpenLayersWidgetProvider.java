@@ -43,7 +43,7 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
      * flag to determine if the openlayers lib ( client side js ) is loaded for this session
      * to block executing js commands before this
      */
-    public boolean lib_init_done=false;
+   // public boolean lib_init_done=false;
     
     /** 
      * HashMap to hold references to created objects as value with the client side id as key
@@ -76,7 +76,7 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
 	
 	    this.widget = widget;
 		// create the initial object space ( hash )
-		widget.addCommand( new OpenLayersCommand(
+		addCommand( new OpenLayersCommand(
 				"if ( typeof objs == 'undefined' ) objs={};"));
 	}
 
@@ -97,4 +97,32 @@ public class OpenLayersWidgetProvider extends SessionSingletonBase {
         OpenLayersWidgetProvider.getInstance().cmd_stack.removeElementAt(0);
         return res;
    }*/
+	
+	
+	
+
+    public void addCommand(OpenLayersCommand command) {
+          cmd_stack.add(command);
+    }
+
+    /*
+    // with a single parameter
+    public void addCommand(String cmd, String param) {
+        Object[] param_arr = { param };
+        addCommand(cmd, param_arr);
+    }*/
+
+    public boolean hasCommand(OpenLayersWidget for_widget) {
+        if (cmd_stack.isEmpty())
+            return false;
+        else
+           return (cmd_stack.get(0).isSuitableFor(for_widget ));
+    }
+
+    public OpenLayersCommand getCommand() {
+        OpenLayersCommand res =  cmd_stack.elementAt(0);
+        cmd_stack.removeElementAt(0);
+        return res;
+    }
+
 }

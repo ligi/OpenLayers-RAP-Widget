@@ -62,11 +62,11 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 	 */
 	public void readData(final Widget widget) {
 		OpenLayersWidget map = (OpenLayersWidget) widget;
-		if (!OpenLayersWidgetProvider.getInstance().lib_init_done) {
+		if (!map.lib_init_done) {
 			String init_done_s = WidgetLCAUtil.readPropertyValue(map,
 					"load_lib_done");
 			if (init_done_s != null)
-			    OpenLayersWidgetProvider.getInstance().lib_init_done = init_done_s.equals("true");
+			   map.lib_init_done = init_done_s.equals("true");
 		}
 
 		String event = WidgetLCAUtil.readPropertyValue(map, "event_name");
@@ -115,10 +115,8 @@ public class OpenLayersWidgetLCA extends AbstractWidgetLCA {
 		ControlLCAUtil.writeChanges(open_layers);
 		JSWriter writer = JSWriter.getWriterFor(widget);
 
-		while (open_layers.hasCommand() && OpenLayersWidgetProvider.getInstance().lib_init_done) {
-			OpenLayersCommand cmd = open_layers.getCommand();
-		/*	String cmd = (String) cmd_pack[0];
-			Object[] args = (Object[]) cmd_pack[1]; */
+		while (OpenLayersWidgetProvider.getInstance().hasCommand( open_layers ) && open_layers.lib_init_done) {
+			OpenLayersCommand cmd = OpenLayersWidgetProvider.getInstance().getCommand();
 			writer.call(open_layers, "eval" , cmd.getCommandForWriter());
 		}
 
