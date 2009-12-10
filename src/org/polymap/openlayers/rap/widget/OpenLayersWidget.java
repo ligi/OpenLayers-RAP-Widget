@@ -28,6 +28,7 @@ import org.eclipse.swt.widgets.Layout;
 
 import org.polymap.openlayers.rap.widget.base.OpenLayersSessionHandler;
 import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
+import org.polymap.openlayers.rap.widget.base_types.Projection;
 import org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit.OpenLayersWidgetLCA;
 
 /**
@@ -78,9 +79,13 @@ public class OpenLayersWidget extends Composite {
 		return map;
 	}
 
+	
+	public void createMap(Projection projection) {
+	    map = new OpenLayersMap(this,projection);    
+	}
 	public void prepare() {
 		OpenLayersSessionHandler.getInstance().setWidget(this);
-		map = new OpenLayersMap(this);
+	
 	}
 
 	public String getJSLocation() {

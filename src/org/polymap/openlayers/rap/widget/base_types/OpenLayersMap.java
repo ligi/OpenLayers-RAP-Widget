@@ -46,8 +46,8 @@ public class OpenLayersMap extends OpenLayersObject {
     
    
     
-	public OpenLayersMap(OpenLayersWidget widget) {
-		super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	});",widget);
+	public OpenLayersMap(OpenLayersWidget widget,Projection projection) {
+		super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	,projection: " +projection.getJSObjRef() +"  });",widget);
 	}
 	
 	public void addLayer(Layer layer2add) {
