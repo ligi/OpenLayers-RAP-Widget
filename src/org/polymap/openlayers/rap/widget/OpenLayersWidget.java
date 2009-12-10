@@ -80,8 +80,8 @@ public class OpenLayersWidget extends Composite {
 	}
 
 	
-	public void createMap(Projection projection,Projection display_projection) {
-	    map = new OpenLayersMap(this,projection,display_projection);    
+	public void createMap(Projection projection,Projection display_projection,String units) {
+	    map = new OpenLayersMap(this,projection,display_projection,units);    
 	}
 	public void prepare() {
 		OpenLayersSessionHandler.getInstance().setWidget(this);

@@ -46,8 +46,8 @@ public class OpenLayersMap extends OpenLayersObject {
     
    
     
-	public OpenLayersMap(OpenLayersWidget widget,Projection projection,Projection display_projection) {
-		super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	,projection: " +projection.getJSObjRef() +" , displayProjection: " +display_projection.getJSObjRef() + "  });",widget);
+	public OpenLayersMap(OpenLayersWidget widget,Projection projection,Projection display_projection,String units) {
+		super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	,projection: " +projection.getJSObjRef() +" , displayProjection: " +display_projection.getJSObjRef() + " , units: '" + units + "' });",widget);
 	}
 	
 	public void addLayer(Layer layer2add) {
