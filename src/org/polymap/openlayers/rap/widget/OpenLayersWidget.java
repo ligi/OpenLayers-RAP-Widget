@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
 import org.polymap.openlayers.rap.widget.base.OpenLayersSessionHandler;
+import org.polymap.openlayers.rap.widget.base_types.Bounds;
 import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
 import org.polymap.openlayers.rap.widget.base_types.Projection;
 import org.polymap.openlayers.rap.widget.internal.openlayerswidgetkit.OpenLayersWidgetLCA;
@@ -80,8 +81,8 @@ public class OpenLayersWidget extends Composite {
 	}
 
 	
-	public void createMap(Projection projection,Projection display_projection,String units) {
-	    map = new OpenLayersMap(this,projection,display_projection,units);    
+	public void createMap(Projection projection,Projection display_projection,String units,Bounds maxExtent) {
+	    map = new OpenLayersMap(this,projection,display_projection,units, maxExtent);    
 	}
 	public void prepare() {
 		OpenLayersSessionHandler.getInstance().setWidget(this);
