@@ -77,13 +77,21 @@ public class OpenLayersWidget extends Composite {
 	}
 
 	public OpenLayersMap getMap() {
+	    if (map==null) 
+	       map = new OpenLayersMap(this);    
+
 		return map;
 	}
 
-	
+	/** 
+	 * create the Map with non default Projection
+	 * createMapmust be called before getMap()
+	 * 
+	 **/
 	public void createMap(Projection projection,Projection display_projection,String units,Bounds maxExtent,float maxResolution) {
 	    map = new OpenLayersMap(this,projection,display_projection,units, maxExtent,maxResolution);    
 	}
+	
 	public void prepare() {
 		OpenLayersSessionHandler.getInstance().setWidget(this);
 	

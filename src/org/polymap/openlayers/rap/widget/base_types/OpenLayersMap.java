@@ -50,6 +50,11 @@ public class OpenLayersMap extends OpenLayersObject {
 		super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	,projection: " +projection.getJSObjRef() +" , displayProjection: " +display_projection.getJSObjRef() + " , units: '" + units + "' , maxExtent: " + maxExtent.getJSObjRef() + " , maxResolution: " + maxResolution + " });",widget);
 	}
 	
+	public OpenLayersMap(OpenLayersWidget widget) {
+        super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),  controls : []  });",widget);
+    }
+    
+	
 	public void addLayer(Layer layer2add) {
 		super.addObjModCode("addLayer",layer2add);
 	}
