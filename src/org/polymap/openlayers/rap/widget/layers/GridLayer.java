@@ -73,7 +73,7 @@ public class GridLayer
      * extra rows and colums of tiles on each side which will
      * surround the minimum grid tiles to cover the map.
      * 
-     * @param int buffer - the buffer size ( default 2 )
+     * @param  Int buffer - the buffer size ( default 2 )
      * 
      */
 

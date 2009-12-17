@@ -23,6 +23,7 @@ package org.polymap.openlayers.rap.widget.layers;
 
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.internal.graphics.ResourceFactory;
+
 import org.polymap.openlayers.rap.widget.base_types.Bounds;
 import org.polymap.openlayers.rap.widget.base_types.Size;
 
@@ -35,7 +36,7 @@ import org.polymap.openlayers.rap.widget.base_types.Size;
 public class ImageLayer extends Layer {
 
 	public ImageLayer(String name, Image image, Bounds bounds) {
-		_ImageLayer(name, ResourceFactory.getImagePath(image), bounds,
+	    _ImageLayer(name, ResourceFactory.getImagePath(image), bounds,
 				new Size(image.getBounds()));
 	}
 
@@ -43,8 +44,8 @@ public class ImageLayer extends Layer {
 		_ImageLayer(name, url, bounds, size);
 	}
 
-	public void _ImageLayer(String name, String url, Bounds bounds, Size size) {
-		super.setName(name);
+	public void _ImageLayer(String layer_name, String url, Bounds bounds, Size size) {
+		super.setName(layer_name);
 		super.create("new OpenLayers.Layer.Image( '" + name + "','" + url
 				+ "', " + bounds.getJSObjRef() + "," + size.getJSObjRef()
 				+ " );");

@@ -22,7 +22,6 @@
 
 package org.polymap.openlayers.rap.widget.controls;
 
-import org.polymap.openlayers.rap.widget.base_types.Bounds;
 import org.polymap.openlayers.rap.widget.layers.Layer;
 
 /**
