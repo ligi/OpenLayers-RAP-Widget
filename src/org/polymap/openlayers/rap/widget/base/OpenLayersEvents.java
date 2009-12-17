@@ -45,7 +45,7 @@ public class OpenLayersEvents {
 		payload_by_name = new HashMap<String, Set<String>>();
 	}
 
-	public void register(OpenLayersEventListener listener, String name,
+	public void register(OpenLayersEventListener event_listener, String name,
 			HashMap<String, String> payload_request) {
 		String payload_code = "";
 
@@ -63,8 +63,6 @@ public class OpenLayersEvents {
 		}
 
 		obj.addObjModCode(
-		//.addCommand(
-//						"map_eval",
 						"obj.events.register('"
 								+ name
 								+ "', this,"
@@ -77,7 +75,7 @@ public class OpenLayersEvents {
 
 								+ "" + payload_code + "req.send();" + "}"
 								+ "});");
-		this.listener = listener;
+		this.listener = event_listener;
 	}
 
 	public void process_event(String name, HashMap<String, String> payload) {
