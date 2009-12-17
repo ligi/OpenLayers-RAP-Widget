@@ -44,8 +44,6 @@ public class OpenLayersWidget extends Composite {
 
 	public boolean lib_init_done=false;
 	
-	//public Vector<Object[]> cmd_stack;
-
 	/** reference to the map object - every widged has exactly one Map **/
 	private OpenLayersMap map;
 
