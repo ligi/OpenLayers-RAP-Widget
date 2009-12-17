@@ -31,6 +31,31 @@ import org.polymap.openlayers.rap.widget.layers.VectorLayer;
  */
 public class SnappingControl extends Control {
 
+    /**Triggered before a snap occurs.
+     *  Listeners receive an event object with point, x, y, distance, layer, and snapType properties.
+     *  The point property will be original point geometry considered for snapping.  The x and y properties represent coordinates the point will receive.  The distance is the distance of the snap.  The layer is the target layer. 
+     *  The snapType property will be one of node, vertex, or edge. 
+      **/
+    
+    public final static String EVENT_BEFORE_SNAP ="beforesnap";
+
+    /** 
+     * Triggered when a snap occurs.
+     * Listeners receive an event with point, snapType, layer, and distance properties.
+     * The point will be the location snapped to.  The snapType will be one of node, vertex, or edge.
+     * The layer will be the target layer.  
+     * The distance will be the distance of the snap in map units.
+     **/
+
+    public final static String EVENT_SNAP ="snap";
+   
+    /**
+     * Triggered when a vertex is unsnapped.  Listeners receive an event with a point property.
+     */
+    public final static String EVENT_UNSNAP ="unsnap";
+    
+    
+    
 	public SnappingControl(VectorLayer layer, VectorLayer target, Boolean greedy) {
 		_create(layer, target.getJSObjRef(), greedy);
 	}

@@ -34,6 +34,12 @@ import org.polymap.openlayers.rap.widget.base_types.OpenLayersMap;
 
 public class Control extends OpenLayersObject {
 
+    /** Triggered when activated. **/
+    public final static String EVENT_ACTIVATE = "activate";
+    
+    /** Triggered when deactivated. **/
+    public final static String EVENT_DEACTIVATE = "deactivate";
+    
 	public boolean has_map=false;
 	
 	public Control() {
