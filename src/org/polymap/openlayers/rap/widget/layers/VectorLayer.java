@@ -36,6 +36,94 @@ import org.polymap.openlayers.rap.widget.features.VectorFeature;
 public class VectorLayer
         extends Layer {
 
+    /** Triggered before a feature is added.  
+     *  Listeners will receive an object with a feature property referencing the feature to be added.   
+     **/
+    public final static String EVENT_BEFOREFEATUREADDED="beforefeatureadded";
+    
+    /**
+     * Triggered before an array of features is added.  
+     * Listeners will receive an object with a features property referencing the feature to be added. 
+     **/
+    public final static String EVENT_BEFOREFEATURESADDED="beforefeaturesadded";
+
+    /** Triggered after a feature is added.  
+     *  Listeners will receive an object with a feature property referencing the feature to be added.   
+     **/
+    public final static String EVENT_FEATUREADDED="featureadded";
+    
+    /**
+     * Triggered after an array of features is added.  
+     * Listeners will receive an object with a features property referencing the feature to be added. 
+     **/
+    public final static String EVENT_FEATURESADDED="featuresadded";
+
+    /**
+     * Triggered before a feature is removed.
+     *  Listeners will receive an object with a feature property referencing the feature to be removed.
+     */
+    public final static String EVENT_BEFOREFEATUREREMOVED="beforefeatureremoved";
+        
+    /** 
+     * Triggerd after a feature is removed.  The event object passed to listeners will have a feature property with a reference to the removed feature. 
+    **/
+    public final static String EVENT_FEATUREREMOVED="beforefeatureremoved";
+    
+    /** 
+     * Triggered after features are removed.  The event object passed to listeners will have a features property with a reference to an array of removed features.
+     **/
+    public final static String EVENT_FEATURESREMOVED="beforefeaturesremoved";
+    
+    /**  
+     * Triggered after a feature is selected.  Listeners will receive an object with a feature property referencing the selected feature. 
+    **/
+    public final static String EVENT_FEATURESELECTED="featureselected";
+    
+    /**  
+     * Triggered after a feature is unselected.  Listeners will receive an object with a feature property referencing the unselected feature.
+    **/
+    public final static String EVENT_FEATURESUNELECTED="featureunselected";
+    
+    /**
+     * Triggered when a feature is selected to be modified.  Listeners will receive an object with a feature property referencing the selected feature.
+     **/
+     public final static String EVENT_BEFOREFEATUREMODIFIED="beforefeaturemodified";
+ 
+    /**
+     * Triggered when a feature has been modified.  Listeners will receive an object with a feature property referencing the modified feature.
+     **/
+     public final static String EVENT_FEATUREMODIFIED="featuremodified";
+ 
+     /**
+      * Triggered when a feature is finished being modified.  Listeners will receive an object with a feature property referencing the modified feature.
+      **/
+      public final static String EVENT_AFTERFEATUREMODIFIED="afterfeaturemodified";
+     
+    /**
+     * Triggered when a vertex within any feature geometry has been modified.  Listeners will receive an object with a feature property referencing the modified feature, a vertex property referencing the vertex modified (always a point geometry), and a pixel property referencing the pixel location of the modification.
+     **/
+     public final static String EVENT_VERTEXMODIFIED="vertexmodified";
+ 
+    /**
+     * Triggered when a feature sketch bound for this layer is started.  Listeners will receive an object with a feature property referencing the new sketch feature and a vertex property referencing the creation point.
+     **/
+     public final static String EVENT_SKETCHSTARTED="sketchstarted";
+ 
+    /**
+     * Triggered when a feature sketch bound for this layer is modified.  Listeners will receive an object with a vertex property referencing the modified vertex and a feature property referencing the sketch feature.
+     **/
+     public final static String EVENT_SKETCHMODIFIED="sketchmodified";
+ 
+    /**
+     * Triggered when a feature sketch bound for this layer is complete.  Listeners will receive an object with a feature property referencing the sketch feature. 
+     **/
+     public final static String EVENT_SKETCHCOMPLETE="sketchcomplete";
+    
+    /**
+     * Triggered when something wants a strategy to ask the protocol for a new set of features.
+     **/
+    public final static String EVENT_REFRESH="refresh";
+    
     public VectorLayer( String name ) {
         super.setName( name );
         super.create( "new OpenLayers.Layer.Vector( '" + name + "' );" );
