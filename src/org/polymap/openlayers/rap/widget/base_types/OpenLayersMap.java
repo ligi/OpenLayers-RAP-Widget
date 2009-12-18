@@ -36,15 +36,49 @@ import org.polymap.openlayers.rap.widget.layers.Layer;
 public class OpenLayersMap extends OpenLayersObject {
 
     /** Event: triggered after mouseover the map. */
-    public static String        EVENT_MOUSE_OVER = "mouseover";
+    public final static String        EVENT_MOUSE_OVER = "mouseover";
     
     /** Event: triggered after mouseout the map. */
-    public static String        EVENT_MOUSE_OUT = "mouseout";
+    public final  static String        EVENT_MOUSE_OUT = "mouseout";
     
     /** Event: triggered after mousemove the map. */
-    public static String        EVENT_MOUSE_MOVE = "mousemove";
+    public final  static String        EVENT_MOUSE_MOVE = "mousemove";
     
+   /** triggered before a layer has been added.  The event object will include a layer property that references the layer to be added. **/
+    public  final static String        EVENT_PREADDLAYER = "preaddlayer";
+
+    /** triggered after a layer has been added.  The event object will include a layer property that references the added layer. **/
+    public final static String        EVENT_ADDLAYER = "addlayer";
+    
+    /** triggered after a layer has been removed.  The event object will include a layer property that references the removed layer. **/
+    public final static String        EVENT_REMOVELAYER = "removelayer";
+
+    /** triggered after a layer name change, order change, or visibility change (due to resolution thresholds).  Listeners will receive an event object with layer and property properties.  The layer property will be a reference to the changed layer.  The property property will be a key to the changed property (name, visibility, or order). **/
+    public final static String        EVENT_CHANGELAYER = "changelayer";
+
+    /** triggered after the start of a drag, pan, or zoom **/
+    public final static String        EVENT_MOVESTART = "movestart";
+    
+    /** triggered after each drag, pan, or zoom **/
+    public final static String        EVENT_MOVE = "move";
+    
+    /** triggered after a drag, pan, or zoom completes **/
+    public final static String        EVENT_MOVEEND = "moveend";
+    
+    /**  triggered after a zoom completes **/
+    public final static String        EVENT_ZOOMEND = "zoomend";
+    
+    /**  triggered after a marker has been added **/
+    public final static String        EVENT_ADDMARKER = "addmarker";
    
+    /** triggered after a marker has been removed **/
+    public final static String        EVENT_REMOVEMARKER = "removemarker";
+    
+    /** triggered after markers have been cleared **/
+    public final static String        EVENT_CLEARMARKERS = "clearmarkers";
+    
+    /** triggered after the base layer changes **/
+    public final static String         EVENT_CHANGEBASELAYER ="changebaselayer";
     
 	public OpenLayersMap(OpenLayersWidget widget,Projection projection,Projection display_projection,String units,Bounds maxExtent,float maxResolution) {
 		super.create_with_widget ("new OpenLayers.Map( { div : document.getElementById( this._id),	controls : []	,projection: " +projection.getJSObjRef() +" , displayProjection: " +display_projection.getJSObjRef() + " , units: '" + units + "' , maxExtent: " + maxExtent.getJSObjRef() + " , maxResolution: " + maxResolution + " });",widget);
