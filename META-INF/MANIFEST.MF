@@ -20,5 +20,4 @@ Export-Package: org.polymap.openlayers.rap.widget,
  org.polymap.openlayers.rap.widget.layers,
  org.polymap.openlayers.rap.widget.marker,
  org.polymap.openlayers.rap.widget.util
-Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.2.1",
- org.apache.commons.logging;bundle-version="1.0.4"
+Require-Bundle: org.eclipse.rap.rwt;bundle-version="1.2.1"
