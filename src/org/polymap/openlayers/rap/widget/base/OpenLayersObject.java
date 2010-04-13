@@ -176,4 +176,13 @@ public class OpenLayersObject {
 
     }
 
+    /**
+     * 
+     * dispose the object
+     * 
+     */
+    public void dispose() {
+    	 OpenLayersSessionHandler.getInstance().obj_ref2obj.remove( getJSObjRef());
+    	 addObjModCode( getJSObjRef() +"=null;" );
+    }
 }
