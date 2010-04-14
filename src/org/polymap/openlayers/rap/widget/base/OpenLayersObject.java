@@ -105,6 +105,11 @@ public class OpenLayersObject {
         addObjModCode( getJSObjRef() + "." + attr + "=" + val + ";" );
     }
 
+    
+    public void createCSS(String name,String css) {
+        addObjModCode( "  var css=\"  " + name + " { " + css + " } \" ; var p= document.getElementsByTagName('head')[0] ;   var el= document.createElement('style');  el.type= 'text/css';   el.media= 'screen';       if(el.styleSheet) el.styleSheet.cssText= css;  else el.appendChild(document.createTextNode(css));    p.appendChild(el); " );
+    }
+    
 /*
    public OpenLayersWidget getWidget() {
         if (widget == null) {
