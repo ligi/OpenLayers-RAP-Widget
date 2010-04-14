@@ -38,4 +38,8 @@ public class PanelControl extends Control {
 		super.addObjModCode("obj.addControls(" + getJSObj(ctrls)   +");"    );
 	}
 
+	public void setStyle(String class_css,String div_css) {
+	    super.createCSS(".olControlPanel",class_css );
+	    super.createCSS(".olControlPanel div ",div_css );
+	}
 }
