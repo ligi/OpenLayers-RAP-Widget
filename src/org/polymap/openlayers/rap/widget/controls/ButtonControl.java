@@ -37,6 +37,11 @@ public class ButtonControl extends Control {
 		super.create("new OpenLayers.Control.Button( {  displayClass: '" + display_class + "' } );");
 	}
 	
+	  public ButtonControl(String display_class,String js_code) {
+	        this.display_class=display_class;
+	        super.create("new OpenLayers.Control.Button( {  displayClass: '" + display_class + "'  , trigger: function() { " + js_code + "}} );");
+	    }
+	
 	
 	public void setStyle(String css) {
 	    super.createCSS( "." + display_class+"ItemActive" , css);
