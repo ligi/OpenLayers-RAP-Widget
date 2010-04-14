@@ -25,6 +25,7 @@ package org.polymap.openlayers.rap.widget.controls;
 /**
  * 
  * @author Marcus -LiGi- B&uuml;schleb < mail: ligi (at) polymap (dot) de >
+ * @deprecated - use NavigationControl instead
  * 
  */
 
